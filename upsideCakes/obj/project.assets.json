@@ -1018,24 +1018,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Vini\\.nuget\\packages\\": {}
+    "C:\\Users\\Aluno\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Estudos\\C#\\upsideCakes\\upsideCakes.csproj",
+      "projectUniqueName": "c:\\Users\\Aluno\\Desktop\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
       "projectName": "upsideCakes",
-      "projectPath": "D:\\Estudos\\C#\\upsideCakes\\upsideCakes.csproj",
-      "packagesPath": "C:\\Users\\Vini\\.nuget\\packages\\",
-      "outputPath": "D:\\Estudos\\C#\\upsideCakes\\obj\\",
+      "projectPath": "c:\\Users\\Aluno\\Desktop\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+      "packagesPath": "C:\\Users\\Aluno\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Aluno\\Desktop\\upsideCakes\\upsideCakes\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Vini\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Aluno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1082,7 +1090,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,27 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
-        private string _nome { get; set; }
-        public float _preco { get; set; }
-
-        public Product()
-        {
-
-        }
-
-        public Product(string nome, float preco)
-        {
-            _nome = nome;
-            _preco = preco;
-        }
-
-
+        public string _name { get; set; }
+        public float _price { get; set; }
     }
 }

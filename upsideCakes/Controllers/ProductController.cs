@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace upsideCakes.Controllers;
     [ApiController]
-    [Route("[product+controller]")]
+    [Route("[productcontroller]")] 
 
     public class ProductController : ControllerBase
     {
@@ -55,41 +55,27 @@ namespace upsideCakes.Controllers;
         return Ok();
     }
 
-    [HttpDelete]
+    [HttpPatch]
     [Route("updatePrice/{id}")]
     public async Task<ActionResult> UpdatePrice(int id, [FromForm] float price)
     {
         var productTemp = await _dbContext.Product.FindAsync(id);
         if (productTemp is null) return NotFound();
-        productTemp._preco = price;
+        productTemp._price = price;
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
-    /*
 
     [HttpDelete]
-    [Route("excluir")]
-    public async Task<ActionResult> Excluir(string placa)
+    [Route("delete")]
+    public async Task<ActionResult> Delete(int id)
     {
-        if (_dbContext.Carro is null) return NotFound();
-        var carroTemp = await _dbContext.Carro.FindAsync(placa);
-        if (carroTemp is null) return NotFound();   
-        _dbContext.Carro.Remove(carroTemp);
+        if (_dbContext.Product is null) return NotFound();
+        var productTemp = await _dbContext.Product.FindAsync(id);
+        if (productTemp is null) return NotFound();
+        _dbContext.Product.Remove(productTemp);
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
-     */
-
-
-
-
-
-
-
-
-
-
-
-    //FIM CLASSE
 }
 

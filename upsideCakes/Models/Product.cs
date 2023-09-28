@@ -5,20 +5,23 @@ using System.Threading.Tasks;
 
 namespace upsideCakes.Models
 {
-    public class Produto
+    public class Product
     {
+        public int Id { get; set; }
         private string _nome { get; set; }
-        private float _preco { get; set; }
+        public float _preco { get; set; }
 
-        public Produto()
+        public Product()
         {
 
         }
 
-        public Produto(string nome, float preco)
+        public Product(string nome, float preco)
         {
             _nome = nome;
             _preco = preco;
         }
+
+
     }
 }

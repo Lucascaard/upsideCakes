@@ -11,9 +11,9 @@ namespace upsideCakes.Controllers;
 [Route("[controller]")]
 public class GerenteController : ControllerBase
 {
-    private ProductDbContext _dbContext;
+    private UpsideCakesDbContext _dbContext;
 
-    public GerenteController(ProductDbContext context)
+    public GerenteController(UpsideCakesDbContext context)
     {
         _dbContext = context;
     }

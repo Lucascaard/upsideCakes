@@ -7,8 +7,8 @@ public class UpsideCakesDbContext : DbContext
 {
     public DbSet<Usuario>? Usuario { get; set; }
     public DbSet<Pessoa>? Pessoa { get; set; }
-
-    public DbSet<Product> Products { get; set; }
+    public DbSet<Produto>? Produto { get; set; }
+    public DbSet<Gerente>? Gerente { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -30,7 +30,7 @@ public class UpsideCakesDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Product>()
+        modelBuilder.Entity<Produto>()
             .HasKey(x => x.Id)
             .HasAnnotation("Sqlite:Autoincrement", true);
     }

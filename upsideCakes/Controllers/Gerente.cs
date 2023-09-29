@@ -8,68 +8,77 @@ namespace WebApiFindWorks.Controllers;
 [Route("[controller]")]
 public class GerenteController : ControllerBase
 {
-    private APIDbContext _dbContext;
+    private ProductDbContext _dbContext;
 
-    public GerenteController(APIDbContext context)
+    public GerenteController(ProductDbContext context)
     {
         _dbContext = context;
     }
 
-    [HttpPost]
-    [Route("cadastrar")]
-    //retornar qualquer tipo de resultado HTTP genérico, como Ok(), NotFound(), 
-    public async Task<IActionResult> Cadastrar(Gerente gerente)
-    {
-        if (_dbContext is null) return NotFound();
-
-        await _dbContext.AddAsync(gerente);
-        await _dbContext.SaveChangesAsync();
-        return Created("", gerente);
-        // "" URL - não é especificada, e é usada uma string vazia para indicar que o sistema deve criar automaticamente a URL 
-    }
-
-
     [HttpGet]
     [Route("listar")]
-    //É usado quando você deseja retornar um resultado HTTP específico juntamente com um objeto do modelo
     public async Task<ActionResult<IEnumerable<Gerente>>> Listar()
     {
-        if (_dbContext is null) return NotFound();
-        if (_dbContext.Gerente is null) return NotFound();
-
+        if (_dbContext is null)
+        {
+            return NotFound();
+        }
         return await _dbContext.Gerente.ToListAsync();
     }
 
-
+    [HttpPost]
+    [Route("cadastrar")]
+    public async Task<IActionResult> Cadastrar(Gerente Gerente)
+    {
+        if (_dbContext is null) return NotFound();
+        _dbContext.Add(Gerente);
+        await _dbContext.SaveChangesAsync();
+        return Created("", Gerente);
+    }
+    
     [HttpGet()]
     [Route("buscar/{_idGerente}")]
-    //um parâmetro do método de ação deve ser preenchido com o valor de um segmento da URL 
-    //o parametro idGerente é usado para vincular o valor do parâmetro ao segmento da rota na URL, onde o nome do parâmetro deve corresponder ao nome do segmento. 
-    //ou seja se o id do gerente for 1 tem que retornar o gerente com id 1
-    public async Task<ActionResult<Gerente>> Buscar([FromRoute] int idGerente)
+    public async Task<ActionResult<Gerente>> Buscar([FromRoute] int _idGerente)
     {
-        if (_dbContext is null) return NotFound();
-        if (_dbContext.Gerente is null) return NotFound();
-
-        var gerenteLista = await _dbContext.Gerente.FindAsync(idGerente);
-        if (gerenteLista is null) return NotFound();
-
-        return gerenteLista;
+        if (_dbContext is null)
+            return NotFound();
+        var Gerente = await _dbContext.Gerente.FindAsync(_idGerente);
+        if (Gerente is null)
+            return NotFound();
+        return Gerente;
     }
-
-
+}
+/*
     [HttpPut()]
     [Route("alterar")]
-    public async Task<ActionResult> Alterar(Gerente gerente)
+    public async Task<ActionResult> Alterar(Gerente Gerente)
     {
-        if (_dbContext is null) return NotFound();
-        if (_dbContext.Gerente is null) return NotFound();
+        if (_dbContext is null)
+            return NotFound();
 
-        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._idGerente);
-        if (gerenteAlterar is null) return NotFound();
+        // Busque o registro existente pelo _idGerente (ou outra chave primária) do usuário
+        var existingGerente = await _dbContext.Gerente.FindAsync(Gerente._idGerente);
 
-        _dbContext.Gerente.Update(gerente);
+        if (existingGerente is null)
+            return NotFound();
+
+        // Atualize apenas os campos que foram fornec_idGerenteos no objeto usuário
+        if (Gerente.__nomeGerente  != "string")
+        {
+            existingGerente._nomeGerente  = Gerente._nomeGerente ;
+        }
+
+        if (Gerente.Senha != "string")
+        {
+            existingGerente.Senha = Gerente.Senha;
+        } 
+
+        // Marque o registro como modificado no contexto do EF
+        _dbContext.Entry(existingGerente).State = EntityState.Modified;
+
+        // Salve as alterações no banco de dados
         await _dbContext.SaveChangesAsync();
+
         return Ok();
     }
 
@@ -78,13 +87,11 @@ public class GerenteController : ControllerBase
     public async Task<ActionResult> Excluir([FromRoute] int _idGerente)
     {
         if (_dbContext is null) return NotFound();
-        if (_dbContext.Gerente is null) return NotFound();
-
-        var gerenteDeletar = await _dbContext.Gerente.FindAsync(_idGerente);
-        if (gerenteDeletar is null) return NotFound();
-
-        _dbContext.Gerente.Remove(gerenteDeletar);
+        var Gerente = await _dbContext.Gerente.FindAsync(_idGerente);
+        if (Gerente is null) return NotFound();
+        _dbContext.Gerente.Remove(Gerente);
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
 }
+*/

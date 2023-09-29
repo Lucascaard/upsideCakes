@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj": {}
+    "C:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj": {}
   },
   "projects": {
-    "c:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj": {
+    "C:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+        "projectUniqueName": "C:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
         "projectName": "upsideCakes",
-        "projectPath": "c:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+        "projectPath": "C:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
         "packagesPath": "C:\\Users\\GABRIELLE\\.nuget\\packages\\",
-        "outputPath": "c:\\GitHub\\upsideCakes\\upsideCakes\\obj\\",
+        "outputPath": "C:\\GitHub\\upsideCakes\\upsideCakes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GABRIELLE\\AppData\\Roaming\\NuGet\\NuGet.Config"

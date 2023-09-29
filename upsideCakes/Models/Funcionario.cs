@@ -10,12 +10,9 @@ namespace upsideCakes.Models
         private int _id { get; set; }
         private DateOnly _dataNasc { get; set; }
         private int _telefone { get; set; }
-        private string _email {get; set; }
+        private string? _email {get; set; }
 
-        public Funcionario()
-        {
- 
-        }
+
 
         public Funcionario(DateOnly dataNasc, int telefone, string email)
         {

@@ -4,14 +4,8 @@ namespace upsideCakes.Models
 {
     public class Pessoa
     {
-        [Key]
-        public string? Cpf { get; set; }
-        public string? Nome { get; set; }
-
-        // public Pessoa()
-        // {
-
-        // }   
+        private string? _cpf { get; set; }
+        private string? _nome { get; set; }
 
         // public Pessoa(string cpf, string nome)
         // {

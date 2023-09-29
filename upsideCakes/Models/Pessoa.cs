@@ -1,24 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
 {
     public class Pessoa
     {
-        private string _cpf { get; set; }
-        private string _nome { get; set; }
+        [Key]
+        public string? Cpf { get; set; }
+        public string? Nome { get; set; }
 
-        public Pessoa()
-        {
+        // public Pessoa()
+        // {
 
-        }   
+        // }   
 
-        public Pessoa(string cpf, string nome)
-        {
-            _cpf = cpf;
-            _nome = nome;
-        }
+        // public Pessoa(string cpf, string nome)
+        // {
+        //     _cpf = cpf;
+        //     _nome = nome;
+        // }
     }
 }

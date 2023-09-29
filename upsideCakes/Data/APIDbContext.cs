@@ -4,21 +4,31 @@ using Microsoft.EntityFrameworkCore;
 
 namespace upsideCakes.Data;
 
-public class ProductDbContext : DbContext
+public class APIDbContext : DbContext
 {
 
     public DbSet<Gerente> Gerente { get; set; }
     public DbSet<Pagamento> Pagamento { get; set; }
 
 
+    public DbSet<Produto> Produto { get; set; }
+    public DbSet<Cardapio> Cardapio { get; set; }
+    public DbSet<Cliente> Cliente { get; set; }
+    public DbSet<Funcionario> Funcionario { get; set; }
+    public DbSet<Pedido> Pedido { get; set; }
+    public DbSet<Pessoa> Pessoa { get; set; }
+    public DbSet<Usuario> Usuario { get; set; }
+
+
+
     //EXPLICAÇÃO
     /*
      O código que você forneceu parece ser uma parte de uma classe de contexto do Entity Framework, especificamente para configuração de acesso a um banco de dados SQLite. Vou explicar as partes desse código:
 
-    public DbSet<Product>? Product { get; set; }:
+    public DbSet<Produto>? Produto { get; set; }:
 
-    public DbSet<Product>: Isso declara uma propriedade pública chamada Product do tipo DbSet<Product>. Um DbSet é uma coleção que representa uma tabela no banco de dados. Nesse caso, a classe Product representa a entidade (ou tabela) que você pode consultar e manipular por meio dessa propriedade.
-    ?: O ponto de interrogação (?) após DbSet<Product> indica que a propriedade pode ser nula (nullable). Isso significa que, se a tabela Product não existir no banco de dados, a propriedade Product será nula.
+    public DbSet<Produto>: Isso declara uma propriedade pública chamada Produto do tipo DbSet<Produto>. Um DbSet é uma coleção que representa uma tabela no banco de dados. Nesse caso, a classe Produto representa a entidade (ou tabela) que você pode consultar e manipular por meio dessa propriedade.
+    ?: O ponto de interrogação (?) após DbSet<Produto> indica que a propriedade pode ser nula (nullable). Isso significa que, se a tabela Produto não existir no banco de dados, a propriedade Produto será nula.
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder):
 
     Este método é uma parte da classe de contexto do Entity Framework e é usado para configurar as opções de conexão com o banco de dados.
@@ -27,10 +37,9 @@ public class ProductDbContext : DbContext
 
     optionsBuilder.UseSqlite(...): Isso configura o provedor SQLite para ser usado com o Entity Framework.
     connectionString: "DataSource=upsideCakes.db;Cache=Shared": Aqui, você está especificando a cadeia de conexão para o banco de dados SQLite. A cadeia de conexão contém informações sobre onde encontrar o banco de dados e, neste caso, é "upsideCakes.db". A opção "Cache=Shared" é usada para configurar o cache compartilhado para o banco de dados SQLite.
-    Em resumo, esse código faz parte da configuração de um contexto do Entity Framework para acessar um banco de dados SQLite chamado "upsideCakes.db". Ele declara uma propriedade Product que permite o acesso à tabela Product no banco de dados e configura as opções de conexão com o SQLite por meio do método OnConfiguring. Com essa configuração, você pode usar o contexto para consultar e manipular os dados da tabela Product no banco de dados SQLite.
+    Em resumo, esse código faz parte da configuração de um contexto do Entity Framework para acessar um banco de dados SQLite chamado "upsideCakes.db". Ele declara uma propriedade Produto que permite o acesso à tabela Produto no banco de dados e configura as opções de conexão com o SQLite por meio do método OnConfiguring. Com essa configuração, você pode usar o contexto para consultar e manipular os dados da tabela Produto no banco de dados SQLite.
      */
-    public DbSet<Product>? Product { get; set; }
-
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(connectionString: "DataSource=upsideCakes.db;Cache=Shared");
@@ -50,7 +59,7 @@ public class ProductDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Product>()
+        modelBuilder.Entity<Produto>()
             .HasKey(x => x.Id)
             .HasAnnotation("Sqlite:Autoincrement", true);
         //deixar o cpf do gerente sendo unico

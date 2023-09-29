@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
 {
-    public class Product
+    public class Produto
     {
         [Key]
         public int Id { get; set; }

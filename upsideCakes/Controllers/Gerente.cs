@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using upsideCakes.Models;
-using upsideCakes.Data;
+using ups_idGerenteeCakes.Models;
+using ups_idGerenteeCakes.Data;
 using Microsoft.EntityFrameworkCore;
 namespace WebApiFindWorks.Controllers;
 
@@ -35,45 +35,45 @@ public class GerenteController : ControllerBase
         await _dbContext.SaveChangesAsync();
         return Created("", Gerente);
     }
-    /*
+    
     [HttpGet()]
-    [Route("buscar/{id}")]
-    public async Task<ActionResult<Usuario>> Buscar([FromRoute] int id)
+    [Route("buscar/{_idGerente}")]
+    public async Task<ActionResult<Gerente>> Buscar([FromRoute] int _idGerente)
     {
         if (_dbContext is null)
             return NotFound();
-        var usuario = await _dbContext.Usuario.FindAsync(id);
-        if (usuario is null)
+        var Gerente = await _dbContext.Gerente.FindAsync(_idGerente);
+        if (Gerente is null)
             return NotFound();
-        return usuario;
+        return Gerente;
     }
 
     [HttpPut()]
     [Route("alterar")]
-    public async Task<ActionResult> Alterar(Usuario usuario)
+    public async Task<ActionResult> Alterar(Gerente Gerente)
     {
         if (_dbContext is null)
             return NotFound();
 
-        // Busque o registro existente pelo ID (ou outra chave primária) do usuário
-        var existingUsuario = await _dbContext.Usuario.FindAsync(usuario.Id);
+        // Busque o registro existente pelo _idGerente (ou outra chave primária) do usuário
+        var existingGerente = await _dbContext.Gerente.FindAsync(Gerente._idGerente);
 
-        if (existingUsuario is null)
+        if (existingGerente is null)
             return NotFound();
 
-        // Atualize apenas os campos que foram fornecidos no objeto usuário
-        if (usuario.NomeUsuario != "string")
+        // Atualize apenas os campos que foram fornec_idGerenteos no objeto usuário
+        if (Gerente.__nomeGerente  != "string")
         {
-            existingUsuario.NomeUsuario = usuario.NomeUsuario;
+            existingGerente._nomeGerente  = Gerente._nomeGerente ;
         }
 
-        if (usuario.Senha != "string")
+        if (Gerente.Senha != "string")
         {
-            existingUsuario.Senha = usuario.Senha;
+            existingGerente.Senha = Gerente.Senha;
         }
 
         // Marque o registro como modificado no contexto do EF
-        _dbContext.Entry(existingUsuario).State = EntityState.Modified;
+        _dbContext.Entry(existingGerente).State = EntityState.Modified;
 
         // Salve as alterações no banco de dados
         await _dbContext.SaveChangesAsync();
@@ -82,14 +82,14 @@ public class GerenteController : ControllerBase
     }
 
     [HttpDelete()]
-    [Route("excluir/{id}")]
-    public async Task<ActionResult> Excluir([FromRoute] int id)
+    [Route("excluir/{_idGerente}")]
+    public async Task<ActionResult> Excluir([FromRoute] int _idGerente)
     {
         if (_dbContext is null) return NotFound();
-        var usuario = await _dbContext.Usuario.FindAsync(id);
-        if (usuario is null) return NotFound();
-        _dbContext.Usuario.Remove(usuario);
+        var Gerente = await _dbContext.Gerente.FindAsync(_idGerente);
+        if (Gerente is null) return NotFound();
+        _dbContext.Gerente.Remove(Gerente);
         await _dbContext.SaveChangesAsync();
         return Ok();
-    }*/
+    }
 }

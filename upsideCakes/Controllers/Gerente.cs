@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using ups_idGerenteeCakes.Models;
-using ups_idGerenteeCakes.Data;
 using Microsoft.EntityFrameworkCore;
+using upsideCakes.Data;
+using upsideCakes.Models;
 namespace WebApiFindWorks.Controllers;
 
 [ApiController]
@@ -47,7 +47,8 @@ public class GerenteController : ControllerBase
             return NotFound();
         return Gerente;
     }
-
+}
+/*
     [HttpPut()]
     [Route("alterar")]
     public async Task<ActionResult> Alterar(Gerente Gerente)
@@ -70,7 +71,7 @@ public class GerenteController : ControllerBase
         if (Gerente.Senha != "string")
         {
             existingGerente.Senha = Gerente.Senha;
-        }
+        } 
 
         // Marque o registro como modificado no contexto do EF
         _dbContext.Entry(existingGerente).State = EntityState.Modified;
@@ -93,3 +94,4 @@ public class GerenteController : ControllerBase
         return Ok();
     }
 }
+*/

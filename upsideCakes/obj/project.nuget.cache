@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YqXApnJKsAQslD0lNefjyTD2wWdch/+YKjMEBe3XNjrA9ZprT573h14HBMOxZRZvRZkQ+9AOfSuWM0WOtxaiFA==",
+  "dgSpecHash": "4lqMCFn0nJtWju4vOHqvLZ0YvypQvrp1WQX+NRTHsWU+wYeQs/Vsl+9/YIzf1CSD8sxAtiGXS23VQjNKj+PY0Q==",
   "success": true,
-  "projectFilePath": "c:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+  "projectFilePath": "C:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GABRIELLE\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\GABRIELLE\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
@@ -91,11 +91,7 @@
     "C:\\Users\\GABRIELLE\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\GABRIELLE\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\GABRIELLE\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\GABRIELLE\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\GABRIELLE\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.21\\microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
-    "C:\\Users\\GABRIELLE\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.21\\microsoft.windowsdesktop.app.ref.6.0.21.nupkg.sha512",
-    "C:\\Users\\GABRIELLE\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.21\\microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512",
-    "C:\\Users\\GABRIELLE\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.21\\microsoft.netcore.app.host.win-x64.6.0.21.nupkg.sha512"
+    "C:\\Users\\GABRIELLE\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -184,11 +184,6 @@ C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.AssemblyInfo.cs
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.csproj.CoreCompileInputs.cache
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.MvcApplicationPartsAssemblyInfo.cs
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.MvcApplicationPartsAssemblyInfo.cache
-C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets\msbuild.upsideCakes.Microsoft.AspNetCore.StaticWebAssets.props
-C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets\msbuild.build.upsideCakes.props
-C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.upsideCakes.props
-C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.upsideCakes.props
-C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets.pack.json
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets.build.json
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\staticwebassets.development.json
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\scopedcss\bundle\upsideCakes.styles.css
@@ -198,3 +193,5 @@ C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\refint\upsideCakes.dll
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.pdb
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.genruntimeconfig.cache
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\ref\upsideCakes.dll
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\dotnet-ef.dll
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\Newtonsoft.Json.dll

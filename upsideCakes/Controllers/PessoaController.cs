@@ -10,7 +10,7 @@ namespace upsideCakes.Controllers;
 
 public class PessoaController : ControllerBase
 {
-    private UpsideCakesDbContext _dbContext;
+    private readonly UpsideCakesDbContext _dbContext;
 
     public PessoaController(UpsideCakesDbContext dbContext)
     {

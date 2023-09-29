@@ -1,24 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
 {
     public class Funcionario
     {
-        private int _id { get; set; }
-        private DateOnly _dataNasc { get; set; }
-        private int _telefone { get; set; }
-        private string? _email {get; set; }
+        [Key]
+        private int _id;
+        private DateOnly _dataNasc;
+        private int _telefone;
+        private string? _email;
 
-
-
-        public Funcionario(DateOnly dataNasc, int telefone, string email)
+        public Funcionario(int id, DateOnly dataNasc, int telefone, string? email)
         {
-            _dataNasc = dataNasc;
-            _telefone = telefone;
-            _email = email;
+            Id = id;
+            DataNasc = dataNasc;
+            Telefone = telefone;
+            Email = email;
         }
+        public int Id { get => _id; set => _id = value; }
+        public DateOnly DataNasc { get => _dataNasc; set => _dataNasc = value; }
+        public int Telefone { get => _telefone; set => _telefone = value; }
+        public string? Email { get => _email; set => _email = value; }
     }
 }

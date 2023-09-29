@@ -8,7 +8,9 @@ public class UpsideCakesDbContext : DbContext
     public DbSet<Usuario>? Usuario { get; set; }
     public DbSet<Pessoa>? Pessoa { get; set; }
     public DbSet<Produto>? Produto { get; set; }
-    public DbSet<Gerente>? Gerente { get; set; }
+    /*public DbSet<Gerente>? Gerente { get; set; }*/
+
+    public DbSet<Pagamento>? Pagamento { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

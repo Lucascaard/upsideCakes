@@ -10,7 +10,7 @@ namespace upsideCakes.Controllers;
 
 public class ProdutoController : ControllerBase
 {
-    private UpsideCakesDbContext _dbContext;
+    private readonly UpsideCakesDbContext _dbContext;
     public ProdutoController(UpsideCakesDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -61,7 +61,7 @@ public class ProdutoController : ControllerBase
     {
         var productTemp = await _dbContext.Produto.FindAsync(id);
         if (productTemp is null) return NotFound();
-        productTemp._preco = price;
+        productTemp.Preco = price;
         await _dbContext.SaveChangesAsync();
         return Ok();
     }

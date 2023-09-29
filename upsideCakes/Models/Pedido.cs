@@ -1,21 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
 {
     public class Pedido
     {
-        private int _id { get; set; }
-        private DateOnly _dataCriacao { get; set; }
+        [Key]
+        private int _id;
+        private DateOnly _dataCriacao;
+        private List<Produto>? _itens;
 
-        private List<Product>? _itens { get; set; }
-
-        public Pedido(DateOnly dataCriacao, List<Product> itens)
+        public Pedido(int id, DateOnly dataCriacao, List<Produto>? itens)
         {
-            _dataCriacao = dataCriacao;
-            _itens = itens;
+            Id = id;
+            DataCriacao = dataCriacao;
+            Itens = itens;
         }
+        public int Id { get => _id; set => _id = value; }
+        public DateOnly DataCriacao { get => _dataCriacao; set => _dataCriacao = value; }
+        public List<Produto>? Itens { get => _itens; set => _itens = value; }
     }
 }

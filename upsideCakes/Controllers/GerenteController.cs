@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+/*using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 using upsideCakes.Models;
@@ -88,3 +88,4 @@ public class GerenteController : ControllerBase
         return Ok();
     }
 }
+*/

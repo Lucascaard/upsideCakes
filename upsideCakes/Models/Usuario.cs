@@ -4,16 +4,16 @@ namespace upsideCakes.Models
 {
     public class Usuario
     {
-        private string? _login { get; set; }
-        private string? _senha { get; set; }
+        [Key]
+        private string? _login;
+        private string? _senha;
 
-
-        // public Usuario(string login, string senha)
-        // {
-        //     _login = login;
-        //     _senha = senha;
-        // }
-
-
+        public Usuario(string? login, string? senha)
+        {
+            Login = login;
+            Senha = senha;
+        }
+        public string? Login { get => _login; set => _login = value; }
+        public string? Senha { get => _senha; set => _senha = value; }
     }
 }

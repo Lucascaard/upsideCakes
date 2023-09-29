@@ -7,7 +7,7 @@ namespace upsideCakes.Models
 {
     public class Cardapio
     {
-        private string _produto { get; set; }
+        private string? _produto { get; set; }
         private int _quantidade { get; set; }
 
         public Cardapio()

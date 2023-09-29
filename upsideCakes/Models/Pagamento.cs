@@ -16,7 +16,7 @@ namespace upsideCakes.Models
         [Required]
         public float _valor { get; set; }
         [Required]
-        public string _formaDePagamento { get; set; }
+        public string? _formaDePagamento { get; set; }
         [Required]
         public DateOnly _data { get; set; }
 

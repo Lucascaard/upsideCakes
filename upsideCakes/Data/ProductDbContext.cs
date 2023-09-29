@@ -6,6 +6,11 @@ namespace upsideCakes.Data;
 
 public class ProductDbContext : DbContext
 {
+
+    public DbSet<Gerente> Gerente { get; set; }
+    public DbSet<Pagamento> Pagamento { get; set; }
+
+
     //EXPLICAÇÃO
     /*
      O código que você forneceu parece ser uma parte de uma classe de contexto do Entity Framework, especificamente para configuração de acesso a um banco de dados SQLite. Vou explicar as partes desse código:
@@ -48,5 +53,9 @@ public class ProductDbContext : DbContext
         modelBuilder.Entity<Product>()
             .HasKey(x => x.Id)
             .HasAnnotation("Sqlite:Autoincrement", true);
+        //deixar o cpf do gerente sendo unico
+        modelBuilder.Entity<Gerente>()
+            .HasIndex(c => c._cpfGerente)
+            .IsUnique();
     }
 }

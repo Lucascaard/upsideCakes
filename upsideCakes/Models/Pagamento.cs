@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,13 +8,25 @@ namespace upsideCakes.Models
 {
     public class Pagamento
     {
-        private Pedido _pedido { get; set; }
-        private float _valor {get; set; }
-        private string _formaDePagamento { get; set; }
-        private DateOnly _data { get; set; }
-        // private string _notaFiscal { get; set; }          Nota Fiscal = toString() 
 
-        public Pagamento ()
+        //public Pedido _pedido { get; set; } descomentar quando o sql estiver conectado
+
+        [Key]
+        public int _idPedido { get; set; }
+        [Required]
+        public float _valor { get; set; }
+        [Required]
+        public string _formaDePagamento { get; set; }
+        [Required]
+        public DateOnly _data { get; set; }
+
+
+//descomentar quando o sql estiver conectado
+        // private string _notaFiscal { get; set; }          
+        // Nota Fiscal = toString() ver cm funfa no swagger
+
+/*
+        public Pagamento()
         {
 
         }
@@ -24,6 +37,6 @@ namespace upsideCakes.Models
             _valor = valor;
             _formaDePagamento = formaDePagamento;
             _data = data;
-        }
+        }*/
     }
 }

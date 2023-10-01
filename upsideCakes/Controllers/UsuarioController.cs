@@ -10,7 +10,7 @@ namespace upsideCakes.Controllers;
 
 public class UsuarioController : ControllerBase
 {
-    private UpsideCakesDbContext _dbContext;
+    private readonly UpsideCakesDbContext _dbContext;
 
     public UsuarioController(UpsideCakesDbContext dbContext)
     {
@@ -48,7 +48,7 @@ public class UsuarioController : ControllerBase
     public async Task<ActionResult> Alterar(Usuario usuario)
     {
         if(_dbContext.Usuario is null) return NotFound();
-        if(await _dbContext.Usuario.FindAsync(usuario.Login) is null) return NotFound();
+        if(await _dbContext.Usuario.FindAsync(usuario._login) is null) return NotFound();
         _dbContext.Update(usuario);
         await _dbContext.SaveChangesAsync();
         return Ok();
@@ -61,7 +61,7 @@ public class UsuarioController : ControllerBase
         if(_dbContext.Usuario is null) return NotFound();
         var usuarioTemp = await _dbContext.Usuario.FindAsync(login);
         if(usuarioTemp is null) return NotFound();
-        usuarioTemp.Senha = senha;
+        usuarioTemp._senha = senha;
         await _dbContext.SaveChangesAsync();
         return Ok();
     }

@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace upsideCakes.Models
 {
-    public class Usuario
+    [Keyless]
+    public  abstract class Usuario
     {
-        private string? _login { get; set; }
-        private string? _senha { get; set; }
+        public string? _login { get; set; }
+        public string? _senha { get; set; }
 
 
         // public Usuario(string login, string senha)

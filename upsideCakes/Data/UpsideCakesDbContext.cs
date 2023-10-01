@@ -8,7 +8,7 @@ public class UpsideCakesDbContext : DbContext
     public DbSet<Usuario>? Usuario { get; set; }
     public DbSet<Pessoa>? Pessoa { get; set; }
 
-    public DbSet<Product> Products { get; set; }
+    public DbSet<Produto> Produto { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -26,13 +26,14 @@ public class UpsideCakesDbContext : DbContext
     .HasAnnotation("Sqlite:Autoincrement", true): Esta linha configura uma anotação para a propriedade Id da entidade. Nesse caso, a anotação "Sqlite:Autoincrement" é usada para informar ao SQLite (o banco de dados utilizado) que o valor da coluna Id deve ser autoincrementado. Isso significa que o SQLite irá gerar automaticamente valores crescentes para a coluna Id sempre que um novo registro for inserido na tabela. Isso é comum para campos de chave primária que devem ser únicos e incrementados automaticamente.
 
     Em resumo, esse trecho de código está configurando a classe de modelo MinhaClasse para que o Entity Framework saiba que a propriedade Id é a chave primária e que deve ser autoincrementada pelo SQLite quando novos registros são inseridos na tabela correspondente. Isso garante que cada registro tenha um ID exclusivo e crescente, o que é uma prática comum em bancos de dados.
-     */
+     
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Product>()
+        modelBuilder.Entity<Produto>()
             .HasKey(x => x.Id)
             .HasAnnotation("Sqlite:Autoincrement", true);
     }
+    */
 }
 

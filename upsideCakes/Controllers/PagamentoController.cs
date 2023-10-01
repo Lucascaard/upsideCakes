@@ -3,13 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 using upsideCakes.Models;
 
+namespace upsideCakes.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class PagamentoController : ControllerBase
 {
-    private ProductDbContext _dbContext;
+    private readonly UpsideCakesDbContext _dbContext;
 
-      public PagamentoController(ProductDbContext context)
+      public PagamentoController(UpsideCakesDbContext context)
     {
         _dbContext = context;
     }
@@ -50,7 +51,7 @@ public class PagamentoController : ControllerBase
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Pagamento is null) return NotFound();
-        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento._idPedido);
+        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento.Id);
         if (pagamentoAlterar is null) return NotFound();
         _dbContext.Pagamento.Update(pagamento);
         await _dbContext.SaveChangesAsync();

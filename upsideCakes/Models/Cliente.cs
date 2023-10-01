@@ -1,16 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
 {
     public class Cliente
     {
-        private int _id { get; set; }
-        private DateOnly _dataNasc { get; set; }
-        private string? _endereco { get; set; }
-        private string? _email { get; set; }
+        [Key]
+        public int _id { get; set; }
+        public DateOnly _dataNasc { get; set; }
+        public string? _endereco { get; set; }
+        public string? _email { get; set; }
 
 
 

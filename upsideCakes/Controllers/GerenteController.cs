@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+/*using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 using upsideCakes.Models;
@@ -11,9 +11,9 @@ namespace upsideCakes.Controllers;
 [Route("[controller]")]
 public class GerenteController : ControllerBase
 {
-    private ProductDbContext _dbContext;
+    private UpsideCakesDbContext _dbContext;
 
-    public GerenteController(ProductDbContext context)
+    public GerenteController(UpsideCakesDbContext context)
     {
         _dbContext = context;
     }
@@ -88,3 +88,4 @@ public class GerenteController : ControllerBase
         return Ok();
     }
 }
+*/

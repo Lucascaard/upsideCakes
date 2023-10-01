@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace upsideCakes.Models
 {
@@ -25,8 +20,6 @@ namespace upsideCakes.Models
 
        [Required]
        public string _email { get; set; } 
-
-
 
        public Gerente()
        {

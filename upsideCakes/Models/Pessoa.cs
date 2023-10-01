@@ -1,11 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace upsideCakes.Models
 {
-    public class Pessoa
+    [Keyless]
+    public abstract class Pessoa
     {
-        private string? _cpf { get; set; }
-        private string? _nome { get; set; }
+
+        public string? _cpf { get; set; }
+        public string? _nome { get; set; }
 
         // public Pessoa(string cpf, string nome)
         // {

@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace upsideCakes.Models
 {
     public class Funcionario
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }
         public DateOnly _dataNasc { get; set; }
         public int _telefone { get; set; }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace upsideCakes.Models
 {
     [Keyless]
-    public abstract class Pessoa
+    public class Pessoa
     {
 
         public string? _cpf { get; set; }

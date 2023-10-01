@@ -195,3 +195,5 @@ C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.genruntimeconfig.
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\ref\upsideCakes.dll
 C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\dotnet-ef.dll
 C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\lucas\Documents\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\dotnet-ef.dll
+C:\Users\lucas\Documents\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\Newtonsoft.Json.dll

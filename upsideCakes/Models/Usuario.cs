@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace upsideCakes.Models
 {
     [Keyless]
-    public  abstract class Usuario
+    public  class Usuario
     {
         public string? _login { get; set; }
         public string? _senha { get; set; }

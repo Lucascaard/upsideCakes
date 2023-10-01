@@ -10,6 +10,8 @@ public class UpsideCakesDbContext : DbContext
 
     public DbSet<Produto> Produto { get; set; }
 
+    public DbSet<Pagamento> Pagamento {  get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(connectionString: "DataSource=upsideCakes.db;Cache=Shared;");

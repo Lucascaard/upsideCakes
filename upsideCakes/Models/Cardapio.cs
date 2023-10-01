@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace upsideCakes.Models
 {
+    [Keyless]
     public class Cardapio
     {
         public Produto _produto { get; set; }

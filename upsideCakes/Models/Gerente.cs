@@ -1,12 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace upsideCakes.Models
 {
     public class Gerente
     {
         //public para funcionar a migration
-       [Key] 
-       public int _idGerente { get; set; }
+       [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int _id { get; set; }
 
        [Required]
        public string _nomeGerente {get; set; }
@@ -23,7 +25,7 @@ namespace upsideCakes.Models
 
        public Gerente()
        {
-            _idGerente = 0;
+            _id = 0;
             _nomeGerente = string.Empty;
             _cpfGerente = string.Empty;
             _telefone = string.Empty;
@@ -32,7 +34,7 @@ namespace upsideCakes.Models
 
        public Gerente(int idGerente, string nomeGerente, string cpfGerente, string telefone, string email)
        {
-            _idGerente = idGerente;
+            _id = idGerente;
             _nomeGerente = nomeGerente;
             _cpfGerente = cpfGerente;
             _email = email;

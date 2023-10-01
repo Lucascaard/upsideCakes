@@ -6,7 +6,7 @@ using upsideCakes.Models;
 
 namespace upsideCakes.Controllers;
 [ApiController]
-[Route("[produtocontroller]")]
+[Route("[controller]")]
 
 public class ProdutoController : ControllerBase
 {
@@ -51,7 +51,7 @@ public class ProdutoController : ControllerBase
     public async Task<ActionResult> Alterar (Produto produto)
     {
         if (_dbContext.Produto is null) return NotFound();
-        if (await _dbContext.Produto.FindAsync(produto.Id) is null) return NotFound();
+        if (await _dbContext.Produto.FindAsync(produto._id) is null) return NotFound();
         _dbContext.Update(produto);
         await _dbContext.SaveChangesAsync();
         return Ok();

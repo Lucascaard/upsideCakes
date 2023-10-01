@@ -48,7 +48,7 @@ public class PessoaController : ControllerBase
     public async Task<ActionResult> Alterar(Pessoa pessoa)
     {
         if(_dbContext.Pessoa is null) return NotFound();
-        if(await _dbContext.Pessoa.FindAsync(pessoa.Cpf) is null) return NotFound();
+        if(await _dbContext.Pessoa.FindAsync(pessoa._cpf) is null) return NotFound();
         _dbContext.Update(pessoa);
         await _dbContext.SaveChangesAsync();
         return Ok();
@@ -61,7 +61,7 @@ public class PessoaController : ControllerBase
         if(_dbContext.Pessoa is null) return NotFound();
         var pessoaTemp = await _dbContext.Pessoa.FindAsync(cpf);
         if(pessoaTemp is null) return NotFound();
-        pessoaTemp.Nome = nome;
+        pessoaTemp._nome = nome;
         await _dbContext.SaveChangesAsync();
         return Ok();
     }

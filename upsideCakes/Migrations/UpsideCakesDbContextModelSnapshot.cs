@@ -17,6 +17,64 @@ namespace upsideCakes.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
+            modelBuilder.Entity("upsideCakes.Models.Funcionario", b =>
+                {
+                    b.Property<int>("_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("_cpf")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("_dataNasc")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_endereco")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_nome")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("_telefone")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("_id");
+
+                    b.ToTable("Funcionario");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Gerente", b =>
+                {
+                    b.Property<int>("_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("_cpf")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("_dataNasc")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_endereco")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_nome")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("_telefone")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("_id");
+
+                    b.ToTable("Gerente");
+                });
+
             modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
                 {
                     b.Property<int>("_idPedido")
@@ -27,7 +85,6 @@ namespace upsideCakes.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_formaDePagamento")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<float>("_valor")
@@ -36,17 +93,6 @@ namespace upsideCakes.Migrations
                     b.HasKey("_idPedido");
 
                     b.ToTable("Pagamento");
-                });
-
-            modelBuilder.Entity("upsideCakes.Models.Pessoa", b =>
-                {
-                    b.Property<string>("_cpf")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("_nome")
-                        .HasColumnType("TEXT");
-
-                    b.ToTable("Pessoa");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>
@@ -64,17 +110,6 @@ namespace upsideCakes.Migrations
                     b.HasKey("_id");
 
                     b.ToTable("Produto");
-                });
-
-            modelBuilder.Entity("upsideCakes.Models.Usuario", b =>
-                {
-                    b.Property<string>("_login")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("_senha")
-                        .HasColumnType("TEXT");
-
-                    b.ToTable("Usuario");
                 });
 #pragma warning restore 612, 618
         }

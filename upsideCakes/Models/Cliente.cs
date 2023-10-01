@@ -3,23 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace upsideCakes.Models
 {
-    public class Cliente
+    public class Cliente : Pessoa
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // auto incremento
         public int _id { get; set; }
-        public DateOnly _dataNasc { get; set; }
-        public string? _endereco { get; set; }
-        public string? _email { get; set; }
-
-
-
-        public Cliente(DateOnly dataNasc, string endereco, string email)
-        {
-            _dataNasc = dataNasc;
-            _endereco = endereco;
-            _email = email;
-        }
-
     }
 }

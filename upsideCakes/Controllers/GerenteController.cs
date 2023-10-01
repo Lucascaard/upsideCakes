@@ -1,9 +1,7 @@
-/*using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 using upsideCakes.Models;
-using upsideCakes;
-using System.ComponentModel.DataAnnotations;
 namespace upsideCakes.Controllers;
 
 
@@ -11,7 +9,7 @@ namespace upsideCakes.Controllers;
 [Route("[controller]")]
 public class GerenteController : ControllerBase
 {
-    private UpsideCakesDbContext _dbContext;
+    private readonly UpsideCakesDbContext _dbContext;
 
     public GerenteController(UpsideCakesDbContext context)
     {
@@ -21,7 +19,7 @@ public class GerenteController : ControllerBase
     [HttpPost]
     [Route("cadastrar")]
     //retornar qualquer tipo de resultado HTTP genérico, como Ok(), NotFound(), 
-    public async Task<IActionResult> Cadastrar(Gerente gerente)
+    public async Task<ActionResult> Cadastrar(Gerente gerente)
     {
         if (_dbContext is null) return NotFound();
 
@@ -65,7 +63,7 @@ public class GerenteController : ControllerBase
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._idGerente);
+        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._id);
         if (gerenteAlterar is null) return NotFound();
 
         _dbContext.Gerente.Update(gerente);
@@ -75,12 +73,12 @@ public class GerenteController : ControllerBase
 
     [HttpDelete()]
     [Route("excluir/{_idGerente}")]
-    public async Task<ActionResult> Excluir([FromRoute] int _idGerente)
+    public async Task<ActionResult> Excluir([FromRoute] int _id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteDeletar = await _dbContext.Gerente.FindAsync(_idGerente);
+        var gerenteDeletar = await _dbContext.Gerente.FindAsync(_id);
         if (gerenteDeletar is null) return NotFound();
 
         _dbContext.Gerente.Remove(gerenteDeletar);
@@ -88,4 +86,3 @@ public class GerenteController : ControllerBase
         return Ok();
     }
 }
-*/

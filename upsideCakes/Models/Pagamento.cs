@@ -9,11 +9,8 @@ namespace upsideCakes.Models
 
         [Key]
         public int _idPedido { get; set; }
-        [Required]
         public float _valor { get; set; }
-        [Required]
         public string? _formaDePagamento { get; set; }
-        [Required]
         public DateOnly _data { get; set; }
 
 

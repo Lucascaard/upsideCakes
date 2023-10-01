@@ -2,15 +2,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace upsideCakes.Models
 {
-    [Keyless]
+    [Keyless] // Notação para entidade sem chave primária definida
     public class Cardapio
     {
-        public Produto _produto { get; set; }
+        public List<Produto> _produtos { get; set; } 
         public int _quantidade { get; set; }
 
-        public Cardapio(Produto produto, int quantidade)
+        public Cardapio(List<Produto> produtos, int quantidade)
         {
-            _produto = produto;
+            _produtos = produtos;
             _quantidade = quantidade;
         }
     }

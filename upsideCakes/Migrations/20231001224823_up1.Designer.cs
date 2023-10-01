@@ -11,8 +11,8 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20230929170842_databaseCriado")]
-    partial class databaseCriado
+    [Migration("20231001224823_up1")]
+    partial class up1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,40 +20,67 @@ namespace upsideCakes.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
-            modelBuilder.Entity("upsideCakes.Models.Gerente", b =>
+            modelBuilder.Entity("upsideCakes.Models.Funcionario", b =>
                 {
-                    b.Property<int>("_idGerente")
+                    b.Property<int>("_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cpfGerente")
-                        .IsRequired()
-                        .HasMaxLength(11)
+                    b.Property<string>("_cpf")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("_dataNasc")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nomeGerente")
-                        .IsRequired()
+                    b.Property<string>("_endereco")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
-                        .IsRequired()
+                    b.Property<string>("_nome")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("_idGerente");
+                    b.Property<int>("_telefone")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("_cpfGerente")
-                        .IsUnique();
+                    b.HasKey("_id");
+
+                    b.ToTable("Funcionario");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Gerente", b =>
+                {
+                    b.Property<int>("_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("_cpf")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("_dataNasc")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_endereco")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_nome")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("_telefone")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("_id");
 
                     b.ToTable("Gerente");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("_idPedido")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -61,32 +88,29 @@ namespace upsideCakes.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_formaDePagamento")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<float>("_valor")
                         .HasColumnType("REAL");
 
-                    b.HasKey("_id");
+                    b.HasKey("_idPedido");
 
                     b.ToTable("Pagamento");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<float>("_preco")
                         .HasColumnType("REAL");
 
-                    b.HasKey("Id")
-                        .HasAnnotation("Sqlite:Autoincrement", true);
+                    b.HasKey("_id");
 
                     b.ToTable("Produto");
                 });

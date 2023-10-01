@@ -10,7 +10,7 @@ using upsideCakes.Data;
 
 namespace upsideCakes.Migrations
 {
-    [DbContext(typeof(ProductDbContext))]
+    [DbContext(typeof(UpsideCakesDbContext))]
     [Migration("20230929170842_databaseCriado")]
     partial class databaseCriado
     {
@@ -53,7 +53,7 @@ namespace upsideCakes.Migrations
 
             modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
                 {
-                    b.Property<int>("_idPedido")
+                    b.Property<int>("_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -67,28 +67,28 @@ namespace upsideCakes.Migrations
                     b.Property<float>("_valor")
                         .HasColumnType("REAL");
 
-                    b.HasKey("_idPedido");
+                    b.HasKey("_id");
 
                     b.ToTable("Pagamento");
                 });
 
-            modelBuilder.Entity("upsideCakes.Models.Product", b =>
+            modelBuilder.Entity("upsideCakes.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_name")
+                    b.Property<string>("_nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("_price")
+                    b.Property<float>("_preco")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id")
                         .HasAnnotation("Sqlite:Autoincrement", true);
 
-                    b.ToTable("Product");
+                    b.ToTable("Produto");
                 });
 #pragma warning restore 612, 618
         }

@@ -43,7 +43,7 @@ namespace upsideCakes.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Produto",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -53,7 +53,7 @@ namespace upsideCakes.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Produto", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
@@ -73,7 +73,7 @@ namespace upsideCakes.Migrations
                 name: "Pagamento");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Produto");
         }
     }
 }

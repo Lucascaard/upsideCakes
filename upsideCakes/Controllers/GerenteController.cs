@@ -43,13 +43,13 @@ public class GerenteController : ControllerBase
 
 
     [HttpGet()]
-    [Route("buscar/{_idGerente}")]
-    public async Task<ActionResult<Gerente>> Buscar(int idGerente)
+    [Route("buscar/{_id}")]
+    public async Task<ActionResult<Gerente>> Buscar(int _id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteLista = await _dbContext.Gerente.FindAsync(idGerente);
+        var gerenteLista = await _dbContext.Gerente.FindAsync(_id);
         if (gerenteLista is null) return NotFound();
 
         return gerenteLista;
@@ -72,7 +72,7 @@ public class GerenteController : ControllerBase
     }
 
     [HttpDelete()]
-    [Route("excluir/{_idGerente}")]
+    [Route("excluir/{_id}")]
     public async Task<ActionResult> Excluir([FromRoute] int _id)
     {
         if (_dbContext is null) return NotFound();

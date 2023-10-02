@@ -5,8 +5,6 @@ namespace upsideCakes.Models
 {
     public class Funcionario : Pessoa
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int _id { get; set; }
+
     }
 }

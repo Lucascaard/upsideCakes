@@ -1,0 +1,8 @@
+dotnet ef database drop // apaga o banco
+dotnet ef database update // atualiza o banco
+dotnet ef migrations update // atualiza as migrations
+dotnet ef migrations add [nome da migration] // adiciona nova migration
+dotnet ef migration remove -f // apaga a ultima migration
+dotnet ef database --help // menu de ajuda do banco
+dotnet ef migrations list // lista as migrations
+dotnet ef migrations reset // reseta as migrations

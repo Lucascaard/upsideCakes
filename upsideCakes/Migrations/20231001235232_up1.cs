@@ -18,7 +18,7 @@ namespace upsideCakes.Migrations
                     _id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     _nome = table.Column<string>(type: "TEXT", nullable: true),
-                    _cpf = table.Column<string>(type: "TEXT", nullable: true),
+                    _cpf = table.Column<string>(type: "TEXT", nullable: false),
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", nullable: true),
                     _email = table.Column<string>(type: "TEXT", nullable: true),
@@ -36,7 +36,7 @@ namespace upsideCakes.Migrations
                     _id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     _nome = table.Column<string>(type: "TEXT", nullable: true),
-                    _cpf = table.Column<string>(type: "TEXT", nullable: true),
+                    _cpf = table.Column<string>(type: "TEXT", nullable: false),
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", nullable: true),
                     _email = table.Column<string>(type: "TEXT", nullable: true),

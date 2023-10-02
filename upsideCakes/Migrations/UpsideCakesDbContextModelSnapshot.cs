@@ -24,6 +24,7 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_cpf")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("_dataNasc")
@@ -53,6 +54,7 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_cpf")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("_dataNasc")

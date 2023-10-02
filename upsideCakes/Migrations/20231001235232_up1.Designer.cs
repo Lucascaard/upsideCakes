@@ -11,7 +11,7 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231001224823_up1")]
+    [Migration("20231001235232_up1")]
     partial class up1
     {
         /// <inheritdoc />
@@ -27,6 +27,7 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_cpf")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("_dataNasc")
@@ -56,6 +57,7 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_cpf")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("_dataNasc")

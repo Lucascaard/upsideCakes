@@ -39,9 +39,9 @@ public class ProdutoController : ControllerBase
     [Route("listar/{id}")]
     public async Task<ActionResult<Produto>> ListarPorID (int id)
     {
-        var productTemp = await _dbContext.Produto.FindAsync(id);
-        if (productTemp != null) return NotFound();
-        return Ok(productTemp);
+        var produtoTemp = await _dbContext.Produto.FindAsync(id);
+        if (produtoTemp != null) return NotFound();
+        return Ok(produtoTemp);
     }
 
     //Alterar
@@ -62,9 +62,9 @@ public class ProdutoController : ControllerBase
     [Route("alterarpreco/{id}")]
     public async Task<ActionResult> AtualizarPreco (int id, [FromForm] float preco)
     {
-        var productTemp = await _dbContext.Produto.FindAsync(id);
-        if (productTemp is null) return NotFound();
-        productTemp._preco = preco;
+        var produtoTemp = await _dbContext.Produto.FindAsync(id);
+        if (produtoTemp is null) return NotFound();
+        produtoTemp._preco = preco;
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
@@ -75,9 +75,9 @@ public class ProdutoController : ControllerBase
     public async Task<ActionResult> Excluir (int id)
     {
         if (_dbContext.Produto is null) return NotFound();
-        var productTemp = await _dbContext.Produto.FindAsync(id);
-        if (productTemp is null) return NotFound();
-        _dbContext.Produto.Remove(productTemp);
+        var produtoTemp = await _dbContext.Produto.FindAsync(id);
+        if (produtoTemp is null) return NotFound();
+        _dbContext.Produto.Remove(produtoTemp);
         await _dbContext.SaveChangesAsync();
         return Ok();
     }

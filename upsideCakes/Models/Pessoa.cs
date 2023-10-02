@@ -13,7 +13,7 @@ namespace upsideCakes.Models
         public string? _nome { get; set; }
 
         [Required]
-        public string _cpf { get; set; }
+        public string? _cpf { get; set; }
 
         [Required]
         public DateOnly _dataNasc { get; set; }

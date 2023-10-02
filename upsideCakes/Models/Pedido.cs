@@ -10,12 +10,10 @@ namespace upsideCakes.Models
         public int _id { get; set; }
         public DateOnly _dataCriacao { get; set; }
 
-        public List<Produto>? _itens { get; set; }
+        public Funcionario? Funcionario { get; set; }
 
-        public Pedido(DateOnly dataCriacao, List<Produto> itens)
-        {
-            _dataCriacao = dataCriacao;
-            _itens = itens;
-        }
+        public Gerente? Gerente { get; set; }
+
+        public List<Produto>? _itens { get; set; }
     }
 }

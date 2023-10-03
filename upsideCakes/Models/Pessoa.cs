@@ -1,16 +1,35 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace upsideCakes.Models
 {
-    public class Pessoa
+    public abstract class Pessoa
     {
-        private string? _cpf { get; set; }
-        private string? _nome { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int _id { get; set; }
 
-        // public Pessoa(string cpf, string nome)
-        // {
-        //     _cpf = cpf;
-        //     _nome = nome;
-        // }
+        [Required]
+        [MaxLength(255)]
+        public string? _nome { get; set; }
+
+        [Required]
+        [MaxLength(15)]
+        public string? _cpf { get; set; }
+
+        [Required]
+        public DateOnly _dataNasc { get; set; }
+
+        [Required]
+        [MaxLength(255)]
+        public string? _endereco { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string? _email { get; set; }
+        
+        [Required]
+        [MaxLength(15)]
+        public int _telefone { get; set; }
     }
 }

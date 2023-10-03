@@ -10,9 +10,9 @@ namespace upsideCakes.Models
         public int _id { get; set; }
         public DateOnly _dataCriacao { get; set; }
 
-        public Funcionario? Funcionario { get; set; }
+        public int _funcionarioID { get; set; }
 
-        public Gerente? Gerente { get; set; }
+        public int _gerenteID { get; set; }
 
         public List<Produto>? _itens { get; set; }
     }

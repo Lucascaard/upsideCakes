@@ -10,21 +10,26 @@ namespace upsideCakes.Models
         public int _id { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string? _nome { get; set; }
 
         [Required]
+        [MaxLength(15)]
         public string? _cpf { get; set; }
 
         [Required]
         public DateOnly _dataNasc { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string? _endereco { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string? _email { get; set; }
-
+        
         [Required]
+        [MaxLength(15)]
         public int _telefone { get; set; }
     }
 }

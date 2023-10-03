@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace upsideCakes.Models
 {
-    public class Gerente : Pessoa
+    public class Gerente : Usuario
     {
 
     }

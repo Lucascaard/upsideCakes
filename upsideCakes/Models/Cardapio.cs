@@ -1,17 +1,13 @@
-using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace upsideCakes.Models
-{
-    [Keyless] // Notação para entidade sem chave primária definida
+{ 
     public class Cardapio
     {
-        public List<Produto> _produtos { get; set; } 
-        public int _quantidade { get; set; }
-
-        public Cardapio(List<Produto> produtos, int quantidade)
-        {
-            _produtos = produtos;
-            _quantidade = quantidade;
-        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public List<Produto>? Produto { get; set; }
     }
 }

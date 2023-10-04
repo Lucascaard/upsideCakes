@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 using upsideCakes.Models;
-using upsideCakes;
-using System.ComponentModel.DataAnnotations;
 namespace upsideCakes.Controllers;
 
 
@@ -11,19 +9,20 @@ namespace upsideCakes.Controllers;
 [Route("[controller]")]
 public class GerenteController : ControllerBase
 {
-    private ProductDbContext _dbContext;
+    private readonly UpsideCakesDbContext _dbContext;
 
-    public GerenteController(ProductDbContext context)
+    public GerenteController(UpsideCakesDbContext context)
     {
         _dbContext = context;
     }
 
+    // CRUD PADRÃO DO GERENTE
     [HttpPost]
     [Route("cadastrar")]
     //retornar qualquer tipo de resultado HTTP genérico, como Ok(), NotFound(), 
-    public async Task<IActionResult> Cadastrar(Gerente gerente)
+    public async Task<ActionResult> Cadastrar(Gerente gerente)
     {
-        if (_dbContext is null) return NotFound();
+        //if (_dbContext is null) return NotFound();
 
         await _dbContext.AddAsync(gerente);
         await _dbContext.SaveChangesAsync();
@@ -45,13 +44,13 @@ public class GerenteController : ControllerBase
 
 
     [HttpGet()]
-    [Route("buscar/{_idGerente}")]
-    public async Task<ActionResult<Gerente>> Buscar(int idGerente)
+    [Route("buscar/{_id}")]
+    public async Task<ActionResult<Gerente>> Buscar(int _id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteLista = await _dbContext.Gerente.FindAsync(idGerente);
+        var gerenteLista = await _dbContext.Gerente.FindAsync(_id);
         if (gerenteLista is null) return NotFound();
 
         return gerenteLista;
@@ -65,26 +64,26 @@ public class GerenteController : ControllerBase
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._idGerente);
+        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._id);
         if (gerenteAlterar is null) return NotFound();
 
-        _dbContext.Gerente.Update(gerente);
+        _dbContext.Entry(gerenteAlterar).CurrentValues.SetValues(gerente);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok("Gerente alterado com sucesso.");
     }
 
     [HttpDelete()]
-    [Route("excluir/{_idGerente}")]
-    public async Task<ActionResult> Excluir([FromRoute] int _idGerente)
+    [Route("excluir/{_id}")]
+    public async Task<ActionResult> Excluir([FromRoute] int _id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteDeletar = await _dbContext.Gerente.FindAsync(_idGerente);
+        var gerenteDeletar = await _dbContext.Gerente.FindAsync(_id);
         if (gerenteDeletar is null) return NotFound();
 
         _dbContext.Gerente.Remove(gerenteDeletar);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok($"Gerente com id {_id} excluido com sucesso. ");
     }
 }

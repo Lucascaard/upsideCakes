@@ -1,22 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace upsideCakes.Models
+namespace upsideCakes.Models;
+
+public abstract class Usuario : Pessoa
 {
-    public class Usuario
-    {
-        private string? _login { get; set; }
-        private string? _senha { get; set; }
-
-
-        public Usuario(string login, string senha)
-        {
-            _login = login;
-            _senha = senha;
-        }
-
-
-    }
+    public string? _login { get; set; }
+    public string? _senha { get; set; }
+    public string? _cargo { get; set; } //Gerente e Funcionario
 }

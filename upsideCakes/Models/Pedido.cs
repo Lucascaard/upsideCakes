@@ -14,6 +14,8 @@ namespace upsideCakes.Models
 
         public int _gerenteID { get; set; }
 
-        public List<Produto>? _itens { get; set; }
+        public int _qtde {  get; set; }
+
+        public virtual List<Produto>? _itens { get; set; }
     }
 }

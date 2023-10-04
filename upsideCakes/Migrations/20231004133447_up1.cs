@@ -34,7 +34,7 @@ namespace upsideCakes.Migrations
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     _email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    _telefone = table.Column<int>(type: "INTEGER", maxLength: 15, nullable: false)
+                    _telefone = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,7 +52,7 @@ namespace upsideCakes.Migrations
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     _email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    _telefone = table.Column<int>(type: "INTEGER", maxLength: 15, nullable: false),
+                    _telefone = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false),
                     _login = table.Column<string>(type: "TEXT", nullable: true),
                     _senha = table.Column<string>(type: "TEXT", nullable: true),
                     _cargo = table.Column<string>(type: "TEXT", nullable: true)
@@ -73,7 +73,7 @@ namespace upsideCakes.Migrations
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     _email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    _telefone = table.Column<int>(type: "INTEGER", maxLength: 15, nullable: false),
+                    _telefone = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false),
                     _login = table.Column<string>(type: "TEXT", nullable: true),
                     _senha = table.Column<string>(type: "TEXT", nullable: true),
                     _cargo = table.Column<string>(type: "TEXT", nullable: true)
@@ -91,11 +91,33 @@ namespace upsideCakes.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     _dataCriacao = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _funcionarioID = table.Column<int>(type: "INTEGER", nullable: false),
-                    _gerenteID = table.Column<int>(type: "INTEGER", nullable: false)
+                    _gerenteID = table.Column<int>(type: "INTEGER", nullable: false),
+                    _qtde = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pedido", x => x._id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Produto",
+                columns: table => new
+                {
+                    _id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    _nome = table.Column<string>(type: "TEXT", nullable: false),
+                    _preco = table.Column<double>(type: "REAL", nullable: false),
+                    _categoria = table.Column<string>(type: "TEXT", nullable: false),
+                    CardapioId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produto", x => x._id);
+                    table.ForeignKey(
+                        name: "FK_Produto_Cardapio_CardapioId",
+                        column: x => x.CardapioId,
+                        principalTable: "Cardapio",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -119,33 +141,6 @@ namespace upsideCakes.Migrations
                         principalColumn: "_id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Produto",
-                columns: table => new
-                {
-                    _id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    _nome = table.Column<string>(type: "TEXT", nullable: true),
-                    _preco = table.Column<double>(type: "REAL", nullable: false),
-                    _categoria = table.Column<string>(type: "TEXT", nullable: true),
-                    CardapioId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Pedido_id = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Produto", x => x._id);
-                    table.ForeignKey(
-                        name: "FK_Produto_Cardapio_CardapioId",
-                        column: x => x.CardapioId,
-                        principalTable: "Cardapio",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Produto_Pedido_Pedido_id",
-                        column: x => x.Pedido_id,
-                        principalTable: "Pedido",
-                        principalColumn: "_id");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Pagamento__pedido_id",
                 table: "Pagamento",
@@ -155,11 +150,6 @@ namespace upsideCakes.Migrations
                 name: "IX_Produto_CardapioId",
                 table: "Produto",
                 column: "CardapioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Produto_Pedido_id",
-                table: "Produto",
-                column: "Pedido_id");
         }
 
         /// <inheritdoc />
@@ -181,10 +171,10 @@ namespace upsideCakes.Migrations
                 name: "Produto");
 
             migrationBuilder.DropTable(
-                name: "Cardapio");
+                name: "Pedido");
 
             migrationBuilder.DropTable(
-                name: "Pedido");
+                name: "Cardapio");
         }
     }
 }

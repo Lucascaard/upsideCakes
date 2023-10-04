@@ -5,18 +5,17 @@ namespace upsideCakes.Models
 {
     public class Produto
     {
-        public Produto(string? nome, double preco, string? categoria)
-        {
-            _nome = nome;
-            _preco = preco;
-            _categoria = categoria;
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }
+
+        [Required(ErrorMessage = "O campo nome é obrigatorio.")]
         public string? _nome { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "O campo Preço deve ser maior ou igual a zero.")]
         public double _preco { get; set; }
+
+        [Required(ErrorMessage = "O campo categoria é obrigatorio.")]
         public string? _categoria { get; set; } // possivelmente trocar pra int
     }
 }

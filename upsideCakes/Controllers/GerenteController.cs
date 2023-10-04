@@ -16,12 +16,13 @@ public class GerenteController : ControllerBase
         _dbContext = context;
     }
 
+    // CRUD PADRÃO DO GERENTE
     [HttpPost]
     [Route("cadastrar")]
     //retornar qualquer tipo de resultado HTTP genérico, como Ok(), NotFound(), 
     public async Task<ActionResult> Cadastrar(Gerente gerente)
     {
-        if (_dbContext is null) return NotFound();
+        //if (_dbContext is null) return NotFound();
 
         await _dbContext.AddAsync(gerente);
         await _dbContext.SaveChangesAsync();
@@ -66,9 +67,9 @@ public class GerenteController : ControllerBase
         var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._id);
         if (gerenteAlterar is null) return NotFound();
 
-        _dbContext.Gerente.Update(gerente);
+        _dbContext.Entry(gerenteAlterar).CurrentValues.SetValues(gerente);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok("Gerente alterado com sucesso.");
     }
 
     [HttpDelete()]
@@ -83,6 +84,6 @@ public class GerenteController : ControllerBase
 
         _dbContext.Gerente.Remove(gerenteDeletar);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok($"Gerente com id {_id} excluido com sucesso. ");
     }
 }

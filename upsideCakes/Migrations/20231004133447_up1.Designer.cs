@@ -11,7 +11,7 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231002232600_up1")]
+    [Migration("20231004133447_up1")]
     partial class up1
     {
         /// <inheritdoc />
@@ -60,9 +60,10 @@ namespace upsideCakes.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_telefone")
+                    b.Property<string>("_telefone")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("_id");
 
@@ -107,9 +108,10 @@ namespace upsideCakes.Migrations
                     b.Property<string>("_senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_telefone")
+                    b.Property<string>("_telefone")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("_id");
 
@@ -154,9 +156,10 @@ namespace upsideCakes.Migrations
                     b.Property<string>("_senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_telefone")
+                    b.Property<string>("_telefone")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("_id");
 
@@ -203,6 +206,9 @@ namespace upsideCakes.Migrations
                     b.Property<int>("_gerenteID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("_qtde")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("_id");
 
                     b.ToTable("Pedido");
@@ -217,13 +223,12 @@ namespace upsideCakes.Migrations
                     b.Property<int?>("CardapioId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Pedido_id")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("_categoria")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_nome")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("_preco")
@@ -232,8 +237,6 @@ namespace upsideCakes.Migrations
                     b.HasKey("_id");
 
                     b.HasIndex("CardapioId");
-
-                    b.HasIndex("Pedido_id");
 
                     b.ToTable("Produto");
                 });
@@ -252,20 +255,11 @@ namespace upsideCakes.Migrations
                     b.HasOne("upsideCakes.Models.Cardapio", null)
                         .WithMany("Produto")
                         .HasForeignKey("CardapioId");
-
-                    b.HasOne("upsideCakes.Models.Pedido", null)
-                        .WithMany("_itens")
-                        .HasForeignKey("Pedido_id");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
                 {
                     b.Navigation("Produto");
-                });
-
-            modelBuilder.Entity("upsideCakes.Models.Pedido", b =>
-                {
-                    b.Navigation("_itens");
                 });
 #pragma warning restore 612, 618
         }

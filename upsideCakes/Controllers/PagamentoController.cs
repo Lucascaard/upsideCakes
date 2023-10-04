@@ -51,7 +51,7 @@ public class PagamentoController : ControllerBase
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Pagamento is null) return NotFound();
-        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento._id);
+        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento._idPedido);
         if (pagamentoAlterar is null) return NotFound();
         _dbContext.Pagamento.Update(pagamento);
         await _dbContext.SaveChangesAsync();

@@ -57,9 +57,10 @@ namespace upsideCakes.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_telefone")
+                    b.Property<string>("_telefone")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("_id");
 
@@ -104,9 +105,10 @@ namespace upsideCakes.Migrations
                     b.Property<string>("_senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_telefone")
+                    b.Property<string>("_telefone")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("_id");
 
@@ -151,9 +153,10 @@ namespace upsideCakes.Migrations
                     b.Property<string>("_senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_telefone")
+                    b.Property<string>("_telefone")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("_id");
 
@@ -218,9 +221,11 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_categoria")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_nome")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("_preco")

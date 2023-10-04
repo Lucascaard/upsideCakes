@@ -16,12 +16,13 @@ public class GerenteController : ControllerBase
         _dbContext = context;
     }
 
+    // CRUD PADRÃO DO GERENTE
     [HttpPost]
     [Route("cadastrar")]
     //retornar qualquer tipo de resultado HTTP genérico, como Ok(), NotFound(), 
     public async Task<ActionResult> Cadastrar(Gerente gerente)
     {
-        if (_dbContext is null) return NotFound();
+        //if (_dbContext is null) return NotFound();
 
         await _dbContext.AddAsync(gerente);
         await _dbContext.SaveChangesAsync();

@@ -34,7 +34,7 @@ namespace upsideCakes.Migrations
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     _email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    _telefone = table.Column<int>(type: "INTEGER", maxLength: 15, nullable: false)
+                    _telefone = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,7 +52,7 @@ namespace upsideCakes.Migrations
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     _email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    _telefone = table.Column<int>(type: "INTEGER", maxLength: 15, nullable: false),
+                    _telefone = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false),
                     _login = table.Column<string>(type: "TEXT", nullable: true),
                     _senha = table.Column<string>(type: "TEXT", nullable: true),
                     _cargo = table.Column<string>(type: "TEXT", nullable: true)
@@ -73,7 +73,7 @@ namespace upsideCakes.Migrations
                     _dataNasc = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     _endereco = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     _email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    _telefone = table.Column<int>(type: "INTEGER", maxLength: 15, nullable: false),
+                    _telefone = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false),
                     _login = table.Column<string>(type: "TEXT", nullable: true),
                     _senha = table.Column<string>(type: "TEXT", nullable: true),
                     _cargo = table.Column<string>(type: "TEXT", nullable: true)
@@ -125,9 +125,9 @@ namespace upsideCakes.Migrations
                 {
                     _id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    _nome = table.Column<string>(type: "TEXT", nullable: true),
+                    _nome = table.Column<string>(type: "TEXT", nullable: false),
                     _preco = table.Column<double>(type: "REAL", nullable: false),
-                    _categoria = table.Column<string>(type: "TEXT", nullable: true),
+                    _categoria = table.Column<string>(type: "TEXT", nullable: false),
                     CardapioId = table.Column<int>(type: "INTEGER", nullable: true),
                     Pedido_id = table.Column<int>(type: "INTEGER", nullable: true)
                 },

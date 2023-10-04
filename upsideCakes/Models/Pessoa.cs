@@ -30,6 +30,6 @@ namespace upsideCakes.Models
         
         [Required]
         [MaxLength(15)]
-        public int _telefone { get; set; }
+        public string? _telefone { get; set; }
     }
 }

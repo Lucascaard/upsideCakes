@@ -11,7 +11,7 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231003234704_up1")]
+    [Migration("20231004133447_up1")]
     partial class up1
     {
         /// <inheritdoc />
@@ -206,6 +206,9 @@ namespace upsideCakes.Migrations
                     b.Property<int>("_gerenteID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("_qtde")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("_id");
 
                     b.ToTable("Pedido");
@@ -218,9 +221,6 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("CardapioId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("Pedido_id")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_categoria")
@@ -237,8 +237,6 @@ namespace upsideCakes.Migrations
                     b.HasKey("_id");
 
                     b.HasIndex("CardapioId");
-
-                    b.HasIndex("Pedido_id");
 
                     b.ToTable("Produto");
                 });
@@ -257,20 +255,11 @@ namespace upsideCakes.Migrations
                     b.HasOne("upsideCakes.Models.Cardapio", null)
                         .WithMany("Produto")
                         .HasForeignKey("CardapioId");
-
-                    b.HasOne("upsideCakes.Models.Pedido", null)
-                        .WithMany("_itens")
-                        .HasForeignKey("Pedido_id");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
                 {
                     b.Navigation("Produto");
-                });
-
-            modelBuilder.Entity("upsideCakes.Models.Pedido", b =>
-                {
-                    b.Navigation("_itens");
                 });
 #pragma warning restore 612, 618
         }

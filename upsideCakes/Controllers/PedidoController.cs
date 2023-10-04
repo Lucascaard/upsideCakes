@@ -27,34 +27,22 @@ public class PedidoController : ControllerBase
         if (funcExiste is null) return BadRequest("Funcionário especificado não existe");
 
         // Validação do Gerente
-        var genExiste = await _dbContext.Funcionario.FindAsync(pedido._gerenteID);
+        var genExiste = await _dbContext.Gerente.FindAsync(pedido._gerenteID);
         if (genExiste is null) return BadRequest("Gerente especificado não existe");
 
-        // Validação da Lista de Itens
-        if (pedido._itens != null)
+        if(pedido._itens != null)
         {
-            foreach (var itemPedido in pedido._itens)
+            foreach (var item in pedido._itens)
             {
-                // Verifique se o produto com o ID especificado existe no banco de dados
-                var produtoExistente = await _dbContext.Produto.FindAsync(itemPedido._id);
-                if (produtoExistente == null)
+                
+                var IDdoItem = await _dbContext.Produto
+                    .Where(p => p._id == item._id)
+                    .Select(p => p._id)
+                    .FirstOrDefaultAsync();
+
+                if (IDdoItem == 0)
                 {
-                    // Se o produto não existe, adicione uma mensagem de erro à lista de erros
-                    erros.Add($"Produto com o ID {itemPedido._id} não existe.");
-                }
-                else
-                {
-                    // Desanexe o objeto Produto do contexto do Entity Framework
-                    /*EXPLICAÇÃO
-                     A linha _dbContext.Entry(produtoExistente).State = EntityState.Detached; tem a função de desanexar (ou desconectar) uma entidade do contexto do Entity Framework. Isso significa que o objeto produtoExistente, que representa uma entidade do banco de dados, não será mais rastreado pelo contexto do Entity Framework após essa operação.
-
-                    Quando uma entidade está anexada ao contexto (o estado é "Attached"), o Entity Framework a rastreia e a monitora para detectar alterações. No entanto, em alguns cenários, você pode querer interromper o rastreamento dessa entidade, como no caso em que você está reutilizando objetos que já foram buscados do banco de dados anteriormente e não deseja que o Entity Framework rastreie suas alterações.
-
-                    Ao definir o estado da entidade como EntityState.Detached, você está informando ao Entity Framework que ele não deve mais rastrear essa entidade, e quaisquer alterações feitas no objeto produtoExistente após esse ponto não serão refletidas no banco de dados, a menos que você anexe explicitamente a entidade novamente ao contexto.
-
-                    Essa operação é útil quando você deseja trabalhar com objetos desconectados, fazendo modificações neles sem que o Entity Framework as rastreie automaticamente. Em essência, "desanexar" uma entidade permite que você gerencie manualmente seu ciclo de vida em vez de depender do rastreamento automático do Entity Framework.
-                     */
-                    _dbContext.Entry(produtoExistente).State = EntityState.Detached;
+                    erros.Add($"O produto '{item._nome}' com id {item._id} não existe.");
                 }
             }
         }
@@ -69,9 +57,9 @@ public class PedidoController : ControllerBase
         // Se todas as validações passarem, continue com a criação do pedido
         await _dbContext.Pedido.AddAsync(pedido);
         await _dbContext.SaveChangesAsync();
-        return Ok("Pedido criado com sucesso!");
+        return Created("Pedido criado com sucesso!", pedido);
     }
-
+    /*
     //Listar
     [HttpGet]
     [Route("listar")]
@@ -79,6 +67,20 @@ public class PedidoController : ControllerBase
     {
         return await _dbContext.Pedido.ToListAsync();
     }
+    */
+
+    [HttpGet]
+    [Route("listar")]
+    public async Task<ActionResult<IEnumerable<Pedido>>> Listar()
+    {
+        var pedidosComProdutos = await _dbContext.Pedido.ToListAsync();
+
+        
+
+        // O Entity Framework Core carregará automaticamente os produtos relacionados quando você acessar _itens.
+        return pedidosComProdutos;
+    }
+
 
     //Excluir
     [HttpDelete]

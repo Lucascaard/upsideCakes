@@ -23,7 +23,7 @@ namespace upsideCakes.Models
 
 //descomentar quando o sql estiver conectado
         // private string _notaFiscal { get; set; }          
-        // Nota Fiscal = toString() ver cm funfa no swagger
+        // Nota Fiscal = toString() - vai ter o nome do cliente, e o pedido 
 
 /*
         public Pagamento()

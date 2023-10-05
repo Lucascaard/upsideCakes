@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 using upsideCakes.Data;
 using upsideCakes.Models;
 
@@ -34,19 +33,18 @@ public class PedidoController : ControllerBase
         {
             foreach (var item in pedido._itens)
             {
-                
-                var IDdoItem = await _dbContext.Produto
+                var TMP_ID = 0;
+                TMP_ID = await _dbContext.Produto
                     .Where(p => p._id == item._id)
                     .Select(p => p._id)
                     .FirstOrDefaultAsync();
 
-                if (IDdoItem == 0)
+                if (TMP_ID == 0)
                 {
                     erros.Add($"O produto '{item._nome}' com id {item._id} não existe.");
                 }
             }
         }
-
         // Se houver erros de validação, retorne uma resposta BadRequest
         if (erros.Count > 0)
         {
@@ -59,7 +57,7 @@ public class PedidoController : ControllerBase
         await _dbContext.SaveChangesAsync();
         return Created("Pedido criado com sucesso!", pedido);
     }
-    /*
+
     //Listar
     [HttpGet]
     [Route("listar")]
@@ -67,20 +65,28 @@ public class PedidoController : ControllerBase
     {
         return await _dbContext.Pedido.ToListAsync();
     }
-    */
 
+    //Listar por ID
     [HttpGet]
-    [Route("listar")]
-    public async Task<ActionResult<IEnumerable<Pedido>>> Listar()
+    [Route("listar/{id}")]
+    public async Task<ActionResult<Pedido>> ListarPorID(int id)
     {
-        var pedidosComProdutos = await _dbContext.Pedido.ToListAsync();
-
-        
-
-        // O Entity Framework Core carregará automaticamente os produtos relacionados quando você acessar _itens.
-        return pedidosComProdutos;
+        var pedidoTemp = await _dbContext.Pedido.FindAsync(id);
+        if (pedidoTemp == null) return NotFound();
+        return Ok(pedidoTemp);
     }
 
+    //Alterar
+    [HttpPut]
+    [Route("alterar")]
+    public async Task<ActionResult> Alterar(Pedido pedido)
+    {
+        var existingPedido = await _dbContext.Pedido.FindAsync(pedido._id);
+        if (existingPedido is null) return NotFound();
+        _dbContext.Entry(existingPedido).CurrentValues.SetValues(pedido);
+        await _dbContext.SaveChangesAsync();
+        return Ok($"Pedido com id {pedido._id} alterado com sucesso.");
+    }
 
     //Excluir
     [HttpDelete]

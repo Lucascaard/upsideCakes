@@ -188,15 +188,10 @@ namespace upsideCakes.Migrations
                     b.Property<string>("_formaDePagamento")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("_pedido_id")
-                        .HasColumnType("INTEGER");
-
                     b.Property<float>("_valor")
                         .HasColumnType("REAL");
 
                     b.HasKey("_id");
-
-                    b.HasIndex("_pedido_id");
 
                     b.ToTable("Pagamento");
                 });
@@ -234,11 +229,9 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_categoria")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("_preco")
@@ -249,15 +242,6 @@ namespace upsideCakes.Migrations
                     b.HasIndex("Pedido_id");
 
                     b.ToTable("Produto");
-                });
-
-            modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
-                {
-                    b.HasOne("upsideCakes.Models.Pedido", "_pedido")
-                        .WithMany()
-                        .HasForeignKey("_pedido_id");
-
-                    b.Navigation("_pedido");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>

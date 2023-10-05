@@ -31,5 +31,20 @@ namespace upsideCakes.Models
         [Required]
         [MaxLength(15)]
         public string? _telefone { get; set; }
+
+        protected Pessoa(string? nome, string? cpf, DateOnly dataNasc, string? endereco, string? email, string? telefone)
+        {
+            _nome = nome;
+            _cpf = cpf;
+            _dataNasc = dataNasc;
+            _endereco = endereco;
+            _email = email;
+            _telefone = telefone;
+        }
+        //JSON
+        public Pessoa()
+        {
+
+        }
     }
 }

@@ -66,7 +66,7 @@ public class CardapioController : ControllerBase
         // })
         // .ToListAsync();
         var cardapio = _dbContext.Cardapio
-            .Include(c => c.Itens)
+            .Include(c => c._itens)
             .ToList();
 
         return cardapio;
@@ -74,7 +74,7 @@ public class CardapioController : ControllerBase
 
     [HttpGet]
     [Route("listar/{id}")]
-    public async Task<ActionResult<Cardapio>> Buscar(int id)
+    public async Task<ActionResult<IEnumerable<Cardapio>>> Buscar(int id)
     {
         var cardapio = _dbContext.Cardapio
             .Include(c => c._itens)

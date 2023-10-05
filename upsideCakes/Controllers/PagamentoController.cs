@@ -45,6 +45,18 @@ public class PagamentoController : ControllerBase
         return Created("Alterado com sucesso", pagamento);
     }
 
+
+    [HttpGet]
+    [Route("listar")]
+    //É usado quando você deseja retornar um resultado HTTP específico juntamente com um objeto do modelo
+    public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
+    {
+        if (_dbContext is null) return NotFound();
+        if (_dbContext.Pagamento is null) return NotFound();
+
+        return await _dbContext.Pagamento.ToListAsync();
+    }
+
     [HttpDelete()]
     [Route("excluir/{_id}")]
     public async Task<ActionResult> Excluir(int _id)

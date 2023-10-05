@@ -5,6 +5,13 @@ namespace upsideCakes.Models
 {
     public class Produto
     {
+        public Produto(string? nome, double preco, string? categoria)
+        {
+            _nome = nome;
+            _preco = preco;
+            _categoria = categoria;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }

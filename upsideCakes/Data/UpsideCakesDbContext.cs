@@ -6,6 +6,7 @@ namespace upsideCakes.Data;
 public class UpsideCakesDbContext : DbContext
 {
     public DbSet<Cardapio> Cardapio { get; set; }
+    public DbSet<ItemCardapio> ItemCardapio { get; set; }
     public DbSet<Cliente> Cliente { get; set; }
     public DbSet<Funcionario> Funcionario { get; set; }
     public DbSet<Gerente> Gerente { get; set; }

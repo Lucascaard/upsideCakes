@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace upsideCakes.Migrations
 {
     /// <inheritdoc />
-    public partial class up1 : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,12 +15,12 @@ namespace upsideCakes.Migrations
                 name: "Cardapio",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    _id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cardapio", x => x.Id);
+                    table.PrimaryKey("PK_Cardapio", x => x._id);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,6 +84,18 @@ namespace upsideCakes.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ItemCardapio",
+                columns: table => new
+                {
+                    _nome = table.Column<string>(type: "TEXT", nullable: false),
+                    _preco = table.Column<double>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemCardapio", x => x._nome);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pedido",
                 columns: table => new
                 {
@@ -97,27 +109,6 @@ namespace upsideCakes.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pedido", x => x._id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Produto",
-                columns: table => new
-                {
-                    _id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    _nome = table.Column<string>(type: "TEXT", nullable: false),
-                    _preco = table.Column<double>(type: "REAL", nullable: false),
-                    _categoria = table.Column<string>(type: "TEXT", nullable: false),
-                    CardapioId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Produto", x => x._id);
-                    table.ForeignKey(
-                        name: "FK_Produto_Cardapio_CardapioId",
-                        column: x => x.CardapioId,
-                        principalTable: "Cardapio",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -141,20 +132,44 @@ namespace upsideCakes.Migrations
                         principalColumn: "_id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Produto",
+                columns: table => new
+                {
+                    _id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    _nome = table.Column<string>(type: "TEXT", nullable: false),
+                    _preco = table.Column<double>(type: "REAL", nullable: false),
+                    _categoria = table.Column<string>(type: "TEXT", nullable: false),
+                    Pedido_id = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produto", x => x._id);
+                    table.ForeignKey(
+                        name: "FK_Produto_Pedido_Pedido_id",
+                        column: x => x.Pedido_id,
+                        principalTable: "Pedido",
+                        principalColumn: "_id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Pagamento__pedido_id",
                 table: "Pagamento",
                 column: "_pedido_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produto_CardapioId",
+                name: "IX_Produto_Pedido_id",
                 table: "Produto",
-                column: "CardapioId");
+                column: "Pedido_id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Cardapio");
+
             migrationBuilder.DropTable(
                 name: "Cliente");
 
@@ -165,6 +180,9 @@ namespace upsideCakes.Migrations
                 name: "Gerente");
 
             migrationBuilder.DropTable(
+                name: "ItemCardapio");
+
+            migrationBuilder.DropTable(
                 name: "Pagamento");
 
             migrationBuilder.DropTable(
@@ -172,9 +190,6 @@ namespace upsideCakes.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pedido");
-
-            migrationBuilder.DropTable(
-                name: "Cardapio");
         }
     }
 }

@@ -9,13 +9,13 @@ namespace upsideCakes.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }
 
-        [Required(ErrorMessage = "O campo nome é obrigatorio.")]
+        [Required(ErrorMessage = "O campo nome ï¿½ obrigatorio.")]
         public string? _nome { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "O campo Preço deve ser maior ou igual a zero.")]
+        [Range(0, double.MaxValue, ErrorMessage = "O campo Preï¿½o deve ser maior ou igual a zero.")]
         public double _preco { get; set; }
 
-        [Required(ErrorMessage = "O campo categoria é obrigatorio.")]
+        [Required(ErrorMessage = "O campo categoria ï¿½ obrigatorio.")]
         public string? _categoria { get; set; } // possivelmente trocar pra int
     }
 }

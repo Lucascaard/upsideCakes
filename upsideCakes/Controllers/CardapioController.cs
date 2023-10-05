@@ -45,6 +45,48 @@ public class CardapioController : ControllerBase
         return Ok(cardapio);
     }
 
+    [HttpPut]
+    [Route("alterarPreco")]
+    public async Task<ActionResult> alterarPreco (int id, double preco, [FromForm] int idCardapio)
+    {
+        var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
+        var item = _dbContext.Produto
+            .FirstOrDefault(c => c._id == id);
+
+        if(cardapio._itens is null || item is null)
+        {
+            return NotFound();
+        }
+
+        item._preco = preco;
+
+        cardapio._itens.Add(item);
+        _dbContext.Update(cardapio);
+        await _dbContext.SaveChangesAsync();
+        return Ok(cardapio);
+    }
+
+    [HttpPut]
+    [Route("alterarCategoria")]
+    public async Task<ActionResult> alterarCategoria (int id, string categoria, [FromForm] int idCardapio)
+    {
+        var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
+        var item = _dbContext.Produto
+            .FirstOrDefault(c => c._id == id);
+
+        if(cardapio._itens is null || item is null)
+        {
+            return NotFound();
+        }
+
+        item._categoria = categoria;
+
+        cardapio._itens.Add(item);
+        _dbContext.Update(cardapio);
+        await _dbContext.SaveChangesAsync();
+        return Ok(cardapio);
+    }
+
     [HttpGet]
     [Route("listar")]
     public async Task<ActionResult<IEnumerable<Cardapio>>> Listar()

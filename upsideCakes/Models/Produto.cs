@@ -12,6 +12,12 @@ namespace upsideCakes.Models
             _categoria = categoria;
         }
 
+        //JSON
+        public Produto()
+        {
+
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }

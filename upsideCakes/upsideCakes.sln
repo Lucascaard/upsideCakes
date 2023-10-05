@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-<<<<<<< Updated upstream
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "upsideCakes", "upsideCakes.csproj", "{1EEC21DD-1A17-424A-8CF3-577FDA849DB2}"
-=======
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "upsideCakes", "upsideCakes.csproj", "{9BA25902-EB79-4221-9827-8A8A7EE4B52F}"
->>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,26 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< Updated upstream
 		{1EEC21DD-1A17-424A-8CF3-577FDA849DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1EEC21DD-1A17-424A-8CF3-577FDA849DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EEC21DD-1A17-424A-8CF3-577FDA849DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EEC21DD-1A17-424A-8CF3-577FDA849DB2}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{9BA25902-EB79-4221-9827-8A8A7EE4B52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BA25902-EB79-4221-9827-8A8A7EE4B52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BA25902-EB79-4221-9827-8A8A7EE4B52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BA25902-EB79-4221-9827-8A8A7EE4B52F}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-<<<<<<< Updated upstream
-		SolutionGuid = {A4C48186-BC3F-42FD-9687-D4D7D2F75698}
-=======
 		SolutionGuid = {19E3EAB3-F038-4F7C-8B8B-6DB3DB458FD4}
->>>>>>> Stashed changes
 	EndGlobalSection
 EndGlobal

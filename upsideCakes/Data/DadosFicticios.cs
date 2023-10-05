@@ -4,7 +4,7 @@ using upsideCakes.Models;
 namespace upsideCakes.Data
 {
     public class DadosFicticios
-    {
+    { 
         public List<Produto> ObterProdutosFicticios()
         {
             var produtosFicticios = new List<Produto>

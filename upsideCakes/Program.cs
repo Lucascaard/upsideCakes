@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,4 +19,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+// Inserindo dados fictícios durante a inicialização
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<UpsideCakesDbContext>();
+    dbContext.Database.Migrate(); 
+    dbContext.InserirDadosFicticios();
+}
+
 app.Run();

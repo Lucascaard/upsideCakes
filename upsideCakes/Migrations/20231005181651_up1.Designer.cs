@@ -11,8 +11,8 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231005130028_up2")]
-    partial class up2
+    [Migration("20231005181651_up1")]
+    partial class up1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -219,11 +219,9 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_categoria")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("_preco")

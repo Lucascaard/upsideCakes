@@ -216,11 +216,9 @@ namespace upsideCakes.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_categoria")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("_nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("_preco")

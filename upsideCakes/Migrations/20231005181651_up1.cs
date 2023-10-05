@@ -84,6 +84,21 @@ namespace upsideCakes.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pagamento",
+                columns: table => new
+                {
+                    _id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    _data = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    _valor = table.Column<float>(type: "REAL", nullable: false),
+                    _formaDePagamento = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pagamento", x => x._id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pedido",
                 columns: table => new
                 {
@@ -105,9 +120,9 @@ namespace upsideCakes.Migrations
                 {
                     _id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    _nome = table.Column<string>(type: "TEXT", nullable: false),
+                    _nome = table.Column<string>(type: "TEXT", nullable: true),
                     _preco = table.Column<double>(type: "REAL", nullable: false),
-                    _categoria = table.Column<string>(type: "TEXT", nullable: false),
+                    _categoria = table.Column<string>(type: "TEXT", nullable: true),
                     CardapioId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -119,32 +134,6 @@ namespace upsideCakes.Migrations
                         principalTable: "Cardapio",
                         principalColumn: "Id");
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Pagamento",
-                columns: table => new
-                {
-                    _id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    _valor = table.Column<float>(type: "REAL", nullable: false),
-                    _formaDePagamento = table.Column<string>(type: "TEXT", nullable: true),
-                    _data = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    _pedido_id = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pagamento", x => x._id);
-                    table.ForeignKey(
-                        name: "FK_Pagamento_Pedido__pedido_id",
-                        column: x => x._pedido_id,
-                        principalTable: "Pedido",
-                        principalColumn: "_id");
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pagamento__pedido_id",
-                table: "Pagamento",
-                column: "_pedido_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produto_CardapioId",
@@ -168,10 +157,10 @@ namespace upsideCakes.Migrations
                 name: "Pagamento");
 
             migrationBuilder.DropTable(
-                name: "Produto");
+                name: "Pedido");
 
             migrationBuilder.DropTable(
-                name: "Pedido");
+                name: "Produto");
 
             migrationBuilder.DropTable(
                 name: "Cardapio");

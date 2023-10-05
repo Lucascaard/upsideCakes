@@ -17,4 +17,16 @@ public class UpsideCakesDbContext : DbContext
     {
         optionsBuilder.UseSqlite(connectionString: "DataSource=upsideCakes.db;Cache=Shared;");
     }
+
+    public void InserirDadosFicticios()
+    {
+        var dadosFicticios = new DadosFicticios();
+
+        // Adicionando os dados fictícios ao contexto e salvando as alterações no banco de dados
+        Cliente.AddRange(dadosFicticios.CriarDadosFicticiosCliente());
+        Funcionario.AddRange(dadosFicticios.CriarDadosFicticiosFuncionario());
+        Gerente.AddRange(dadosFicticios.CriarDadosFicticiosGerente());
+        Produto.AddRange(dadosFicticios.ObterProdutosFicticios());
+        SaveChanges();
+    }
 }

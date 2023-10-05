@@ -23,7 +23,7 @@ public class ProdutoController : ControllerBase
     {
         await _dbContext.AddAsync(produto);
         await _dbContext.SaveChangesAsync();
-        return Created("", produto);
+        return Created($"Produto '{produto._nome}' cadastrado com sucesso.", produto);
     }
 
     //Listar
@@ -43,19 +43,6 @@ public class ProdutoController : ControllerBase
         if (produtoTemp == null) return NotFound();
         return Ok(produtoTemp);
     }
-
-    /* ALTERAR ANTIGO
-     *  //Alterar
-        [HttpPut]
-        [Route("alterar")]
-        public async Task<ActionResult> Alterar (Produto produto)
-        {
-            if (_dbContext.Produto is null) return NotFound();
-            if (await _dbContext.Produto.FindAsync(produto._id) is null) return NotFound();
-            _dbContext.Update(produto);
-            await _dbContext.SaveChangesAsync();
-            return Ok();
-        }*/
 
     //Alterar
     [HttpPut]
@@ -83,7 +70,7 @@ public class ProdutoController : ControllerBase
          */
         _dbContext.Entry(existingProduto).CurrentValues.SetValues(produto);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok($"Produto {produto._nome} alterado com sucesso.");
     }
 
     //Alterar somente preço
@@ -95,7 +82,7 @@ public class ProdutoController : ControllerBase
         if (produtoTemp is null) return NotFound();
         produtoTemp._preco = preco;
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok($"Preço do produto {produtoTemp._nome} alterado para R${preco}");
     }
 
     //Excluir
@@ -108,6 +95,6 @@ public class ProdutoController : ControllerBase
         if (produtoTemp is null) return NotFound();
         _dbContext.Produto.Remove(produtoTemp);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok($"Produto {produtoTemp._nome} excluido com sucesso.");
     }
 }

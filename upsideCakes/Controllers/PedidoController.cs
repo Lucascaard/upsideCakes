@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 using upsideCakes.Data;
 using upsideCakes.Models;
 
@@ -46,7 +45,6 @@ public class PedidoController : ControllerBase
                 }
             }
         }
-
         // Se houver erros de validação, retorne uma resposta BadRequest
         if (erros.Count > 0)
         {
@@ -59,7 +57,7 @@ public class PedidoController : ControllerBase
         await _dbContext.SaveChangesAsync();
         return Created("Pedido criado com sucesso!", pedido);
     }
-    /*
+
     //Listar
     [HttpGet]
     [Route("listar")]
@@ -67,18 +65,28 @@ public class PedidoController : ControllerBase
     {
         return await _dbContext.Pedido.ToListAsync();
     }
-    
 
+    //Listar por ID
     [HttpGet]
-    [Route("listar")]
-    public async Task<ActionResult<IEnumerable<Pedido>>> Listar()
+    [Route("listar/{id}")]
+    public async Task<ActionResult<Pedido>> ListarPorID(int id)
     {
-        var pedidosComProdutos = await _dbContext.Pedido.ToListAsync();
-        return pedidosComProdutos;
+        var pedidoTemp = await _dbContext.Pedido.FindAsync(id);
+        if (pedidoTemp == null) return NotFound();
+        return Ok(pedidoTemp);
     }
-    */
 
-
+    //Alterar
+    [HttpPut]
+    [Route("alterar")]
+    public async Task<ActionResult> Alterar(Pedido pedido)
+    {
+        var existingPedido = await _dbContext.Pedido.FindAsync(pedido._id);
+        if (existingPedido is null) return NotFound();
+        _dbContext.Entry(existingPedido).CurrentValues.SetValues(pedido);
+        await _dbContext.SaveChangesAsync();
+        return Ok($"Pedido com id {pedido._id} alterado com sucesso.");
+    }
 
     //Excluir
     [HttpDelete]

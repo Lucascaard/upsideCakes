@@ -34,19 +34,19 @@ public class CardapioController : ControllerBase
 
     [HttpPatch]
     [Route("addItem")]
-    public async Task<ActionResult> CadastrarItem (string item, [FromForm] int idCardapio)
+    public async Task<ActionResult> CadastrarItem (int id, [FromForm] int idCardapio)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         if(cardapio is null) return NotFound();
-        var itemCardapio = await _dbContext.ItemCardapio.FindAsync(item);
+        var itemCardapio = await _dbContext.Produto.FindAsync(id);
         if(itemCardapio is null) return NotFound();
-        if (cardapio._itens is null) cardapio._itens = new List<ItemCardapio>();
-        var novoItem = new ItemCardapio
-        {
-            _nome = itemCardapio._nome,
-            _preco = itemCardapio._preco
-        };
-        cardapio._itens.Add(novoItem);
+        // if (cardapio._itens is null) cardapio._itens = new List<ItemCardapio>();
+        // var novoItem = new ItemCardapio
+        // {
+        //     _nome = itemCardapio._nome,
+        //     _preco = itemCardapio._preco
+        // };
+        cardapio._itens.Add(itemCardapio);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         return Ok(cardapio);
@@ -58,24 +58,29 @@ public class CardapioController : ControllerBase
     {
         
         // return await _dbContext.Cardapio.ToListAsync();  
-        var cardapios = await _dbContext.Cardapio
-        .Select(c => new Cardapio
-        {
-            _id = c._id,
-            _itens = c._itens
-        })
-        .ToListAsync();
+        // var cardapios = await _dbContext.Cardapio
+        // .Select(c => new Cardapio
+        // {
+        //     _id = c._id,
+        //     _itens = c._itens
+        // })
+        // .ToListAsync();
+        var cardapio = _dbContext.Cardapio
+            .Include(c => c.Itens)
+            .ToList();
 
-        return cardapios;
+        return cardapio;
     }
 
     [HttpGet]
     [Route("listar/{id}")]
     public async Task<ActionResult<Cardapio>> Buscar(int id)
     {
-        if(_dbContext.Cardapio is null) return NotFound();
-        var cardapio = await _dbContext.Cardapio.FindAsync(id);
-        if(cardapio is null) return NotFound();
+        var cardapio = _dbContext.Cardapio
+            .Include(c => c._itens)
+            .Where(c => c._id == id)
+            .ToList();
+
         return cardapio;
     }
 
@@ -83,11 +88,13 @@ public class CardapioController : ControllerBase
     [Route("excluir")]
     public async Task<ActionResult> Excluir(int id)
     {
-        if(_dbContext.Cardapio is null) return NotFound();
+        // if(_dbContext.Cardapio is null) return NotFound();
         var cardapio = await _dbContext.Cardapio.FindAsync(id);
         if(cardapio is null) return NotFound();
+        _dbContext.Database.ExecuteSqlRaw("PRAGMA foreign_keys=off;");
         _dbContext.Cardapio.Remove(cardapio);
         await _dbContext.SaveChangesAsync();
+        _dbContext.Database.ExecuteSqlRaw("PRAGMA foreign_keys=on;");
         return Ok("Cardápio removido com sucesso!");
     }
 }

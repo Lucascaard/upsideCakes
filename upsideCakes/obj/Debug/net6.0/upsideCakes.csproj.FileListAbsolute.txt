@@ -197,3 +197,6 @@ C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\upsideCakes.runtimeconfig.jso
 C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\upsideCakes.pdb
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.genruntimeconfig.cache
 C:\GitHub\upsideCakes\upsideCakes\obj\Debug\net6.0\ref\upsideCakes.dll
+D:\Estudos\CSharp\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.dll
+D:\Estudos\CSharp\upsideCakes\upsideCakes\obj\Debug\net6.0\refint\upsideCakes.dll
+D:\Estudos\CSharp\upsideCakes\upsideCakes\obj\Debug\net6.0\upsideCakes.pdb

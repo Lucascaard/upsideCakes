@@ -21,8 +21,8 @@ public class PagamentoController : ControllerBase
     {
         if (_dbContext is null) return NotFound();
 
-       /*/ var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento._cliente);
-        if (clienteExiste is null) return BadRequest("Cliente especificado não existe"); */
+       var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento._cliente._id);
+        if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
 
         var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento._pedido._id);
         if (pedidoExiste is null) return BadRequest("Pedido especificado não existe");

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xwueIMGrliIfLFcJs6n7NKdzDXxj03wOQmY91GqVeohifzT/x8scHjVpJNckn7BeHxpnv6b9+s5TYSoJPu8HZA==",
+  "dgSpecHash": "a6gPyrcSzAo5qMv6Y7Zz6htbAcnB1U98QdhFRODZmLh6fnkVrmzv2T+iftPQwAqb32fFF/FZxWF81B7J5fKP0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+  "projectFilePath": "c:\\Users\\lucas\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",

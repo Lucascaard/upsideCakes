@@ -10,9 +10,9 @@ namespace upsideCakes.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }
         public DateOnly _data { get; set; }
-/*
+
         [NotMapped]
-        public Cliente? _cliente {get; set;} */
+        public Cliente? _cliente {get; set;} 
         public float _valor { get; set; }
         public string? _formaDePagamento { get; set; }
 

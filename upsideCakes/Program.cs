@@ -20,12 +20,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// Inserindo dados fictícios durante a inicialização
+/* DESCOMENTE PARA INSERIR DADOS FICTICIOS
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<UpsideCakesDbContext>();
     dbContext.Database.Migrate(); 
     dbContext.InserirDadosFicticios();
-}
+}*/
 
 app.Run();

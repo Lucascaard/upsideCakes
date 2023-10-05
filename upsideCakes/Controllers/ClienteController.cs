@@ -27,7 +27,7 @@ namespace upsideCakes.Controllers
             if (cliente == null) return BadRequest("Dados inválidos");
             await _dbContext.Cliente.AddAsync(cliente);
             await _dbContext.SaveChangesAsync();
-            return Created("Cadastrado com sucesso", cliente);
+            return Created("Cliente cadastrado com sucesso", cliente);
         }
 
         [HttpGet]
@@ -38,33 +38,33 @@ namespace upsideCakes.Controllers
             return Ok(Cliente);
         }
 
-    [HttpGet()]
-    [Route("buscar/{_id}")]
-    public async Task<ActionResult<Cliente>> Buscar(int _id)
-    {
-        if (_dbContext is null) return NotFound();
-        if (_dbContext.Cliente is null) return NotFound();
+        [HttpGet()]
+        [Route("buscar/{_id}")]
+        public async Task<ActionResult<Cliente>> Buscar(int _id)
+        {
+            if (_dbContext is null) return NotFound();
+            if (_dbContext.Cliente is null) return NotFound();
 
-        var clienteLista = await _dbContext.Cliente.FindAsync(_id);
-        if (clienteLista is null) return NotFound();
+            var clienteLista = await _dbContext.Cliente.FindAsync(_id);
+            if (clienteLista is null) return NotFound();
 
-        return clienteLista;
+            return clienteLista;
+        }
+
+        [HttpDelete()]
+        [Route("excluir/{_id}")]
+        public async Task<ActionResult> Excluir(int _id)
+        {
+            if (_dbContext is null) return NotFound();
+            if (_dbContext.Cliente is null) return NotFound();
+
+            var clienteDeletar = await _dbContext.Cliente.FindAsync(_id);
+            if (clienteDeletar is null) return NotFound();
+
+            _dbContext.Cliente.Remove(clienteDeletar);
+            await _dbContext.SaveChangesAsync();
+            return Ok($"Cliente com id {_id} excluido com sucesso. ");
+        }
     }
-
-    [HttpDelete()]
-    [Route("excluir/{_id}")]
-    public async Task<ActionResult> Excluir(int _id)
-    {
-        if (_dbContext is null) return NotFound();
-        if (_dbContext.Cliente is null) return NotFound();
-
-        var clienteDeletar = await _dbContext.Cliente.FindAsync(_id);
-        if (clienteDeletar is null) return NotFound();
-
-        _dbContext.Cliente.Remove(clienteDeletar);
-        await _dbContext.SaveChangesAsync();
-        return Ok($"Cliente com id {_id} excluido com sucesso. ");
-    }
-}
 
 }

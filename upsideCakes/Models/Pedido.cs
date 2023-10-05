@@ -16,6 +16,7 @@ namespace upsideCakes.Models
 
         public int _qtde {  get; set; }
 
-        public virtual List<Produto>? _itens { get; set; }
+        [NotMapped]
+        public List<Produto>? _itens { get; set; }
     }
 }

@@ -15,12 +15,12 @@ namespace upsideCakes.Migrations
                 name: "Cardapio",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    _id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cardapio", x => x.Id);
+                    table.PrimaryKey("PK_Cardapio", x => x._id);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,22 +123,22 @@ namespace upsideCakes.Migrations
                     _nome = table.Column<string>(type: "TEXT", nullable: true),
                     _preco = table.Column<double>(type: "REAL", nullable: false),
                     _categoria = table.Column<string>(type: "TEXT", nullable: true),
-                    CardapioId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Cardapio_id = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produto", x => x._id);
                     table.ForeignKey(
-                        name: "FK_Produto_Cardapio_CardapioId",
-                        column: x => x.CardapioId,
+                        name: "FK_Produto_Cardapio_Cardapio_id",
+                        column: x => x.Cardapio_id,
                         principalTable: "Cardapio",
-                        principalColumn: "Id");
+                        principalColumn: "_id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produto_CardapioId",
+                name: "IX_Produto_Cardapio_id",
                 table: "Produto",
-                column: "CardapioId");
+                column: "Cardapio_id");
         }
 
         /// <inheritdoc />

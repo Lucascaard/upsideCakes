@@ -19,11 +19,11 @@ namespace upsideCakes.Migrations
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("_id");
 
                     b.ToTable("Cardapio");
                 });
@@ -212,7 +212,7 @@ namespace upsideCakes.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CardapioId")
+                    b.Property<int?>("Cardapio_id")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("_categoria")
@@ -226,7 +226,7 @@ namespace upsideCakes.Migrations
 
                     b.HasKey("_id");
 
-                    b.HasIndex("CardapioId");
+                    b.HasIndex("Cardapio_id");
 
                     b.ToTable("Produto");
                 });
@@ -234,13 +234,13 @@ namespace upsideCakes.Migrations
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>
                 {
                     b.HasOne("upsideCakes.Models.Cardapio", null)
-                        .WithMany("Produto")
-                        .HasForeignKey("CardapioId");
+                        .WithMany("_itens")
+                        .HasForeignKey("Cardapio_id");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
                 {
-                    b.Navigation("Produto");
+                    b.Navigation("_itens");
                 });
 #pragma warning restore 612, 618
         }

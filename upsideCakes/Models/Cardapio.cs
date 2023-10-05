@@ -7,7 +7,7 @@ namespace upsideCakes.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public List<Produto>? Produto { get; set; }
+        public int _id { get; set; }
+        public List<Produto>? _itens { get; set; }
     }
 }

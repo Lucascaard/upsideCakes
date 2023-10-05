@@ -32,6 +32,19 @@ public class PagamentoController : ControllerBase
         return Created("Pagamento realizado!", pagamento);
     }
 
+    [HttpPut()]
+    [Route("alterar")]
+    public async Task<ActionResult> Alterar(Pagamento pagamento)
+    {
+        if (_dbContext is null) return NotFound();
+        if (_dbContext.Pagamento is null) return NotFound();
+        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento._id);
+        if (pagamentoAlterar is null) return NotFound();
+        _dbContext.Entry(pagamentoAlterar).CurrentValues.SetValues(pagamento);
+        await _dbContext.SaveChangesAsync();
+        return Created("Alterado com sucesso", pagamento);
+    }
+
     [HttpDelete()]
     [Route("excluir/{_id}")]
     public async Task<ActionResult> Excluir(int _id)

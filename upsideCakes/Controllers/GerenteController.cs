@@ -26,7 +26,7 @@ public class GerenteController : ControllerBase
 
         await _dbContext.AddAsync(gerente);
         await _dbContext.SaveChangesAsync();
-        return Created("", gerente);
+        return Created("Cadastrado com sucesso", gerente);
         // "" URL - não é especificada, e é usada uma string vazia para indicar que o sistema deve criar automaticamente a URL 
     }
 

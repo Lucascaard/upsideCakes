@@ -16,13 +16,20 @@ public class PagamentoController : ControllerBase
     }
 
     [HttpPost]
-    [Route("cadastrar")]
-    public async Task<IActionResult> Cadastrar(Pagamento pagamento)
+    [Route("novopagamento")]
+    public async Task<ActionResult> Cadastrar(Pagamento pagamento)
     {
         if (_dbContext is null) return NotFound();
+
+        var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento._cliente);
+        if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
+
+        var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento._pedido);
+        if (pedidoExiste is null) return BadRequest("Pedido especificado não existe");
+
         await _dbContext.AddAsync(pagamento);
         await _dbContext.SaveChangesAsync();
-        return Created("", pagamento);
+        return Created("Pagamento realizado!", pagamento);
     }
 
     [HttpGet]

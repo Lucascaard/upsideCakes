@@ -12,5 +12,10 @@ namespace upsideCakes.Models
         public int _id { get; set; }
         // [NotMapped]
         public List<Produto>? _itens { get; set; }
+
+        public Cardapio()
+    {
+        _itens = new List<Produto>();
+    }
     }
 }

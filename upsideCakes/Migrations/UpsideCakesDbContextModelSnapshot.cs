@@ -67,6 +67,22 @@ namespace upsideCakes.Migrations
                     b.ToTable("Cliente");
                 });
 
+            modelBuilder.Entity("upsideCakes.Models.Filial", b =>
+                {
+                    b.Property<string>("_cep")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_cidade")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_rua")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("_cep");
+
+                    b.ToTable("Filial");
+                });
+
             modelBuilder.Entity("upsideCakes.Models.Funcionario", b =>
                 {
                     b.Property<int>("_id")

@@ -11,7 +11,7 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231005222934_FirstMigration")]
+    [Migration("20231005232752_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -68,6 +68,22 @@ namespace upsideCakes.Migrations
                     b.HasKey("_id");
 
                     b.ToTable("Cliente");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Filial", b =>
+                {
+                    b.Property<string>("_cep")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_cidade")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("_rua")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("_cep");
+
+                    b.ToTable("Filial");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Funcionario", b =>

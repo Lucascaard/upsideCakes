@@ -42,6 +42,19 @@ namespace upsideCakes.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Filial",
+                columns: table => new
+                {
+                    _cep = table.Column<string>(type: "TEXT", nullable: false),
+                    _cidade = table.Column<string>(type: "TEXT", nullable: true),
+                    _rua = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Filial", x => x._cep);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Funcionario",
                 columns: table => new
                 {
@@ -146,6 +159,9 @@ namespace upsideCakes.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "Filial");
 
             migrationBuilder.DropTable(
                 name: "Funcionario");

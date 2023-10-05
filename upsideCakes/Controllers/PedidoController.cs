@@ -34,13 +34,13 @@ public class PedidoController : ControllerBase
         {
             foreach (var item in pedido._itens)
             {
-                
-                var IDdoItem = await _dbContext.Produto
+                var TMP_ID = 0;
+                TMP_ID = await _dbContext.Produto
                     .Where(p => p._id == item._id)
                     .Select(p => p._id)
                     .FirstOrDefaultAsync();
 
-                if (IDdoItem == 0)
+                if (TMP_ID == 0)
                 {
                     erros.Add($"O produto '{item._nome}' com id {item._id} não existe.");
                 }
@@ -67,19 +67,17 @@ public class PedidoController : ControllerBase
     {
         return await _dbContext.Pedido.ToListAsync();
     }
-    */
+    
 
     [HttpGet]
     [Route("listar")]
     public async Task<ActionResult<IEnumerable<Pedido>>> Listar()
     {
         var pedidosComProdutos = await _dbContext.Pedido.ToListAsync();
-
-        
-
-        // O Entity Framework Core carregará automaticamente os produtos relacionados quando você acessar _itens.
         return pedidosComProdutos;
     }
+    */
+
 
 
     //Excluir

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 using upsideCakes.Data;
 using upsideCakes.Models;
 
@@ -46,7 +45,6 @@ public class PedidoController : ControllerBase
                 }
             }
         }
-
         // Se houver erros de validação, retorne uma resposta BadRequest
         if (erros.Count > 0)
         {
@@ -77,8 +75,6 @@ public class PedidoController : ControllerBase
         return pedidosComProdutos;
     }
     */
-
-
 
     //Excluir
     [HttpDelete]

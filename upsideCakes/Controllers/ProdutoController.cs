@@ -44,19 +44,6 @@ public class ProdutoController : ControllerBase
         return Ok(produtoTemp);
     }
 
-    /* ALTERAR ANTIGO
-     *  //Alterar
-        [HttpPut]
-        [Route("alterar")]
-        public async Task<ActionResult> Alterar (Produto produto)
-        {
-            if (_dbContext.Produto is null) return NotFound();
-            if (await _dbContext.Produto.FindAsync(produto._id) is null) return NotFound();
-            _dbContext.Update(produto);
-            await _dbContext.SaveChangesAsync();
-            return Ok();
-        }*/
-
     //Alterar
     [HttpPut]
     [Route("alterar")]

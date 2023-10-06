@@ -3,7 +3,6 @@ namespace upsideCakes.Models
 {
     public class Funcionario : Usuario
     {
-        //JSON
         public Funcionario()
         {
 

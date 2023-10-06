@@ -133,7 +133,7 @@ public class CardapioController : ControllerBase
 
     [HttpDelete]
     [Route("excluir")]
-    public async Task<ActionResult> Excluir(int id)
+    public async Task<ActionResult> ExcluirCardapio(int id)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(id);
         if(cardapio is null) return NotFound();

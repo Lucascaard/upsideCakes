@@ -41,7 +41,6 @@ namespace upsideCakes.Models
             _email = email;
             _telefone = telefone;
         }
-        //JSON
         public Pessoa()
         {
 

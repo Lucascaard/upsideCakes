@@ -7,7 +7,6 @@ public abstract class Usuario : Pessoa
     public string? _senha { get; set; }
     public string? _cargo { get; set; } //Gerente e Funcionario
 
-    //JSON
     protected Usuario()
     {
 

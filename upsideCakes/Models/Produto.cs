@@ -12,7 +12,6 @@ namespace upsideCakes.Models
             _categoria = categoria;
         }
 
-        //JSON
         public Produto()
         {
 

@@ -16,24 +16,18 @@ public class GerenteController : ControllerBase
         _dbContext = context;
     }
 
-    // CRUD PADRÃO DO GERENTE
     [HttpPost]
     [Route("cadastrar")]
-    //retornar qualquer tipo de resultado HTTP genérico, como Ok(), NotFound(), 
     public async Task<ActionResult> Cadastrar(Gerente gerente)
     {
-        //if (_dbContext is null) return NotFound();
-
         await _dbContext.AddAsync(gerente);
         await _dbContext.SaveChangesAsync();
         return Created("Cadastrado com sucesso", gerente);
-        // "" URL - não é especificada, e é usada uma string vazia para indicar que o sistema deve criar automaticamente a URL 
     }
 
 
     [HttpGet]
     [Route("listar")]
-    //É usado quando você deseja retornar um resultado HTTP específico juntamente com um objeto do modelo
     public async Task<ActionResult<IEnumerable<Gerente>>> Listar()
     {
         if (_dbContext is null) return NotFound();

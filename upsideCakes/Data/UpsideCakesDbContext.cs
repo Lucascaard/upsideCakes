@@ -6,6 +6,7 @@ namespace upsideCakes.Data;
 public class UpsideCakesDbContext : DbContext
 {
     public DbSet<Cardapio> Cardapio { get; set; }
+    public DbSet<Filial> Filial { get; set; }
     public DbSet<Cliente> Cliente { get; set; }
     public DbSet<Funcionario> Funcionario { get; set; }
     public DbSet<Gerente> Gerente { get; set; }
@@ -27,6 +28,7 @@ public class UpsideCakesDbContext : DbContext
         Funcionario.AddRange(dadosFicticios.CriarDadosFicticiosFuncionario());
         Gerente.AddRange(dadosFicticios.CriarDadosFicticiosGerente());
         Produto.AddRange(dadosFicticios.ObterProdutosFicticios());
+        Filial.AddRange(dadosFicticios.CriarDadosFicticiosFilial());
         SaveChanges();
     }
 }

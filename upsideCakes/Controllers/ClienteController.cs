@@ -27,6 +27,17 @@ namespace upsideCakes.Controllers
             return Created("Cliente cadastrado com sucesso", cliente);
         }
 
+        [HttpPut]
+        [Route("alterar")]
+        public async Task<ActionResult> Alterar(Cliente cliente)
+        {
+            var existingCliente = await _dbContext.Cliente.FindAsync(cliente._id);
+            if (existingCliente is null) return NotFound();
+            _dbContext.Entry(existingCliente).CurrentValues.SetValues(cliente);
+            await _dbContext.SaveChangesAsync();
+            return Ok("Cliente alterado com sucesso.");
+        }
+
         [HttpGet]
         [Route("listar")]
         public async Task<ActionResult<IEnumerable<Cliente>>> Listar()

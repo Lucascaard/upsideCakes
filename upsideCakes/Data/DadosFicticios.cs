@@ -4,7 +4,7 @@ using upsideCakes.Models;
 namespace upsideCakes.Data
 {
     public class DadosFicticios
-    {
+    { 
         public List<Produto> ObterProdutosFicticios()
         {
             var produtosFicticios = new List<Produto>
@@ -50,17 +50,28 @@ namespace upsideCakes.Data
         public List<Cliente> CriarDadosFicticiosCliente()
         {
             var clientesFicticios = new List<Cliente>
-    {
-        new Cliente("Joilson", "12345678901", new DateOnly(1980, 3, 15), "123 Oak Street", "ana@example.com", "123-456-7890"),
-        new Cliente("Vandercleia", "23456789012", new DateOnly(1992, 6, 28), "456 Maple Avenue", "bruno@example.com", "234-567-8901"),
-        new Cliente("Robervalson", "34567890123", new DateOnly(1985, 9, 12), "789 Elm Lane", "clara@example.com", "345-678-9012"),
-        new Cliente("Geromel", "45678901234", new DateOnly(1998, 4, 7), "101 Cedar Road", "daniel@example.com", "456-789-0123"),
-        new Cliente("Barack Obama", "56789012345", new DateOnly(1991, 11, 23), "202 Pine Street", "eva@example.com", "567-890-1234")
-    };
-
+                {
+                    new Cliente("Joilson", "12345678901", new DateOnly(1980, 3, 15), "123 Oak Street", "ana@example.com", "123-456-7890"),
+                    new Cliente("Vandercleia", "23456789012", new DateOnly(1992, 6, 28), "456 Maple Avenue", "bruno@example.com", "234-567-8901"),
+                    new Cliente("Robervalson", "34567890123", new DateOnly(1985, 9, 12), "789 Elm Lane", "clara@example.com", "345-678-9012"),
+                    new Cliente("Geromel", "45678901234", new DateOnly(1998, 4, 7), "101 Cedar Road", "daniel@example.com", "456-789-0123"),
+                    new Cliente("Barack Obama", "56789012345", new DateOnly(1991, 11, 23), "202 Pine Street", "eva@example.com", "567-890-1234")
+                };
             return clientesFicticios;
         }
 
+        public List<Filial> CriarDadosFicticiosFilial()
+        {
+            var FiliaisFicticias = new List<Filial>
+            {
+                new Filial ("8148521", "Curitiba", "Rua de Curitiba"),
+                new Filial ("1561513", "Cuiaba", "Marechal Deodoro"),
+                new Filial ("2346544", "Maceio", "Rua Pedro Ivo"),
+                new Filial ("2356765", "Salvador", "Rua das gaivotas"),
+                new Filial ("8767645", "Balneario Camboriu", "Avenida Atlantica")
+            };
+            return FiliaisFicticias;
+        }
 
 
     }

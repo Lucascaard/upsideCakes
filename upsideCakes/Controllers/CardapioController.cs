@@ -19,7 +19,7 @@ public class CardapioController : ControllerBase
 
     [HttpPost]
     [Route("cadastrarCardapio")]
-    public async Task<ActionResult> CadastrarCardapio (Cardapio cardapio)
+    public async Task<ActionResult> CadastrarCardapio(Cardapio cardapio)
     {
         await _dbContext.AddAsync(cardapio);
         await _dbContext.SaveChangesAsync();
@@ -84,7 +84,7 @@ public class CardapioController : ControllerBase
         cardapio._itens.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
-        return Ok(cardapio);
+        return Ok("Categoria alterada com sucesso.");
     }
 
     [HttpGet]
@@ -128,7 +128,7 @@ public class CardapioController : ControllerBase
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         _dbContext.Database.ExecuteSqlRaw("PRAGMA foreign_keys=on;");
-        return Ok(cardapio);
+        return Ok("Item excluido com sucesso.");
     }
 
     [HttpDelete]

@@ -28,6 +28,7 @@ public class UpsideCakesDbContext : DbContext
         Funcionario.AddRange(dadosFicticios.CriarDadosFicticiosFuncionario());
         Gerente.AddRange(dadosFicticios.CriarDadosFicticiosGerente());
         Produto.AddRange(dadosFicticios.ObterProdutosFicticios());
+        Filial.AddRange(dadosFicticios.CriarDadosFicticiosFilial());
         SaveChanges();
     }
 }

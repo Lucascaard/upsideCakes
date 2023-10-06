@@ -31,11 +31,11 @@ namespace upsideCakes.Controllers
         [Route("alterar")]
         public async Task<ActionResult> Alterar(Cliente cliente)
         {
-            var existingCliente = await _dbContext.Funcionario.FindAsync(cliente._id);
+            var existingCliente = await _dbContext.Cliente.FindAsync(cliente._id);
             if (existingCliente is null) return NotFound();
             _dbContext.Entry(existingCliente).CurrentValues.SetValues(cliente);
             await _dbContext.SaveChangesAsync();
-            return Ok();
+            return Ok("Cliente alterado com sucesso.");
         }
 
         [HttpGet]

@@ -38,10 +38,10 @@ public class FuncionarioController : ControllerBase
 
     //Listar por ID
     [HttpGet]
-    [Route("listar/{id}")]
-    public async Task<ActionResult<Funcionario>> ListarPorID(int id)
+    [Route("listar/{_id}")]
+    public async Task<ActionResult<Funcionario>> ListarPorID(int _id)
     {
-        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(id);
+        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(_id);
         if (funcionarioTemp == null) return NotFound();
         return Ok(funcionarioTemp);
     }
@@ -85,20 +85,20 @@ public class FuncionarioController : ControllerBase
          */
         _dbContext.Entry(existingFuncionario).CurrentValues.SetValues(func);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok("Funcionario alterado com sucesso.");
     }
 
     //Excluir
     [HttpDelete]
     [Route("excluir")]
-    public async Task<ActionResult> Excluir(int id)
+    public async Task<ActionResult> Excluir(int _id)
     {
         if (_dbContext.Funcionario is null) return NotFound();
-        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(id);
+        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(_id);
         if (funcionarioTemp is null) return NotFound();
         _dbContext.Funcionario.Remove(funcionarioTemp);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok("Funcionario excluido com sucesso.");
     }
 }
 

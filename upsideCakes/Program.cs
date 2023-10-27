@@ -2,14 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UpsideCakesDbContext>();
 
+builder.Services.AddCors();
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,8 +18,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyHeader());
 app.UseAuthorization();
 app.MapControllers();
+
 
 //  DESCOMENTE PARA INSERIR DADOS FICTICIOS
 using (var scope = app.Services.CreateScope())
@@ -29,3 +32,4 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
+

@@ -56,7 +56,7 @@ public class CardapioController : ControllerBase
             return NotFound();
         }
 
-        item._preco = preco;
+        item.preco = preco;
 
         cardapio._itens.Add(item);
         _dbContext.Update(cardapio);
@@ -77,7 +77,7 @@ public class CardapioController : ControllerBase
             return NotFound();
         }
 
-        item._categoria = categoria;
+        item.categoria = categoria;
 
         cardapio._itens.Add(item);
         _dbContext.Update(cardapio);

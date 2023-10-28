@@ -39,7 +39,7 @@ public class PedidoController : ControllerBase
 
                 if (TMP_ID == 0)
                 {
-                    erros.Add($"O produto '{item._nome}' com id {item._id} não existe.");
+                    erros.Add($"O produto '{item.nome}' com id {item._id} não existe.");
                 }
             }
         }

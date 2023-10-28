@@ -36,7 +36,7 @@ public class FilialController : ControllerBase
 
     [HttpGet]
     [Route("listar/{_id}")]
-    public async Task<ActionResult<Filial>> ListarPorID(int _id)
+    public async Task<ActionResult<Filial>> ListarPorID (int _id)
     {
         var filialTemp = await _dbContext.Filial.FindAsync(_id);
         if (filialTemp is null) return NotFound();

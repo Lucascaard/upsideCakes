@@ -7,9 +7,9 @@ namespace upsideCakes.Models
     {
         public Produto(string? nome, double preco, string? categoria)
         {
-            _nome = nome;
-            _preco = preco;
-            _categoria = categoria;
+            this.nome = nome;
+            this.preco = preco;
+            this.categoria = categoria;
         }
 
         public Produto()
@@ -20,8 +20,8 @@ namespace upsideCakes.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }
-        public string? _nome { get; set; }
-        public double _preco { get; set; }
-        public string? _categoria { get; set; }
+        public string? nome { get; set; }
+        public double preco { get; set; }
+        public string? categoria { get; set; }
     }
 }

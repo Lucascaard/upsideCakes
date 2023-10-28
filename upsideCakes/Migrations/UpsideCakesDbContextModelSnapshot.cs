@@ -235,13 +235,13 @@ namespace upsideCakes.Migrations
                     b.Property<int?>("Cardapio_id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_categoria")
+                    b.Property<string>("categoria")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("_preco")
+                    b.Property<double>("preco")
                         .HasColumnType("REAL");
 
                     b.HasKey("_id");

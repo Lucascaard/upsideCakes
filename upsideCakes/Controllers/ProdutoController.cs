@@ -22,7 +22,7 @@ public class ProdutoController : ControllerBase
     {
         await _dbContext.AddAsync(produto);
         await _dbContext.SaveChangesAsync();
-        return Created($"Produto '{produto._nome}' cadastrado com sucesso.", produto);
+        return Created($"Produto '{produto.nome}' cadastrado com sucesso.", produto);
     }
 
     [HttpGet]
@@ -49,7 +49,7 @@ public class ProdutoController : ControllerBase
         if (existingProduto is null) return NotFound();
         _dbContext.Entry(existingProduto).CurrentValues.SetValues(produto);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Produto {produto._nome} alterado com sucesso.");
+        return Ok($"Produto {produto.nome} alterado com sucesso.");
     }
 
     [HttpPatch]
@@ -58,9 +58,9 @@ public class ProdutoController : ControllerBase
     {
         var produtoTemp = await _dbContext.Produto.FindAsync(id);
         if (produtoTemp is null) return NotFound();
-        produtoTemp._preco = preco;
+        produtoTemp.preco = preco;
         await _dbContext.SaveChangesAsync();
-        return Ok($"Preço do produto {produtoTemp._nome} alterado para R${preco}");
+        return Ok($"Preço do produto {produtoTemp.nome} alterado para R${preco}");
     }
 
     [HttpDelete]
@@ -72,6 +72,6 @@ public class ProdutoController : ControllerBase
         if (produtoTemp is null) return NotFound();
         _dbContext.Produto.Remove(produtoTemp);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Produto {produtoTemp._nome} excluido com sucesso.");
+        return Ok($"Produto {produtoTemp.nome} excluido com sucesso.");
     }
 }

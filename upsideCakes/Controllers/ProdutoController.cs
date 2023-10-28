@@ -13,7 +13,7 @@ public class ProdutoController : ControllerBase
     private readonly UpsideCakesDbContext _dbContext;
     public ProdutoController(UpsideCakesDbContext dbContext)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContext; 
     }
 
     [HttpPost]

@@ -4,8 +4,8 @@
       <h6>{{ tituloFormulario }}</h6>
       <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
         <div>
-          <label for="produtoSelect">Selecione um produto:</label>
-          <select id="produtoSelect" name="produtoSelect" (change)="selecionarProduto($event)">
+          <label >Selecione um produto:</label>
+          <select formControlName="produtoSelecionado" class="form-control form-control-sm" (change)="selecionarProduto($event)">
             <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.nome }}</option>
           </select>
         </div>

@@ -21,11 +21,14 @@ export class AlterarProdutoComponent implements OnInit {
 
     this.produtoService.listar().subscribe(produtos => {
       this.produtos = produtos;
-
+      if (this.produtos && this.produtos.length > 0) {
+        this.formulario.get('produtoSelecionado')?.setValue(this.produtos[0].id);
+      }
     })
     this.formulario = new FormGroup({
       preco: new FormControl(null),
-      categoria: new FormControl(null)
+      categoria: new FormControl(null),
+      produtoSelecionado: new FormControl(null)
     })
   }
 

@@ -21,11 +21,9 @@ public class PedidoController : ControllerBase
     {
         var erros = new List<string>();
 
-        // Validação do Funcionário
         var funcExiste = await _dbContext.Funcionario.FindAsync(pedido._funcionarioID);
         if (funcExiste is null) return BadRequest("Funcionário especificado não existe");
 
-        // Validação do Gerente
         var genExiste = await _dbContext.Gerente.FindAsync(pedido._gerenteID);
         if (genExiste is null) return BadRequest("Gerente especificado não existe");
 
@@ -41,24 +39,18 @@ public class PedidoController : ControllerBase
 
                 if (TMP_ID == 0)
                 {
-                    erros.Add($"O produto '{item._nome}' com id {item._id} não existe.");
+                    erros.Add($"O produto '{item.nome}' com id {item._id} não existe.");
                 }
             }
         }
-        // Se houver erros de validação, retorne uma resposta BadRequest
-        if (erros.Count > 0)
-        {
-            // A resposta BadRequest indica que a solicitação do cliente contém dados inválidos
-            return BadRequest(erros);
-        }
 
-        // Se todas as validações passarem, continue com a criação do pedido
+        if (erros.Count > 0) return BadRequest(erros);
+
         await _dbContext.Pedido.AddAsync(pedido);
         await _dbContext.SaveChangesAsync();
         return Created("Pedido criado com sucesso!", pedido);
     }
 
-    //Listar
     [HttpGet]
     [Route("listar")]
     public async Task<ActionResult<IEnumerable<Pedido>>> Listar()
@@ -66,7 +58,6 @@ public class PedidoController : ControllerBase
         return await _dbContext.Pedido.ToListAsync();
     }
 
-    //Listar por ID
     [HttpGet]
     [Route("listar/{id}")]
     public async Task<ActionResult<Pedido>> ListarPorID(int id)
@@ -76,7 +67,6 @@ public class PedidoController : ControllerBase
         return Ok(pedidoTemp);
     }
 
-    //Alterar
     [HttpPut]
     [Route("alterar")]
     public async Task<ActionResult> Alterar(Pedido pedido)
@@ -88,7 +78,6 @@ public class PedidoController : ControllerBase
         return Ok($"Pedido com id {pedido._id} alterado com sucesso.");
     }
 
-    //Excluir
     [HttpDelete]
     [Route("excluir")]
     public async Task<ActionResult> Excluir(int id)

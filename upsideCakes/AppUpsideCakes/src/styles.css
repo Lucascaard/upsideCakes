@@ -1,0 +1,11 @@
+.nolink {
+  text-decoration: none; 
+  color: inherit;
+  cursor: default; 
+}
+
+  .nolink:hover {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+  }

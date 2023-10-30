@@ -48,7 +48,6 @@ public class PagamentoController : ControllerBase
 
     [HttpGet]
     [Route("listar")]
-    //É usado quando você deseja retornar um resultado HTTP específico juntamente com um objeto do modelo
     public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
     {
         if (_dbContext is null) return NotFound();

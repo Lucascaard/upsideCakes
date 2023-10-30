@@ -10,12 +10,12 @@ namespace upsideCakes.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _id { get; set; }
-        // [NotMapped]
         public List<Produto>? _itens { get; set; }
 
         public Cardapio()
-    {
-        _itens = new List<Produto>();
-    }
+        {
+            _itens = new List<Produto>();
+        }
+        
     }
 }

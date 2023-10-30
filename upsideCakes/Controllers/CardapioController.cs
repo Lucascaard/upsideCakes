@@ -19,8 +19,9 @@ public class CardapioController : ControllerBase
 
     [HttpPost]
     [Route("cadastrarCardapio")]
-    public async Task<ActionResult> CadastrarCardapio(Cardapio cardapio)
+    public async Task<ActionResult> CadastrarCardapio()
     {
+        var cardapio = new Cardapio();
         await _dbContext.AddAsync(cardapio);
         await _dbContext.SaveChangesAsync();
         return Created("", cardapio);
@@ -34,10 +35,7 @@ public class CardapioController : ControllerBase
         var item = _dbContext.Produto
             .FirstOrDefault(c => c._id == id);
 
-        if(cardapio._itens is null || item is null)
-        {
-            return NotFound();
-        }
+        if(cardapio._itens is null || item is null) return NotFound();
 
         cardapio._itens.Add(item);
         _dbContext.Update(cardapio);
@@ -58,7 +56,7 @@ public class CardapioController : ControllerBase
             return NotFound();
         }
 
-        item._preco = preco;
+        item.preco = preco;
 
         cardapio._itens.Add(item);
         _dbContext.Update(cardapio);
@@ -79,7 +77,7 @@ public class CardapioController : ControllerBase
             return NotFound();
         }
 
-        item._categoria = categoria;
+        item.categoria = categoria;
 
         cardapio._itens.Add(item);
         _dbContext.Update(cardapio);
@@ -133,7 +131,7 @@ public class CardapioController : ControllerBase
 
     [HttpDelete]
     [Route("excluir")]
-    public async Task<ActionResult> Excluir(int id)
+    public async Task<ActionResult> ExcluirCardapio(int id)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(id);
         if(cardapio is null) return NotFound();

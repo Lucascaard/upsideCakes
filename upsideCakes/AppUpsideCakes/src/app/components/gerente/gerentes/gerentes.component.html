@@ -3,18 +3,7 @@
       <div class="col-6 border border-light rounded p-5 shadow" *ngIf="formulario">
         <h6>{{ tituloFormulario }}</h6>
         <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
-          <div class="form-group">
-            <label>Login</label>
-            <input type="text" class="form-control form-control-sm" formControlName="login" />
-          </div>
-          <div class="form-group">
-            <label>Senha</label>
-            <input type="text" class="form-control form-control-sm" formControlName="senha" />
-          </div>
-          <div class="form-group">
-            <label>Cargo</label>
-            <input type="text" class="form-control form-control-sm" formControlName="cargo" />
-          </div>
+
           <div class="form-group">
             <label>Nome</label>
             <input type="text" class="form-control form-control-sm" formControlName="nome" />
@@ -39,7 +28,19 @@
             <label>Telefone</label>
             <input type="text" class="form-control form-control-sm" formControlName="telefone" />
           </div>
-
+          <div class="form-group">
+            <label>Login</label>
+            <input type="text" class="form-control form-control-sm" formControlName="login" />
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="text" class="form-control form-control-sm" formControlName="senha" />
+          </div>
+          <div class="form-group">
+            <label>Cargo</label>
+            <input type="text" class="form-control form-control-sm" formControlName="cargo" />
+          </div>
+          
           <div class="container">
             <div class="row">
               <div>

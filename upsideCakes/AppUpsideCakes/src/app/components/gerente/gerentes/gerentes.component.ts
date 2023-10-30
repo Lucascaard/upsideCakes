@@ -19,15 +19,16 @@ export class GerentesComponent implements OnInit{
       this.tituloFormulario = 'Novo Gerente!';
 
       this.formulario = new FormGroup({
-        login: new FormControl(null),
-        senha: new FormControl(null),
-        cargo: new FormControl(null),
+        
         nome: new FormControl(null),
         cpf: new FormControl(null),
         dataNasc: new FormControl(null),
         endereco: new FormControl(null),
         email: new FormControl(null),
-        telefone: new FormControl(null)
+        telefone: new FormControl(null),
+        login: new FormControl(null),
+        senha: new FormControl(null),
+        cargo: new FormControl(null)
       })
 
   }
@@ -46,7 +47,7 @@ export class GerentesComponent implements OnInit{
       complete(): void {
       },
     };
-      this.gerenteService.cadastrar(gerente).subscribe(observer);
+    this.gerenteService.cadastrar(gerente).subscribe(observer);
   }
 
 }

@@ -19,6 +19,11 @@ export class GerentesService{
 
   cadastrar(gerente : Gerente): Observable<any>{
     const url = `${this.apiUrl}/cadastrar`;
+
+    console.log(url);
+    console.log(gerente);
+    console.log(HttpOptions);
+
     return this.http.post<Gerente>(url, gerente, HttpOptions);
   }
 

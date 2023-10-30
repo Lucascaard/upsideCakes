@@ -34,30 +34,30 @@ namespace upsideCakes.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cpf")
+                    b.Property<string>("cpf")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("_dataNasc")
+                    b.Property<DateOnly>("dataNasc")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_endereco")
+                    b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
@@ -93,39 +93,39 @@ namespace upsideCakes.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cargo")
+                    b.Property<string>("cargo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_cpf")
+                    b.Property<string>("cpf")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("_dataNasc")
+                    b.Property<DateOnly>("dataNasc")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_endereco")
+                    b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_login")
+                    b.Property<string>("login")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_senha")
+                    b.Property<string>("senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
@@ -141,39 +141,39 @@ namespace upsideCakes.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cargo")
+                    b.Property<string>("cargo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_cpf")
+                    b.Property<string>("cpf")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("_dataNasc")
+                    b.Property<DateOnly>("dataNasc")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_endereco")
+                    b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_login")
+                    b.Property<string>("login")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_senha")
+                    b.Property<string>("senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
@@ -235,13 +235,13 @@ namespace upsideCakes.Migrations
                     b.Property<int?>("Cardapio_id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_categoria")
+                    b.Property<string>("categoria")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("_preco")
+                    b.Property<double>("preco")
                         .HasColumnType("REAL");
 
                     b.HasKey("_id");

@@ -5,7 +5,7 @@ export class Gerente{
     cargo: String = '';
     nome: String = '';
     cpf: String = '';
-    // dataNasc: DateOnly = '';  ver
+    dataNasc: Date = new Date('2006-02-05');
     endereco: String = '';
     email: String = '';
     telefone: String = '';

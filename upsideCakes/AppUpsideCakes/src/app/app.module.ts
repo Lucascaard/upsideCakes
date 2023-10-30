@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
 import { GerentesComponent } from './components/gerente/gerentes/gerentes.component';
 import { GerentesService} from './services/gerentes.service';
+import { Gerente } from './models/Gerente';
 
 @NgModule({
   declarations: [

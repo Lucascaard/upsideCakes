@@ -24,10 +24,10 @@ export class GerentesComponent implements OnInit{
         cargo: new FormControl(null),
         nome: new FormControl(null),
         cpf: new FormControl(null),
-        // dataNasc: new FormControl(null),
+        dataNasc: new FormControl(null),
         endereco: new FormControl(null),
         email: new FormControl(null),
-        telefone: new FormControl(null),
+        telefone: new FormControl(null)
       })
 
   }
@@ -41,6 +41,7 @@ export class GerentesComponent implements OnInit{
       },
       error(_error): void {
         alert('Erro ao salvar gerente!');
+        console.log(gerente);
       },
       complete(): void {
       },

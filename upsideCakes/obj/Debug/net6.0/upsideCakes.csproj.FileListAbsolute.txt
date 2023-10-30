@@ -281,3 +281,9 @@ C:\Users\lucas\Documents\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsi
 C:\Users\lucas\Documents\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.app.json
 C:\Users\lucas\Documents\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.json
 C:\Users\lucas\Documents\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.spec.json
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\angular.json
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\package.json
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.app.json
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.json
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.spec.json
+C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\package-lock.json

@@ -15,13 +15,16 @@ import { ProdutosService } from './services/produtos.service';
 import { ProdutosComponent } from './components/componentesProduto/produtos/produtos.component';
 import { HomeComponent } from './components/home/home.component';
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
+import { GerentesComponent } from './components/gerente/gerentes/gerentes.component';
+import { GerentesService} from './services/gerentes.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProdutosComponent,
     HomeComponent,
-    AlterarProdutoComponent
+    AlterarProdutoComponent,
+    GerentesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { AlterarProdutoComponent } from './components/componentesProduto/alterar
   ],
   providers: [
     HttpClientModule,
-    ProdutosService
+    ProdutosService,
+    GerentesService
   ],
   bootstrap: [AppComponent]
 })

@@ -36,7 +36,7 @@ export class FuncionariosService {
   }
 
   excluir(id: Number): Observable<any> {
-    const url = `${this.apiUrl}/excluir/${id}`;
+    const url = `${this.apiUrl}/excluir`;
     return this.http.delete<string>(url, HttpOptions);
   }
 }

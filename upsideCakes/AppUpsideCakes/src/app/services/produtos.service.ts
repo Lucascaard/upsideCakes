@@ -13,14 +13,12 @@
     providedIn: 'root'
   })
   export class ProdutosService {
-    private proximoId = 1;
 
     apiUrl = 'http://localhost:5000/Produto';
     constructor(private http: HttpClient) { }
 
     cadastrar(produto : Produto): Observable<any> {
       const url = `${this.apiUrl}/cadastrar`;
-      produto.id = this.proximoId++;
       return this.http.post<Produto>(url, produto, HttpOptions);
     }
 
@@ -36,7 +34,7 @@
 
     alterar(produto: Produto): Observable<any> {
       const url = `${this.apiUrl}/alterar`;
-      return this.http.put<Produto>(url, produto, HttpOptions);
+      return this.http.put<Produto>(url, produto, { responseType: 'text' as 'json' });
     }
 
     atualizarPreco(id: Number, preco: Number): Observable<Produto> {

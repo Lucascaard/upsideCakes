@@ -35,21 +35,21 @@ public class FilialController : ControllerBase
     }
 
     [HttpGet]
-    [Route("listar/{_id}")]
-    public async Task<ActionResult<Filial>> ListarPorID (int _id)
+    [Route("listar/{id}")]
+    public async Task<ActionResult<Filial>> ListarPorID (int id)
     {
-        var filialTemp = await _dbContext.Filial.FindAsync(_id);
+        var filialTemp = await _dbContext.Filial.FindAsync(id);
         if (filialTemp is null) return NotFound();
         return Ok(filialTemp);
     }
 
     [HttpPut]
     [Route("alterarCep")]
-    public async Task<ActionResult> alterarCep (int _id, string novoCep)
+    public async Task<ActionResult> alterarCep (int id, string novoCep)
     {
-        var filial = await _dbContext.Filial.FindAsync(_id);
-        if(filial._id == 0 || novoCep is null) return NotFound();
-        filial._cep = novoCep;
+        var filial = await _dbContext.Filial.FindAsync(id);
+        if(filial.id == 0 || novoCep is null) return NotFound();
+        filial.cep = novoCep;
         _dbContext.Update(filial);
         await _dbContext.SaveChangesAsync();
         return Ok(filial);
@@ -57,11 +57,11 @@ public class FilialController : ControllerBase
 
     [HttpPut]
     [Route("alterarRua")]
-    public async Task<ActionResult> alterarRua (int _id, string rua)
+    public async Task<ActionResult> alterarRua (int id, string rua)
     {
-        var filial = await _dbContext.Filial.FindAsync(_id);
+        var filial = await _dbContext.Filial.FindAsync(id);
         if( filial is null || rua is null) return NotFound();
-        filial._rua = rua;
+        filial.rua = rua;
         _dbContext.Update(filial);
         await _dbContext.SaveChangesAsync();
         return Ok(filial);
@@ -69,11 +69,11 @@ public class FilialController : ControllerBase
 
     [HttpPut]
     [Route("alterarCidade")]
-    public async Task<ActionResult> alterarCidade (int _id, string cidade)
+    public async Task<ActionResult> alterarCidade (int id, string cidade)
     {
-        var filial = await _dbContext.Filial.FindAsync(_id);
+        var filial = await _dbContext.Filial.FindAsync(id);
         if(filial is null || cidade is null) return NotFound();
-        filial._cidade = cidade;
+        filial.cidade = cidade;
         _dbContext.Update(filial);
         await _dbContext.SaveChangesAsync();
         return Ok(filial);
@@ -81,11 +81,11 @@ public class FilialController : ControllerBase
 
     [HttpDelete]
     [Route("excluir")]
-    public async Task<ActionResult> Excluir(int _id)
+    public async Task<ActionResult> Excluir(int id)
     {
-        var filial = await _dbContext.Filial.FindAsync(_id);
+        var filial = await _dbContext.Filial.FindAsync(id);
 
-        if(filial is null || _id  == 0)
+        if(filial is null || id  == 0)
         {
             return NotFound();
         }

@@ -32,6 +32,16 @@ export class AlterarProdutoComponent implements OnInit {
     })
   }
 
+  selecionarProduto(event: any) {
+    const selectedValue = event.target.value;
+    if (selectedValue) {
+      this.produtoSelecionado = parseInt(selectedValue, 10);
+      console.log('Produto selecionado:', this.produtoSelecionado);
+    } else {
+      console.log('Valor selecionado é inválido:', selectedValue);
+    }
+  }
+
   enviarFormulario() {
     // Verifique se um produto foi selecionado
     if (this.produtoSelecionado === undefined || this.produtoSelecionado === null) {
@@ -48,26 +58,23 @@ export class AlterarProdutoComponent implements OnInit {
     }
 
     // Atualize os campos de preço e categoria do produto selecionado
-    produtoSelecionado.preco = this.formulario.preco;
-    produtoSelecionado.categoria = this.formulario.categoria;
+    produtoSelecionado.preco = this.formulario.get('preco')?.value;
+    produtoSelecionado.categoria = this.formulario.get('categoria')?.value;
+    console.log(produtoSelecionado);
 
+    const observer: Observer<Produto> = {
+      next(_result): void {
+        alert('Produto alterado com sucesso.');
+      },
+      error(error): void {
+        console.log(error);
+        alert('Erro ao alterar!');
+      },
+      complete(): void {
+      },
+    };
+ 
     // Atualize o produto no seu serviço
-    this.produtoService.alterar(produtoSelecionado).subscribe(() => {
-      alert('Produto atualizado com sucesso.');
-    }, error => {
-      alert('Erro ao atualizar o produto: ' + error);
-    });
+    this.produtoService.alterar(produtoSelecionado).subscribe(observer);
   }
-
-  selecionarProduto(event: any) {
-    const selectedValue = event.target.value;
-    if (selectedValue) {
-      this.produtoSelecionado = parseInt(selectedValue, 10);
-      console.log('Produto selecionado:', this.produtoSelecionado);
-    } else {
-      console.log('Valor selecionado é inválido:', selectedValue);
-    }
-    console.log('Valor de event.target:', event.target);
-  }
-
 }

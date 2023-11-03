@@ -31,7 +31,7 @@ namespace upsideCakes.Controllers
         [Route("alterar")]
         public async Task<ActionResult> Alterar(Cliente cliente)
         {
-            var existingCliente = await _dbContext.Cliente.FindAsync(cliente._id);
+            var existingCliente = await _dbContext.Cliente.FindAsync(cliente.id);
             if (existingCliente is null) return NotFound();
             _dbContext.Entry(existingCliente).CurrentValues.SetValues(cliente);
             await _dbContext.SaveChangesAsync();
@@ -47,31 +47,31 @@ namespace upsideCakes.Controllers
         }
 
         [HttpGet()]
-        [Route("buscar/{_id}")]
-        public async Task<ActionResult<Cliente>> Buscar(int _id)
+        [Route("buscar/{id}")]
+        public async Task<ActionResult<Cliente>> Buscar(int id)
         {
             if (_dbContext is null) return NotFound();
             if (_dbContext.Cliente is null) return NotFound();
 
-            var clienteLista = await _dbContext.Cliente.FindAsync(_id);
+            var clienteLista = await _dbContext.Cliente.FindAsync(id);
             if (clienteLista is null) return NotFound();
 
             return clienteLista;
         }
 
         [HttpDelete()]
-        [Route("excluir/{_id}")]
-        public async Task<ActionResult> Excluir(int _id)
+        [Route("excluir/{id}")]
+        public async Task<ActionResult> Excluir(int id)
         {
             if (_dbContext is null) return NotFound();
             if (_dbContext.Cliente is null) return NotFound();
 
-            var clienteDeletar = await _dbContext.Cliente.FindAsync(_id);
+            var clienteDeletar = await _dbContext.Cliente.FindAsync(id);
             if (clienteDeletar is null) return NotFound();
 
             _dbContext.Cliente.Remove(clienteDeletar);
             await _dbContext.SaveChangesAsync();
-            return Ok($"Cliente com id {_id} excluido com sucesso. ");
+            return Ok($"Cliente com id {id} excluido com sucesso. ");
         }
     }
 

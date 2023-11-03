@@ -33,11 +33,11 @@ public class CardapioController : ControllerBase
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
-            .FirstOrDefault(c => c._id == id);
+            .FirstOrDefault(c => c.id == id);
 
-        if(cardapio._itens is null || item is null) return NotFound();
+        if(cardapio.itens is null || item is null) return NotFound();
 
-        cardapio._itens.Add(item);
+        cardapio.itens.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         return Ok(cardapio);
@@ -49,16 +49,16 @@ public class CardapioController : ControllerBase
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
-            .FirstOrDefault(c => c._id == id);
+            .FirstOrDefault(c => c.id == id);
 
-        if(cardapio._itens is null || item is null)
+        if(cardapio.itens is null || item is null)
         {
             return NotFound();
         }
 
         item.preco = preco;
 
-        cardapio._itens.Add(item);
+        cardapio.itens.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         return Ok(cardapio);
@@ -70,16 +70,16 @@ public class CardapioController : ControllerBase
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
-            .FirstOrDefault(c => c._id == id);
+            .FirstOrDefault(c => c.id == id);
 
-        if(cardapio._itens is null || item is null)
+        if(cardapio.itens is null || item is null)
         {
             return NotFound();
         }
 
         item.categoria = categoria;
 
-        cardapio._itens.Add(item);
+        cardapio.itens.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         return Ok("Categoria alterada com sucesso.");
@@ -91,7 +91,7 @@ public class CardapioController : ControllerBase
     {
         
         var cardapio = _dbContext.Cardapio
-            .Include(c => c._itens)
+            .Include(c => c.itens)
             .ToList();
 
         return cardapio;
@@ -102,8 +102,8 @@ public class CardapioController : ControllerBase
     public async Task<ActionResult<IEnumerable<Cardapio>>> Buscar(int id)
     {
         var cardapio = _dbContext.Cardapio
-            .Include(c => c._itens)
-            .Where(c => c._id == id)
+            .Include(c => c.itens)
+            .Where(c => c.id == id)
             .ToList();
 
         return cardapio;
@@ -115,14 +115,14 @@ public class CardapioController : ControllerBase
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
-            .FirstOrDefault(c => c._id == id);
+            .FirstOrDefault(c => c.id == id);
 
-        if(cardapio._itens is null || item is null)
+        if(cardapio.itens is null || item is null)
         {
             return NotFound();
         }
         _dbContext.Database.ExecuteSqlRaw("PRAGMA foreign_keys=off;");
-        cardapio._itens.Remove(item);
+        cardapio.itens.Remove(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         _dbContext.Database.ExecuteSqlRaw("PRAGMA foreign_keys=on;");

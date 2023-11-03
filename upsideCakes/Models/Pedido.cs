@@ -7,16 +7,16 @@ namespace upsideCakes.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int _id { get; set; }
-        public DateOnly _dataCriacao { get; set; }
+        public int id { get; set; }
+        public DateOnly dataCriacao { get; set; }
 
-        public int _funcionarioID { get; set; }
+        public int funcionarioID { get; set; }
 
-        public int _gerenteID { get; set; }
+        public int gerenteID { get; set; }
 
-        public int _qtde {  get; set; }
+        public int qtde {  get; set; }
 
         [NotMapped]
-        public List<Produto>? _itens { get; set; }
+        public List<Produto>? itens { get; set; }
     }
 }

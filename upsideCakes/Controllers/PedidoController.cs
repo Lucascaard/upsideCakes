@@ -21,25 +21,25 @@ public class PedidoController : ControllerBase
     {
         var erros = new List<string>();
 
-        var funcExiste = await _dbContext.Funcionario.FindAsync(pedido._funcionarioID);
+        var funcExiste = await _dbContext.Funcionario.FindAsync(pedido.funcionarioID);
         if (funcExiste is null) return BadRequest("Funcionário especificado não existe");
 
-        var genExiste = await _dbContext.Gerente.FindAsync(pedido._gerenteID);
+        var genExiste = await _dbContext.Gerente.FindAsync(pedido.gerenteID);
         if (genExiste is null) return BadRequest("Gerente especificado não existe");
 
-        if(pedido._itens != null)
+        if(pedido.itens != null)
         {
-            foreach (var item in pedido._itens)
+            foreach (var item in pedido.itens)
             {
                 var TMP_ID = 0;
                 TMP_ID = await _dbContext.Produto
-                    .Where(p => p._id == item._id)
-                    .Select(p => p._id)
+                    .Where(p => p.id == item.id)
+                    .Select(p => p.id)
                     .FirstOrDefaultAsync();
 
                 if (TMP_ID == 0)
                 {
-                    erros.Add($"O produto '{item.nome}' com id {item._id} não existe.");
+                    erros.Add($"O produto '{item.nome}' com id {item.id} não existe.");
                 }
             }
         }
@@ -71,11 +71,11 @@ public class PedidoController : ControllerBase
     [Route("alterar")]
     public async Task<ActionResult> Alterar(Pedido pedido)
     {
-        var existingPedido = await _dbContext.Pedido.FindAsync(pedido._id);
+        var existingPedido = await _dbContext.Pedido.FindAsync(pedido.id);
         if (existingPedido is null) return NotFound();
         _dbContext.Entry(existingPedido).CurrentValues.SetValues(pedido);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Pedido com id {pedido._id} alterado com sucesso.");
+        return Ok($"Pedido com id {pedido.id} alterado com sucesso.");
     }
 
     [HttpDelete]

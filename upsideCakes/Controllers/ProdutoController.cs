@@ -45,7 +45,7 @@ public class ProdutoController : ControllerBase
     [Route("alterar")]
     public async Task<ActionResult> Alterar(Produto produto)
     {
-        var existingProduto = await _dbContext.Produto.FindAsync(produto._id);
+        var existingProduto = await _dbContext.Produto.FindAsync(produto.id);
         if (existingProduto is null) return NotFound();
         _dbContext.Entry(existingProduto).CurrentValues.SetValues(produto);
         await _dbContext.SaveChangesAsync();

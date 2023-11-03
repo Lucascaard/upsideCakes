@@ -38,13 +38,13 @@ public class GerenteController : ControllerBase
 
 
     [HttpGet()]
-    [Route("buscar/{_id}")]
-    public async Task<ActionResult<Gerente>> Buscar(int _id)
+    [Route("buscar/{id}")]
+    public async Task<ActionResult<Gerente>> Buscar(int id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteLista = await _dbContext.Gerente.FindAsync(_id);
+        var gerenteLista = await _dbContext.Gerente.FindAsync(id);
         if (gerenteLista is null) return NotFound();
 
         return gerenteLista;
@@ -58,7 +58,7 @@ public class GerenteController : ControllerBase
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente._id);
+        var gerenteAlterar = await _dbContext.Gerente.FindAsync(gerente.id);
         if (gerenteAlterar is null) return NotFound();
 
         _dbContext.Entry(gerenteAlterar).CurrentValues.SetValues(gerente);
@@ -67,17 +67,17 @@ public class GerenteController : ControllerBase
     }
 
     [HttpDelete()]
-    [Route("excluir/{_id}")]
-    public async Task<ActionResult> Excluir([FromRoute] int _id)
+    [Route("excluir/{id}")]
+    public async Task<ActionResult> Excluir([FromRoute] int id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Gerente is null) return NotFound();
 
-        var gerenteDeletar = await _dbContext.Gerente.FindAsync(_id);
+        var gerenteDeletar = await _dbContext.Gerente.FindAsync(id);
         if (gerenteDeletar is null) return NotFound();
 
         _dbContext.Gerente.Remove(gerenteDeletar);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Gerente com id {_id} excluido com sucesso. ");
+        return Ok($"Gerente com id {id} excluido com sucesso. ");
     }
 }

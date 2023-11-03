@@ -19,220 +19,220 @@ namespace upsideCakes.Migrations
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Cardapio");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Cliente", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cpf")
+                    b.Property<string>("cpf")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("_dataNasc")
+                    b.Property<DateOnly>("dataNasc")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_endereco")
+                    b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Filial", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cep")
+                    b.Property<string>("cep")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_cidade")
+                    b.Property<string>("cidade")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_rua")
+                    b.Property<string>("rua")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Filial");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Funcionario", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cargo")
+                    b.Property<string>("cargo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_cpf")
+                    b.Property<string>("cpf")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("_dataNasc")
+                    b.Property<DateOnly>("dataNasc")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_endereco")
+                    b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_login")
+                    b.Property<string>("login")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_senha")
+                    b.Property<string>("senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Funcionario");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Gerente", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("_cargo")
+                    b.Property<string>("cargo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_cpf")
+                    b.Property<string>("cpf")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("_dataNasc")
+                    b.Property<DateOnly>("dataNasc")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_endereco")
+                    b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_login")
+                    b.Property<string>("login")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_nome")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_senha")
+                    b.Property<string>("senha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Gerente");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("_data")
+                    b.Property<DateOnly>("data")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_formaDePagamento")
+                    b.Property<string>("formaDePagamento")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("_valor")
+                    b.Property<float>("valor")
                         .HasColumnType("REAL");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Pagamento");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Pedido", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("_dataCriacao")
+                    b.Property<DateOnly>("dataCriacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("_funcionarioID")
+                    b.Property<int>("funcionarioID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("_gerenteID")
+                    b.Property<int>("gerenteID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("_qtde")
+                    b.Property<int>("qtde")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
                     b.ToTable("Pedido");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>
                 {
-                    b.Property<int>("_id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Cardapio_id")
+                    b.Property<int?>("Cardapioid")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("categoria")
@@ -244,9 +244,9 @@ namespace upsideCakes.Migrations
                     b.Property<double>("preco")
                         .HasColumnType("REAL");
 
-                    b.HasKey("_id");
+                    b.HasKey("id");
 
-                    b.HasIndex("Cardapio_id");
+                    b.HasIndex("Cardapioid");
 
                     b.ToTable("Produto");
                 });
@@ -254,13 +254,13 @@ namespace upsideCakes.Migrations
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>
                 {
                     b.HasOne("upsideCakes.Models.Cardapio", null)
-                        .WithMany("_itens")
-                        .HasForeignKey("Cardapio_id");
+                        .WithMany("itens")
+                        .HasForeignKey("Cardapioid");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
                 {
-                    b.Navigation("_itens");
+                    b.Navigation("itens");
                 });
 #pragma warning restore 612, 618
         }

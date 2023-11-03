@@ -15,13 +15,19 @@ import { ProdutosService } from './services/produtos.service';
 import { ProdutosComponent } from './components/componentesProduto/produtos/produtos.component';
 import { HomeComponent } from './components/home/home.component';
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
+import { ListarProdutosComponent } from './components/componentesProduto/listar-produtos/listar-produtos.component';
+import { CadastrarProdutoComponent } from './components/componentesProduto/cadastrar-produto/cadastrar-produto.component';
+import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProdutosComponent,
     HomeComponent,
-    AlterarProdutoComponent
+    AlterarProdutoComponent,
+    ListarProdutosComponent,
+    CadastrarProdutoComponent,
+    DeletarProdutoComponent
   ],
   imports: [
     BrowserModule,

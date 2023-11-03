@@ -26,6 +26,7 @@ export class AlterarProdutoComponent implements OnInit {
       }
     })
     this.formulario = new FormGroup({
+      nome: new FormControl(null),
       preco: new FormControl(null),
       categoria: new FormControl(null),
       produtoSelecionado: new FormControl(null)
@@ -58,6 +59,7 @@ export class AlterarProdutoComponent implements OnInit {
     }
 
     // Atualize os campos de preço e categoria do produto selecionado
+    produtoSelecionado.nome = this.formulario.get('nome')?.value;
     produtoSelecionado.preco = this.formulario.get('preco')?.value;
     produtoSelecionado.categoria = this.formulario.get('categoria')?.value;
     console.log(produtoSelecionado);

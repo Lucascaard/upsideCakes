@@ -13,6 +13,7 @@
     providedIn: 'root'
   })
   export class ProdutosService {
+
     apiUrl = 'http://localhost:5000/Produto';
     constructor(private http: HttpClient) { }
 
@@ -33,7 +34,7 @@
 
     alterar(produto: Produto): Observable<any> {
       const url = `${this.apiUrl}/alterar`;
-      return this.http.put<Produto>(url, produto, HttpOptions);
+      return this.http.put<Produto>(url, produto, { responseType: 'text' as 'json' });
     }
 
     atualizarPreco(id: Number, preco: Number): Observable<Produto> {
@@ -44,6 +45,6 @@
 
     excluir(id: Number): Observable<any> {
       const url = `${this.apiUrl}/excluir/${id}`;
-      return this.http.delete<string>(url, HttpOptions);
+      return this.http.delete<string>(url, { responseType: 'text' as 'json' });
     }
   }

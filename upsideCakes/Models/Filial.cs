@@ -7,10 +7,10 @@ public class Filial
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int _id { get; set; }
-    public string? _cep { get; set; }
-    public string? _cidade { get; set; }
-    public string? _rua { get; set; }
+    public int id { get; set; }
+    public string? cep { get; set; }
+    public string? cidade { get; set; }
+    public string? rua { get; set; }
 
     public Filial()
     {
@@ -19,8 +19,8 @@ public class Filial
 
     public Filial(string cep, string cidade, string rua)
     {
-        _cep = cep;
-        _cidade = cidade;
-        _rua = rua;
+        this.cep = cep;
+        this.cidade = cidade;
+        this.rua = rua;
     }
 }

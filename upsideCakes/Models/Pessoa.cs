@@ -7,39 +7,39 @@ namespace upsideCakes.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int _id { get; set; }
+        public int id { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string? _nome { get; set; }
+        public string? nome { get; set; }
 
         [Required]
         [MaxLength(15)]
-        public string? _cpf { get; set; }
+        public string? cpf { get; set; }
 
         [Required]
-        public DateOnly _dataNasc { get; set; }
+        public DateOnly dataNasc { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string? _endereco { get; set; }
+        public string? endereco { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string? _email { get; set; }
+        public string? email { get; set; }
         
         [Required]
         [MaxLength(15)]
-        public string? _telefone { get; set; }
+        public string? telefone { get; set; }
 
         protected Pessoa(string? nome, string? cpf, DateOnly dataNasc, string? endereco, string? email, string? telefone)
         {
-            _nome = nome;
-            _cpf = cpf;
-            _dataNasc = dataNasc;
-            _endereco = endereco;
-            _email = email;
-            _telefone = telefone;
+            this.nome = nome;
+            this.cpf = cpf;
+            this.dataNasc = dataNasc;
+            this.endereco = endereco;
+            this.email = email;
+            this.telefone = telefone;
         }
         public Pessoa()
         {

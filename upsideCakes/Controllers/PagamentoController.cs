@@ -21,10 +21,10 @@ public class PagamentoController : ControllerBase
     {
         if (_dbContext is null) return NotFound();
 
-       var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento._cliente._id);
+       var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento.cliente.id);
         if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
 
-        var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento._pedido._id);
+        var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento.pedido.id);
         if (pedidoExiste is null) return BadRequest("Pedido especificado não existe");
 
         await _dbContext.AddAsync(pagamento);
@@ -38,7 +38,7 @@ public class PagamentoController : ControllerBase
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Pagamento is null) return NotFound();
-        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento._id);
+        var pagamentoAlterar = await _dbContext.Pagamento.FindAsync(pagamento.id);
         if (pagamentoAlterar is null) return NotFound();
         _dbContext.Entry(pagamentoAlterar).CurrentValues.SetValues(pagamento);
         await _dbContext.SaveChangesAsync();
@@ -57,16 +57,16 @@ public class PagamentoController : ControllerBase
     }
 
     [HttpDelete()]
-    [Route("excluir/{_id}")]
-    public async Task<ActionResult> Excluir(int _id)
+    [Route("excluir/{id}")]
+    public async Task<ActionResult> Excluir(int id)
     {
         if (_dbContext is null) return NotFound();
         if (_dbContext.Pagamento is null) return NotFound();
-        var pagamentoDeletar = await _dbContext.Pagamento.FindAsync(_id);
+        var pagamentoDeletar = await _dbContext.Pagamento.FindAsync(id);
         if (pagamentoDeletar is null) return NotFound();
         _dbContext.Pagamento.Remove(pagamentoDeletar);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Pagamento com id {_id} deletado com successo!");
+        return Ok($"Pagamento com id {id} deletado com successo!");
     }
 
 }

@@ -1,0 +1,8 @@
+.container {
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+.margin-right {
+  margin-right: 10px; /* Ajuste o valor da margem conforme necessário */
+}

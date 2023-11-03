@@ -8,7 +8,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UpsideCakesDbContext>();
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAnyOrigin",
+	builder => builder
+	.AllowAnyOrigin()
+	.AllowAnyMethod()
+	.AllowAnyHeader());
+});
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -17,17 +24,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyHeader());
+app.UseCors("AllowAnyOrigin");
 app.UseAuthorization();
 app.MapControllers();
 
-//  DESCOMENTE PARA INSERIR DADOS FICTICIOS
+/*  DESCOMENTE PARA INSERIR DADOS FICTICIOS
 
-// using (var scope = app.Services.CreateScope())
-// {
-//     var dbContext = scope.ServiceProvider.GetRequiredService<UpsideCakesDbContext>();
-//     dbContext.Database.Migrate(); 
-//     dbContext.InserirDadosFicticios();
-// }
-
+ using (var scope = app.Services.CreateScope())
+ {
+     var dbContext = scope.ServiceProvider.GetRequiredService<UpsideCakesDbContext>();
+     dbContext.Database.Migrate(); 
+     dbContext.InserirDadosFicticios();
+ }
+*/
 app.Run();

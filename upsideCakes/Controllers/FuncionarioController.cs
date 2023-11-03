@@ -36,10 +36,10 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpGet]
-    [Route("listar/{_id}")]
-    public async Task<ActionResult<Funcionario>> ListarPorID(int _id)
+    [Route("listar/{id}")]
+    public async Task<ActionResult<Funcionario>> ListarPorID(int id)
     {
-        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(_id);
+        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(id);
         if (funcionarioTemp == null) return NotFound();
         return Ok(funcionarioTemp);
     }
@@ -48,7 +48,7 @@ public class FuncionarioController : ControllerBase
     [Route("alterar")]
     public async Task<ActionResult> Alterar(Funcionario func)
     {
-        var existingFuncionario = await _dbContext.Funcionario.FindAsync(func._id);
+        var existingFuncionario = await _dbContext.Funcionario.FindAsync(func.id);
         if (existingFuncionario is null) return NotFound();
         _dbContext.Entry(existingFuncionario).CurrentValues.SetValues(func);
         await _dbContext.SaveChangesAsync();
@@ -57,10 +57,10 @@ public class FuncionarioController : ControllerBase
 
     [HttpDelete]
     [Route("excluir")]
-    public async Task<ActionResult> Excluir(int _id)
+    public async Task<ActionResult> Excluir(int id)
     {
         if (_dbContext.Funcionario is null) return NotFound();
-        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(_id);
+        var funcionarioTemp = await _dbContext.Funcionario.FindAsync(id);
         if (funcionarioTemp is null) return NotFound();
         _dbContext.Funcionario.Remove(funcionarioTemp);
         await _dbContext.SaveChangesAsync();

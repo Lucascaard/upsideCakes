@@ -19,7 +19,7 @@ namespace upsideCakes.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int _id { get; set; }
+        public int id { get; set; }
         public string? nome { get; set; }
         public double preco { get; set; }
         public string? categoria { get; set; }

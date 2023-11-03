@@ -17,6 +17,10 @@ import { AlterarProdutoComponent } from './components/componentesProduto/alterar
 import { ListarProdutosComponent } from './components/componentesProduto/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './components/componentesProduto/cadastrar-produto/cadastrar-produto.component';
 import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
+import { CadastrarFuncionarioComponent } from './components/componentesFuncionario/cadastrar-funcionario/cadastrar-funcionario.component';
+import { ListarFuncionarioComponent } from './components/componentesFuncionario/listar-funcionario/listar-funcionario.component';
+import { AlterarFuncionarioComponent } from './components/componentesFuncionario/alterar-funcionario/alterar-funcionario.component';
+import { DeletarFuncionarioComponent } from './components/componentesFuncionario/deletar-funcionario/deletar-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { DeletarProdutoComponent } from './components/componentesProduto/deletar
     AlterarProdutoComponent,
     ListarProdutosComponent,
     CadastrarProdutoComponent,
-    DeletarProdutoComponent
+    DeletarProdutoComponent,
+    CadastrarFuncionarioComponent,
+    ListarFuncionarioComponent,
+    AlterarFuncionarioComponent,
+    DeletarFuncionarioComponent
   ],
   imports: [
     BrowserModule,

@@ -19,13 +19,13 @@ public class FuncionarioController : ControllerBase
 
     [HttpPost]
     [Route("cadastrar")]
-    public async Task<ActionResult> CadastrarFunc(Funcionario func)
+    public async Task<ActionResult> CadastrarFunc(Funcionario funcionario)
     {
         if (_dbContext is null) return NotFound();
 
-        await _dbContext.AddAsync(func);
+        await _dbContext.AddAsync(funcionario);
         await _dbContext.SaveChangesAsync();
-        return Created("", func);
+        return Created("", funcionario);
     }
 
     [HttpGet]
@@ -41,7 +41,7 @@ public class FuncionarioController : ControllerBase
     {
         var funcionarioTemp = await _dbContext.Funcionario.FindAsync(id);
         if (funcionarioTemp == null) return NotFound();
-        return Ok(funcionarioTemp);
+        return Ok();
     }
 
     [HttpPut]
@@ -52,7 +52,7 @@ public class FuncionarioController : ControllerBase
         if (existingFuncionario is null) return NotFound();
         _dbContext.Entry(existingFuncionario).CurrentValues.SetValues(func);
         await _dbContext.SaveChangesAsync();
-        return Ok("Funcionario alterado com sucesso.");
+        return Ok();
     }
 
     [HttpDelete]
@@ -64,7 +64,7 @@ public class FuncionarioController : ControllerBase
         if (funcionarioTemp is null) return NotFound();
         _dbContext.Funcionario.Remove(funcionarioTemp);
         await _dbContext.SaveChangesAsync();
-        return Ok("Funcionario excluido com sucesso.");
+        return Ok();
     }
 }
 

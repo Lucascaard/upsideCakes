@@ -8,6 +8,9 @@ import { ListarProdutosComponent } from './components/componentesProduto/listar-
 import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
 
+// Imports componentes de Filial
+import {FiliaisComponent } from './components/filiais/filiais.component';
+
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,7 +20,10 @@ const routes: Routes = [
   { path: 'produtos/cadastrar', component: CadastrarProdutoComponent },
   { path: 'produtos/listar', component: ListarProdutosComponent },
   { path: 'produtos/alterar', component: AlterarProdutoComponent },
-  { path: 'produtos/deletar', component: DeletarProdutoComponent }
+  { path: 'produtos/deletar', component: DeletarProdutoComponent },
+
+  // Rota de filiais
+  { path: 'filial/cadastrar', component: FiliaisComponent },
 ];
 
 @NgModule({

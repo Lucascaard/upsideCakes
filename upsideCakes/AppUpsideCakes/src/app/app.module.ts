@@ -18,6 +18,10 @@ import { ListarProdutosComponent } from './components/componentesProduto/listar-
 import { CadastrarProdutoComponent } from './components/componentesProduto/cadastrar-produto/cadastrar-produto.component';
 import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
 
+// Filial
+import { FiliaisService } from './services/Filial/filiais.service';
+import { FiliaisComponent } from './components/filiais/filiais.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,8 @@ import { DeletarProdutoComponent } from './components/componentesProduto/deletar
     AlterarProdutoComponent,
     ListarProdutosComponent,
     CadastrarProdutoComponent,
-    DeletarProdutoComponent
+    DeletarProdutoComponent,
+    FiliaisComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import { DeletarProdutoComponent } from './components/componentesProduto/deletar
   ],
   providers: [
     HttpClientModule,
-    ProdutosService
+    ProdutosService,
+    FiliaisService
   ],
   bootstrap: [AppComponent]
 })

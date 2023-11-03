@@ -45,6 +45,6 @@
 
     excluir(id: Number): Observable<any> {
       const url = `${this.apiUrl}/excluir/${id}`;
-      return this.http.delete<string>(url, HttpOptions);
+      return this.http.delete<string>(url, { responseType: 'text' as 'json' });
     }
   }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ProdutosService } from 'src/app/services/produtos.service';
 import { Produto } from 'src/app/models/Produto';
 import { Observer } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alterar-produto',
@@ -15,13 +16,14 @@ export class AlterarProdutoComponent implements OnInit {
   tituloFormulario: string = '';
   produtos: Array<Produto> | undefined;
 
-  constructor(private produtoService: ProdutosService) { }
+  constructor(private produtoService: ProdutosService, private router: Router) { }
   ngOnInit(): void {
     this.tituloFormulario = 'Alterar Produto';
 
     this.produtoService.listar().subscribe(produtos => {
       this.produtos = produtos;
       if (this.produtos && this.produtos.length > 0) {
+        this.produtoSelecionado = this.produtos[0].id;
         this.formulario.get('produtoSelecionado')?.setValue(this.produtos[0].id);
       }
     })
@@ -78,5 +80,8 @@ export class AlterarProdutoComponent implements OnInit {
  
     // Atualize o produto no seu serviço
     this.produtoService.alterar(produtoSelecionado).subscribe(observer);
+  }
+  voltarParaHome() {
+    this.router.navigate(['/home']);
   }
 }

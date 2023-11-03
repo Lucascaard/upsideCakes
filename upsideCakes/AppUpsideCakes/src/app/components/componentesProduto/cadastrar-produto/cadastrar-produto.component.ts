@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ProdutosService } from 'src/app/services/produtos.service';
 import { Produto } from 'src/app/models/Produto';
 import { Observer } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -13,7 +14,7 @@ export class CadastrarProdutoComponent implements OnInit {
   formulario: any;
   tituloFormulario: string = '';
 
-  constructor(private produtoService: ProdutosService) { }
+  constructor(private produtoService: ProdutosService, private router: Router) { }
   ngOnInit(): void {
     this.tituloFormulario = 'Novo Produto';
 
@@ -37,5 +38,9 @@ export class CadastrarProdutoComponent implements OnInit {
       },
     };
     this.produtoService.cadastrar(produto).subscribe(observer);
+  }
+
+  voltarParaHome() {
+    this.router.navigate(['/home']);
   }
 }

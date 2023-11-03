@@ -64,7 +64,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("excluir")]
+    [Route("excluir/{id}")]
     public async Task<ActionResult> Excluir (int id)
     {
         if (_dbContext.Produto is null) return NotFound();

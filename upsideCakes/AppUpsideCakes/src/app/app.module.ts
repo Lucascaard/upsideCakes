@@ -12,7 +12,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RouterModule } from '@angular/router';
 
 import { ProdutosService } from './services/produtos.service';
-import { ProdutosComponent } from './components/componentesProduto/produtos/produtos.component';
 import { HomeComponent } from './components/home/home.component';
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
 import { ListarProdutosComponent } from './components/componentesProduto/listar-produtos/listar-produtos.component';
@@ -22,7 +21,6 @@ import { DeletarProdutoComponent } from './components/componentesProduto/deletar
 @NgModule({
   declarations: [
     AppComponent,
-    ProdutosComponent,
     HomeComponent,
     AlterarProdutoComponent,
     ListarProdutosComponent,

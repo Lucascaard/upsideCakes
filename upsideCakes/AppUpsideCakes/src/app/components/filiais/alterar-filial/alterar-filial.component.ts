@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Filial } from 'src/app/models/Filial';
 import { FiliaisService } from 'src/app/services/Filial/filiais.service';
 
 @Component({
-  selector: 'app-filiais',
-  templateUrl: './filiais.component.html',
-  styleUrls: ['./filiais.component.css']
+  selector: 'app-alterar-filial',
+  templateUrl: './alterar-filial.component.html',
+  styleUrls: ['./alterar-filial.component.css']
 })
-export class FiliaisComponent implements OnInit{
+export class AlterarFilialComponent {
 
   formulario: any;
   tituloFormulario: string = '';
@@ -16,8 +16,9 @@ export class FiliaisComponent implements OnInit{
   constructor(private filiaisService : FiliaisService) { }
 
   ngOnInit(): void {
-    this.formulario = "Nova Filial";
+    this.tituloFormulario = "Alterar dados de Filial";
     this.formulario = new FormGroup({
+      id: new FormControl(null),
       cep: new FormControl(null),
       cidade: new FormControl(null),
       rua: new FormControl(null)
@@ -26,8 +27,8 @@ export class FiliaisComponent implements OnInit{
 
   enviarFormulario(): void {
     const filial : Filial = this.formulario.value;
-    this.filiaisService.cadastrar(filial).subscribe(result => {
-    alert('Filial inserida com sucesso.');
+    this.filiaisService.alterar(filial).subscribe(result => {
+    alert('Filial alterada com sucesso.');
     })
     }
 }

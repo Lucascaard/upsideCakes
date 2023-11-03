@@ -4,21 +4,13 @@
             <h6>{{ tituloFormulario }}</h6>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
                 <div class="form-group">
-                    <label>CEP</label>
-                    <input type="text" class="form-control form-control-sm" formControlName="cep" />
-                </div>
-                <div class="form-group">
-                    <label>Cidade</label>
-                    <input type="text" class="form-control form-control-sm" formControlName="cidade" />
-                </div>
-                <div class="form-group">
-                    <label>Rua</label>
-                    <input type="text" class="form-control form-control-sm" formControlName="rua" />
+                    <label>ID da Filial</label>
+                    <input type="number" class="form-control form-control-sm" formControlName="idFilial" />
                 </div>
                 <div class="container">
                     <div class="row">
                         <div>
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">Salvar</button>
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">Deletar</button>
                         </div>
                         <div class="pl-1">
                             <button type="button" class="btn btn-sm btn-light">Voltar</button>

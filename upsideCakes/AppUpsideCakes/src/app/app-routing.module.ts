@@ -9,7 +9,10 @@ import { DeletarProdutoComponent } from './components/componentesProduto/deletar
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
 
 // Imports componentes de Filial
-import {FiliaisComponent } from './components/filiais/filiais.component';
+import {CadastrarFilialComponent } from './components/filiais/cadastrar-filial/cadastrar-filial.component';
+import { AlterarFilialComponent } from './components/filiais/alterar-filial/alterar-filial.component';
+import { ListarFilialComponent } from './components/filiais/listar-filial/listar-filial.component';
+import { DeletarFilialComponent } from './components/filiais/deletar-filial/deletar-filial.component';
 
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
@@ -23,7 +26,10 @@ const routes: Routes = [
   { path: 'produtos/deletar', component: DeletarProdutoComponent },
 
   // Rota de filiais
-  { path: 'filial/cadastrar', component: FiliaisComponent },
+  { path: 'filial/cadastrar', component: CadastrarFilialComponent },
+  { path: 'filial/alterar', component: AlterarFilialComponent },
+  { path: 'filial/listar', component: ListarFilialComponent },
+  { path: 'filial/excluir', component: DeletarFilialComponent },
 ];
 
 @NgModule({

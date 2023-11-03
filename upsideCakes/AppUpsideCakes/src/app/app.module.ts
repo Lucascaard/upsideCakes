@@ -20,7 +20,10 @@ import { DeletarProdutoComponent } from './components/componentesProduto/deletar
 
 // Filial
 import { FiliaisService } from './services/Filial/filiais.service';
-import { FiliaisComponent } from './components/filiais/filiais.component';
+import { CadastrarFilialComponent } from './components/filiais/cadastrar-filial/cadastrar-filial.component';
+import { AlterarFilialComponent } from './components/filiais/alterar-filial/alterar-filial.component';
+import { ListarFilialComponent } from './components/filiais/listar-filial/listar-filial.component';
+import { DeletarFilialComponent } from './components/filiais/deletar-filial/deletar-filial.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { FiliaisComponent } from './components/filiais/filiais.component';
     ListarProdutosComponent,
     CadastrarProdutoComponent,
     DeletarProdutoComponent,
-    FiliaisComponent
+    CadastrarFilialComponent,
+    AlterarFilialComponent,
+    ListarFilialComponent,
+    DeletarFilialComponent
   ],
   imports: [
     BrowserModule,

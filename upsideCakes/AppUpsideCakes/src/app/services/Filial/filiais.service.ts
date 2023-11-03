@@ -37,14 +37,8 @@ export class FiliaisService {
       return this.http.put<Filial>(url, filial, { responseType: 'text' as 'json' });
     }
 
-    atualizarPreco(id: Number, preco: Number): Observable<Filial> {
-      const url = `${this.apiUrl}/alterarpreco/${id}`;
-      const body = { preco };
-      return this.http.patch<Filial>(url, body);
-    }
-
     excluir(id: Number): Observable<any> {
-      const url = `${this.apiUrl}/excluir/${id}`;
+      const url = `${this.apiUrl}/excluir`;
       return this.http.delete<string>(url, { responseType: 'text' as 'json' });
     }
   }

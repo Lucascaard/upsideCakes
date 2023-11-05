@@ -2,3 +2,6 @@
 .class
 .vs
 .bin
+*.bin
+upsideCakes/.vs/upsideCakes/v17/.suo
+*.v2

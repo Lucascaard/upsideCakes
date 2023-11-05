@@ -27,6 +27,12 @@ import { AlterarPagamentosComponent } from './components/pagamentoComponent/alte
 import { CadastrarPagamentosComponent } from './components/pagamentoComponent/cadastrar-pagamentos/cadastrar-pagamentos.component';
 import { ListarPagamentosComponent } from './components/pagamentoComponent/listar-pagamentos/listar-pagamentos.component';
 import { DeletarPagamentosComponent } from './components/pagamentoComponent/deletar-pagamentos/deletar-pagamentos.component';
+import { AlterarGerenteComponent } from './components/componentesGerente/alterar-gerente/alterar-gerente.component';
+import { CadastrarGerenteComponent } from './components/componentesGerente/cadastrar-gerente/cadastrar-gerente.component';
+import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
+import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
+import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
+import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
 
 
 
@@ -47,6 +53,12 @@ import { DeletarPagamentosComponent } from './components/pagamentoComponent/dele
     CadastrarPagamentosComponent,
     ListarPagamentosComponent,
     DeletarPagamentosComponent,
+    AlterarGerenteComponent,
+    CadastrarGerenteComponent,
+    DeletarGerenteComponent,
+    AlterarPagamentoComponent,
+    CadastrarPagamentoComponent,
+    DeletarPagamentoComponent,
   ],
   imports: [
     BrowserModule,

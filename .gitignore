@@ -1,9 +1,7 @@
 /bin/
-.class
-.vs
-.bin
+*.class
+*.vs
 *.bin
-upsideCakes/.vs/upsideCakes/v17/.suo
+*.suo
 *.v2
-*.bin
-upsideCakes/.vs/upsideCakes/v17/.suo
+

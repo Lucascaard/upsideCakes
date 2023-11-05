@@ -3,14 +3,10 @@
         <div class="col-6 border border-light rounded p-5 shadow" *ngIf="formulario">
             <h6>{{ tituloFormulario }}</h6>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
-                <div class="form-group">
-                    <label>ID da Filial</label>
-                    <input type="number" class="form-control form-control-sm" formControlName="id" />
-                </div>
                 <div class="container">
                     <div class="row">
                         <div>
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">Deletar</button>
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">Criar Cardapio</button>
                         </div>
                         <div class="pl-1">
                             <button type="button" class="btn btn-sm btn-light">Voltar</button>
@@ -21,3 +17,4 @@
         </div>
     </div>
 </div>
+

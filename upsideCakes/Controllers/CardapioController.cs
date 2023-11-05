@@ -29,7 +29,7 @@ public class CardapioController : ControllerBase
 
     [HttpPut]
     [Route("addItem")]
-    public async Task<ActionResult> CadastrarItem (int id, [FromForm] int idCardapio)
+    public async Task<ActionResult> CadastrarItem (int id, int idCardapio)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
@@ -43,46 +43,70 @@ public class CardapioController : ControllerBase
         return Ok(cardapio);
     }
 
+    // [HttpPut]
+    // [Route("alterarPreco")]
+    // public async Task<ActionResult> alterarPreco (int id, double preco, [FromForm] int idCardapio)
+    // {
+    //     var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
+    //     var item = _dbContext.Produto
+    //         .FirstOrDefault(c => c.id == id);
+
+    //     if(cardapio.itens is null || item is null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     item.preco = preco;
+
+    //     cardapio.itens.Add(item);
+    //     _dbContext.Update(cardapio);
+    //     await _dbContext.SaveChangesAsync();
+    //     return Ok(cardapio);
+    // }
+
+    // [HttpPut]
+    // [Route("alterarCategoria")]
+    // public async Task<ActionResult> alterarCategoria (int id, string categoria, [FromForm] int idCardapio)
+    // {
+    //     var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
+    //     var item = _dbContext.Produto
+    //         .FirstOrDefault(c => c.id == id);
+
+    //     if(cardapio.itens is null || item is null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     item.categoria = categoria;
+
+    //     cardapio.itens.Add(item);
+    //     _dbContext.Update(cardapio);
+    //     await _dbContext.SaveChangesAsync();
+    //     return Ok("Categoria alterada com sucesso.");
+    // }
+
     [HttpPut]
-    [Route("alterarPreco")]
-    public async Task<ActionResult> alterarPreco (int id, double preco, [FromForm] int idCardapio)
+    [Route("alterar")]
+    public async Task<ActionResult> alterar (int idCardapio, Produto produto)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
-            .FirstOrDefault(c => c.id == id);
+            .FirstOrDefault(c => c.id == produto.id);
 
-        if(cardapio.itens is null || item is null)
+        if(cardapio is null || item is null)
         {
             return NotFound();
         }
 
-        item.preco = preco;
+        // _dbContext.Entry(item).CurrentValues.SetValues(produto);        
+        item.categoria = produto.categoria;
+        item.nome = produto.nome;
+        item.preco = produto.preco;
 
         cardapio.itens.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
-        return Ok(cardapio);
-    }
-
-    [HttpPut]
-    [Route("alterarCategoria")]
-    public async Task<ActionResult> alterarCategoria (int id, string categoria, [FromForm] int idCardapio)
-    {
-        var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
-        var item = _dbContext.Produto
-            .FirstOrDefault(c => c.id == id);
-
-        if(cardapio.itens is null || item is null)
-        {
-            return NotFound();
-        }
-
-        item.categoria = categoria;
-
-        cardapio.itens.Add(item);
-        _dbContext.Update(cardapio);
-        await _dbContext.SaveChangesAsync();
-        return Ok("Categoria alterada com sucesso.");
+        return Ok("Item alterado com sucesso.");
     }
 
     [HttpGet]

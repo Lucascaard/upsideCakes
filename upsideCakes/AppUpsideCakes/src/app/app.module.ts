@@ -25,6 +25,14 @@ import { AlterarFilialComponent } from './components/filiais/alterar-filial/alte
 import { ListarFilialComponent } from './components/filiais/listar-filial/listar-filial.component';
 import { DeletarFilialComponent } from './components/filiais/deletar-filial/deletar-filial.component';
 
+//Cardapio
+import { CardapiosService } from './services/Cardapio/cardapios.service';
+import { AlterarCardapioComponent } from './components/cardapio/alterar-cardapio/alterar-cardapio.component';
+import { CadastrarCardapioComponent } from './components/cardapio/cadastrar-cardapio/cadastrar-cardapio.component';
+import { ListarCardapioComponent } from './components/cardapio/listar-cardapio/listar-cardapio.component';
+import { DeletarCardapioComponent } from './components/cardapio/deletar-cardapio/deletar-cardapio.component';
+import { AddItemCardapioComponent } from './components/cardapio/add-item-cardapio/add-item-cardapio/add-item-cardapio.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +44,12 @@ import { DeletarFilialComponent } from './components/filiais/deletar-filial/dele
     CadastrarFilialComponent,
     AlterarFilialComponent,
     ListarFilialComponent,
-    DeletarFilialComponent
+    DeletarFilialComponent,
+    AlterarCardapioComponent,
+    CadastrarCardapioComponent,
+    ListarCardapioComponent,
+    DeletarCardapioComponent,
+    AddItemCardapioComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +64,8 @@ import { DeletarFilialComponent } from './components/filiais/deletar-filial/dele
   providers: [
     HttpClientModule,
     ProdutosService,
-    FiliaisService
+    FiliaisService,
+    CardapiosService
   ],
   bootstrap: [AppComponent]
 })

@@ -19,13 +19,13 @@ export class DeletarFilialComponent {
     this.tituloFormulario = "Deletar Filial";
 
     this.formulario = new FormGroup({
-      idFilial: new FormControl()
+      id: new FormControl()
       });
   }
 
   enviarFormulario(): void {
-    const idFilial : Number = this.formulario.get('idFilial').value;
-    this.filiaisService.excluir(idFilial).subscribe(result => {
+    const id : Number = Number(this.formulario.get('id').value);
+    this.filiaisService.excluir(id).subscribe(result => {
     alert('Filial excluída com sucesso.');
     })
     }

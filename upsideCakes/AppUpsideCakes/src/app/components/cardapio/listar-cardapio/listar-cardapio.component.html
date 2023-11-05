@@ -11,11 +11,17 @@
               <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
             </div>
               <div *ngIf="showList">
-                <div *ngFor="let filial of filiais" class="card mt-2">
+                <div *ngFor="let cardapio of cardapios" class="card mt-2">
                   <div class="card-body">
-                    <p>Cidade: {{ filial.cidade }}</p>
-                    <p>CEP: {{ filial.cep }}</p>
-                    <p>Rua: {{ filial.rua }}</p>
+                    <p>Cardapio: {{ cardapio.id }}</p>
+                    <p>Itens:</p>
+                        <ul>
+                            <li *ngFor="let item of cardapio.itens">
+                                <p>Produto: {{ item.nome }}</p>
+                                <p>Preço: R$ {{ item.preco }}</p>
+                                <p>Categoria: {{ item.categoria }}</p>
+                            </li>
+                        </ul>
                   </div>
                 </div>
               </div>

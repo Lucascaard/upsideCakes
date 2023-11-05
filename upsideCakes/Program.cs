@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +9,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UpsideCakesDbContext>();
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("AllowAnyOrigin",
-	builder => builder
+options.AddPolicy("AllowAnyOrigin",
+builder => builder
 	.AllowAnyOrigin()
 	.AllowAnyMethod()
 	.AllowAnyHeader());

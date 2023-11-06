@@ -14,25 +14,26 @@ import { RouterModule } from '@angular/router';
 import { ProdutosService } from './services/produtos.service';
 import { GerentesService } from './services/gerentes.service';
 import { PagamentosService } from './services/pagamentos.service';
+
 import { HomeComponent } from './components/home/home.component';
+
+
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
 import { ListarProdutosComponent } from './components/componentesProduto/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './components/componentesProduto/cadastrar-produto/cadastrar-produto.component';
 import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
-import { AlterarGerentesComponent } from './components/gerenteComponent/alterar-gerentes/alterar-gerentes.component';
-import { CadastrarGerentesComponent } from './components/gerenteComponent/cadastrar-gerentes/cadastrar-gerentes.component';
-import { DeletarGerentesComponent } from './components/gerenteComponent/deletar-gerentes/deletar-gerentes.component';
-import { ListarGerentesComponent } from './components/gerenteComponent/listar-gerentes/listar-gerentes.component';
-import { AlterarPagamentosComponent } from './components/pagamentoComponent/alterar-pagamentos/alterar-pagamentos.component';
-import { CadastrarPagamentosComponent } from './components/pagamentoComponent/cadastrar-pagamentos/cadastrar-pagamentos.component';
-import { ListarPagamentosComponent } from './components/pagamentoComponent/listar-pagamentos/listar-pagamentos.component';
-import { DeletarPagamentosComponent } from './components/pagamentoComponent/deletar-pagamentos/deletar-pagamentos.component';
-import { AlterarGerenteComponent } from './components/componentesGerente/alterar-gerente/alterar-gerente.component';
-import { CadastrarGerenteComponent } from './components/componentesGerente/cadastrar-gerente/cadastrar-gerente.component';
+
+import { CadastrarGerentesComponent } from './components/componentesGerente/cadastrar-gerente/cadastrar-gerente.component';
+import { ListarGerentesComponent } from './components/componentesGerente/listar-gerentes/listar-gerentes.component';
 import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
-import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
-import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
+import { AlterarGerenteComponent } from './components/componentesGerente/alterar-gerente/alterar-gerente.component';
+
+/*
+import { CadastrarPagamentosComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
+import { ListarPagamentosComponent } from './components/componentesPagamento/listar-pagamentos/listar-pagamentos.component';
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
+import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component'; */
+
 
 
 
@@ -45,20 +46,16 @@ import { DeletarPagamentoComponent } from './components/componentesPagamento/del
     ListarProdutosComponent,
     CadastrarProdutoComponent,
     DeletarProdutoComponent,
-    AlterarGerentesComponent,
-    CadastrarGerentesComponent,
-    DeletarGerentesComponent,
-    ListarGerentesComponent,
-    AlterarPagamentosComponent,
-    CadastrarPagamentosComponent,
-    ListarPagamentosComponent,
-    DeletarPagamentosComponent,
     AlterarGerenteComponent,
-    CadastrarGerenteComponent,
-    DeletarGerenteComponent,
+    ListarGerentesComponent,
+    CadastrarGerentesComponent,
+    DeletarGerenteComponent
+    /*,
     AlterarPagamentoComponent,
-    CadastrarPagamentoComponent,
-    DeletarPagamentoComponent,
+    ListarPagamentosComponent,
+    CadastrarPagamentosComponent,
+    DeletarPagamentoComponent
+    */
   ],
   imports: [
     BrowserModule,

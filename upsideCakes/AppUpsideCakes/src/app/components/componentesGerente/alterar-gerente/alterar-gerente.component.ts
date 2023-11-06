@@ -43,6 +43,17 @@ export class AlterarGerenteComponent implements OnInit {
     })
   }
 
+  selecionarGerente(event: any) {
+    const selectedValue = event.target.value;
+    if (selectedValue) {
+      this.gerenteSelecionado = selectedValue;
+      console.log('Gerente selecionado:', this.gerenteSelecionado);
+    } else {
+      console.log('Valor selecionado é inválido:', selectedValue);
+    }
+  }
+  
+
   enviarFormulario() {
     // Verifica se um gerente foi selecionado
     if (this.gerenteSelecionado === undefined || this.gerenteSelecionado === null) {

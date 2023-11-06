@@ -8,7 +8,7 @@
               <div class="form-group">
                 <label>Selecione um gerente:</label>
                 <select formControlName="gerenteSelecionado" class="form-control" (change)="selecionarGerente($event)">
-                  <option *ngFor="let gerente of gerentes" [value]="gerente.id">{{ gerente.nome }}</option>
+                  <option *ngFor="let gerente of gerentes" [value]="gerente.cpf">{{ gerente.nome }}</option>
                 </select>
               </div>
               <div class="form-group">

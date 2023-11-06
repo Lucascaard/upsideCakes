@@ -27,9 +27,9 @@ export class GerentesService {
     const url = `${this.apiUrl}/listar`;
     return this.http.get<Gerente[]>(url);
   }
-
-  buscar(id: string): Observable<Gerente> {
-    const url = `${this.apiUrl}/buscar/${id}`;
+//mudei o id pra cpf
+  buscar(cpf: string): Observable<Gerente> {
+    const url = `${this.apiUrl}/buscar/${cpf}`;
     return this.http.get<Gerente>(url);
   }
 
@@ -38,9 +38,9 @@ export class GerentesService {
     return this.http.put<Gerente>(url, gerente, { responseType: 'text' as 'json' });
   }
 
-
-  excluir(id: Number): Observable<any> {
-    const url = `${this.apiUrl}/excluir/${id}`;
+//mudei o id pra cpf
+  excluir(cpf: Number): Observable<any> {
+    const url = `${this.apiUrl}/excluir/${cpf}`;
     return this.http.delete<string>(url, { responseType: 'text' as 'json' });
   }
 }

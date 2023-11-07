@@ -12,6 +12,13 @@ import { ListarFuncionarioComponent } from './components/componentesFuncionario/
 import { AlterarFuncionarioComponent } from './components/componentesFuncionario/alterar-funcionario/alterar-funcionario.component';
 import { DeletarFuncionarioComponent } from './components/componentesFuncionario/deletar-funcionario/deletar-funcionario.component';
 
+//Imports components de Gerente
+import { CadastrarGerenteComponent } from './components/componentesGerente/cadastrar-gerente/cadastrar-gerente.component';
+import { ListarGerenteComponent } from './components/componentesGerente/listar-gerente/listar-gerente.component';
+import { AlterarGerenteComponent } from './components/componentesGerente/alterar-gerente/alterar-gerente.component';
+import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
+
+
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,7 +34,13 @@ const routes: Routes = [
   { path: 'funcionario/cadastrar', component: CadastrarFuncionarioComponent },
   { path: 'funcionario/listar', component: ListarFuncionarioComponent },
   { path: 'funcionario/alterar', component: AlterarFuncionarioComponent },
-  { path: 'funcionario/deletar', component: DeletarFuncionarioComponent }
+  { path: 'funcionario/deletar', component: DeletarFuncionarioComponent },
+
+  //Rotas de Gerente
+  { path: 'gerente/cadastrar', component: CadastrarGerenteComponent },
+  { path: 'gerente/listar', component: ListarGerenteComponent },
+  { path: 'gerente/alterar', component: AlterarGerenteComponent },
+  { path: 'gerente/deletar', component: DeletarGerenteComponent }
 ];
 
 @NgModule({

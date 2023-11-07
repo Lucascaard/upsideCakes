@@ -12,6 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RouterModule } from '@angular/router';
 
 import { ProdutosService } from './services/produtos.service';
+import { GerentesService } from './services/gerente.service';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -25,7 +26,6 @@ import { ListarFuncionarioComponent } from './components/componentesFuncionario/
 import { AlterarFuncionarioComponent } from './components/componentesFuncionario/alterar-funcionario/alterar-funcionario.component';
 import { DeletarFuncionarioComponent } from './components/componentesFuncionario/deletar-funcionario/deletar-funcionario.component';
 
-import { GerenteService } from './services/gerente.service';
 import { AlterarGerenteComponent } from './components/componentesGerente/alterar-gerente/alterar-gerente.component';
 import { CadastrarGerenteComponent } from './components/componentesGerente/cadastrar-gerente/cadastrar-gerente.component';
 import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
@@ -71,7 +71,7 @@ import { ListarPagamentoComponent } from './components/componentesPagamento/list
   providers: [
     HttpClientModule,
     ProdutosService,
-    GerenteService,
+    GerentesService,
     PagamentoService
   ],
   bootstrap: [AppComponent]

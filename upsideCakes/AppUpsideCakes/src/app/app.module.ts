@@ -12,15 +12,30 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RouterModule } from '@angular/router';
 
 import { ProdutosService } from './services/produtos.service';
+
 import { HomeComponent } from './components/home/home.component';
+
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
 import { ListarProdutosComponent } from './components/componentesProduto/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './components/componentesProduto/cadastrar-produto/cadastrar-produto.component';
 import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
+
 import { CadastrarFuncionarioComponent } from './components/componentesFuncionario/cadastrar-funcionario/cadastrar-funcionario.component';
 import { ListarFuncionarioComponent } from './components/componentesFuncionario/listar-funcionario/listar-funcionario.component';
 import { AlterarFuncionarioComponent } from './components/componentesFuncionario/alterar-funcionario/alterar-funcionario.component';
 import { DeletarFuncionarioComponent } from './components/componentesFuncionario/deletar-funcionario/deletar-funcionario.component';
+
+import { GerenteService } from './services/gerente.service';
+import { AlterarGerenteComponent } from './components/componentesGerente/alterar-gerente/alterar-gerente.component';
+import { CadastrarGerenteComponent } from './components/componentesGerente/cadastrar-gerente/cadastrar-gerente.component';
+import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
+import { ListarGerenteComponent } from './components/componentesGerente/listar-gerente/listar-gerente.component';
+
+import { PagamentoService } from './services/pagamento.service';
+import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
+import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
+import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
+import { ListarPagamentoComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +48,15 @@ import { DeletarFuncionarioComponent } from './components/componentesFuncionario
     CadastrarFuncionarioComponent,
     ListarFuncionarioComponent,
     AlterarFuncionarioComponent,
-    DeletarFuncionarioComponent
+    DeletarFuncionarioComponent,
+    AlterarGerenteComponent,
+    CadastrarGerenteComponent,
+    DeletarGerenteComponent,
+    ListarGerenteComponent,
+    AlterarPagamentoComponent,
+    CadastrarPagamentoComponent,
+    DeletarPagamentoComponent,
+    ListarPagamentoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +70,9 @@ import { DeletarFuncionarioComponent } from './components/componentesFuncionario
   ],
   providers: [
     HttpClientModule,
-    ProdutosService
+    ProdutosService,
+    GerenteService,
+    PagamentoService
   ],
   bootstrap: [AppComponent]
 })

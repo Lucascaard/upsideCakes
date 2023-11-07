@@ -1,0 +1,69 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-body mt-4">
+            <h5>{{ tituloFormulario }}</h5>
+            <div class="form-group">
+              <label for="nomeGerente">Nome do Gerente:</label>
+              <select class="form-control" id="nomeGerente" [(ngModel)]="nomeGerente">
+                <option value="">Selecione um nome</option>
+                <option *ngFor="let nome of opcoesNomes" [value]="nome">{{ nome }}</option>
+              </select>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <button class="btn btn-primary margin-right" (click)="listarPorNome()">Listar por Nome</button>
+              <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
+            </div>
+            <div *ngIf="!mostrarListagemGeral">
+              <div *ngFor="let gerente of gerentesPorNome" class="card mt-2">
+                <div class="card-header">
+                  {{ gerente.nome }}
+                </div>
+                <div class="card-body">
+                  <p>CPF: {{ gerente.cpf }}</p>
+                  <p>Data de Nascimento: {{ gerente.dataNasc }}</p>
+                  <p>Endereço: {{ gerente.endereco }}</p>
+                  <p>Telefone: {{ gerente.telefone }}</p>
+                  <p>Email: {{ gerente.email }}</p>
+                  <p>Login: {{ gerente.login }}</p>
+                  <p>Senha: {{ gerente.senha }}</p>
+                  <p>Cargo: {{ gerente.cargo }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="card">
+          <div class="card-header">
+            Listagem Geral
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between mt-3">
+              <button class="btn btn-primary margin-right" (click)="listarGeral()">Listar Todos</button>
+              <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
+            </div>
+            <div *ngIf="mostrarListagemGeral">
+              <div *ngFor="let gerente of gerentes" class="card mt-2">
+                <div class="card-header">
+                  {{ gerente.nome }}
+                </div>
+                <div class="card-body">
+                  <p>CPF: {{ gerente.cpf }}</p>
+                  <p>Data de Nascimento: {{ gerente.dataNasc }}</p>
+                  <p>Endereço: {{ gerente.endereco }}</p>
+                  <p>Telefone: {{ gerente.telefone }}</p>
+                  <p>Email: {{ gerente.email }}</p>
+                  <p>Login: {{ gerente.login }}</p>
+                  <p>Senha: {{ gerente.senha }}</p>
+                  <p>Cargo: {{ gerente.cargo }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

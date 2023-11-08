@@ -12,12 +12,12 @@ namespace upsideCakes.Models
         public DateOnly data { get; set; }
 
         [NotMapped]
-        public Cliente? cliente {get; set;} 
+        public List<Cliente> Clientes {get; set;} 
         public float valor { get; set; }
         public string? formaDePagamento { get; set; }
 
         [NotMapped]
-        public Pedido? pedido { get; set; }
+        public List<Pedido> Pedidos { get; set; }
 
     }
 }

@@ -22,7 +22,7 @@ import { DeletarGerenteComponent } from './components/componentesGerente/deletar
 import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
 import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
-import { ListarPagamentoComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
+import { ListarPagamentosComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
 
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
@@ -49,7 +49,7 @@ const routes: Routes = [
   
   //Rotas de Pagamento
   { path: 'pagamento/cadastrar', component: CadastrarPagamentoComponent },
-  { path: 'pagamento/listar', component: ListarPagamentoComponent },
+  { path: 'pagamento/listar', component: ListarPagamentosComponent },
   { path: 'pagamento/alterar', component: AlterarPagamentoComponent },
   { path: 'pagamento/deletar', component: DeletarPagamentoComponent } 
 ];

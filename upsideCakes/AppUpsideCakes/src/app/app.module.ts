@@ -35,7 +35,7 @@ import { PagamentoService } from './services/pagamento.service';
 import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
 import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
-import { ListarPagamentoComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
+import { ListarPagamentosComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +55,9 @@ import { ListarPagamentoComponent } from './components/componentesPagamento/list
     ListarGerenteComponent,
     AlterarPagamentoComponent,
     CadastrarPagamentoComponent,
-    DeletarPagamentoComponent,
-    ListarPagamentoComponent
+    ListarPagamentosComponent,
+    DeletarPagamentoComponent
+    
   ],
   imports: [
     BrowserModule,

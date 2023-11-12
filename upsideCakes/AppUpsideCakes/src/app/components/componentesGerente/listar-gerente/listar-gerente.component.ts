@@ -31,7 +31,7 @@ export class ListarGerenteComponent implements OnInit {
     this.mostrarListagemGeral = true;
     this.gerentesPorNome = [];
   }
-
+/*
   listarPorNome() {
     if (this.nomeGerente.trim() === '') {
       this.listarGeral();
@@ -51,7 +51,7 @@ export class ListarGerenteComponent implements OnInit {
       this.mostrarListagemGeral = false;
     }
   }
-
+*/
   voltarParaHome() {
     this.router.navigate(['/home']);
   }

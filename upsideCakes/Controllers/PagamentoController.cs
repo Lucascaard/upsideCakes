@@ -16,46 +16,27 @@ public class PagamentoController : ControllerBase
     {
         _dbContext = context;
     }
+
+
     [HttpPost]
     [Route("novopagamento")]
     public async Task<ActionResult> Cadastrar(Pagamento pagamento)
     {
         if (_dbContext is null) return NotFound();
-        
-        using (var novoContexto = new UpsideCakesDbContext())
-        {
-        // Verifica se o cliente existe
-            var clientesResult = await BuscarCliente(pagamento.idCliente);
-            var clientes = clientesResult.Value; // Obtém a lista de clientes do ActionResult
-            var cliente = clientes.FirstOrDefault(); // Pega o primeiro cliente da lista (se existir)
-
-            if (cliente == null)
-            {
-                return BadRequest("Cliente especificado não existe");
-            }
-
-            // Verifica se o pedido existe
-            var pedidosResult = await BuscarPedido(pagamento.idPedido);
-            var pedidos = pedidosResult.Value; // Obtém a lista de pedidos do ActionResult
-            var pedido = pedidos.FirstOrDefault(); // Pega o primeiro pedido da lista (se existir)
-
-            if (pedido == null)
-            {
-                return BadRequest("Pedido especificado não existe");
-            }
-
-            pagamento.Clientes = new List<Cliente> { cliente };
-            pagamento.Pedidos = new List<Pedido> { pedido };
 
 
-            await novoContexto.AddAsync(pagamento);
-            await novoContexto.SaveChangesAsync();
-        }
+    var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento.idCliente);
+    if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
 
+   
+    var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento.idPedido);
+    if (pedidoExiste is null) return BadRequest("Pedido especificado não existe");
+
+
+        await _dbContext.AddAsync(pagamento);
+        await _dbContext.SaveChangesAsync();
         return Created("Pagamento realizado!", pagamento);
     }
-
-
 
 
     [HttpGet()]
@@ -97,7 +78,6 @@ public class PagamentoController : ControllerBase
         return Created("Alterado com sucesso", pagamento);
     }
 
-
     [HttpGet]
     [Route("listar")]
     public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
@@ -106,11 +86,11 @@ public class PagamentoController : ControllerBase
         if (_dbContext.Pagamento is null) return NotFound();
 
         var pagamentos = await _dbContext.Pagamento
-        .Include(p => p.Clientes)
-        .Include(p => p.Pedidos)
-        .ToListAsync();
+            .Include(p => p.Clientes)  // Inclua a referência para o Cliente
+            .Include(p => p.Pedidos)   // Inclua a referência para o Pedido
+            .ToListAsync();
 
-        return await _dbContext.Pagamento.ToListAsync();
+        return pagamentos;
     }
 
 

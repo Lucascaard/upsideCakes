@@ -11,7 +11,7 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231114222020_Funcionaa")]
+    [Migration("20231114230137_Funcionaa")]
     partial class Funcionaa
     {
         /// <inheritdoc />

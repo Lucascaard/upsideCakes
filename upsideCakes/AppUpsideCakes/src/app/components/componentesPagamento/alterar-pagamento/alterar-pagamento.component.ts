@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./alterar-pagamento.component.css']
 })
 export class AlterarPagamentoComponent implements OnInit {
-  pagamentoSelecionado: number | undefined;
+  pagamentoSelecionado: Number | undefined;
   formulario: any;
   tituloFormulario: string = '';
   pagamentos: Array<Pagamento> | undefined;

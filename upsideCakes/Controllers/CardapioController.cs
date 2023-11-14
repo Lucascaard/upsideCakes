@@ -29,61 +29,19 @@ public class CardapioController : ControllerBase
 
     [HttpPut]
     [Route("addItem")]
-    public async Task<ActionResult> CadastrarItem (int id, int idCardapio)
+    public async Task<ActionResult> CadastrarItem (int id, [FromForm] int idCardapio)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
         var item = _dbContext.Produto
             .FirstOrDefault(c => c.id == id);
 
-        if(cardapio.itens is null || item is null) return NotFound();
+        if(cardapio.itens is null || item is null) return BadRequest("Dado não encontrado.");
 
         cardapio.itens.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         return Ok(cardapio);
     }
-
-    // [HttpPut]
-    // [Route("alterarPreco")]
-    // public async Task<ActionResult> alterarPreco (int id, double preco, [FromForm] int idCardapio)
-    // {
-    //     var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
-    //     var item = _dbContext.Produto
-    //         .FirstOrDefault(c => c.id == id);
-
-    //     if(cardapio.itens is null || item is null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     item.preco = preco;
-
-    //     cardapio.itens.Add(item);
-    //     _dbContext.Update(cardapio);
-    //     await _dbContext.SaveChangesAsync();
-    //     return Ok(cardapio);
-    // }
-
-    // [HttpPut]
-    // [Route("alterarCategoria")]
-    // public async Task<ActionResult> alterarCategoria (int id, string categoria, [FromForm] int idCardapio)
-    // {
-    //     var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
-    //     var item = _dbContext.Produto
-    //         .FirstOrDefault(c => c.id == id);
-
-    //     if(cardapio.itens is null || item is null)
-    //     {
-    //         return NotFound();
-    //     }
-
-    //     item.categoria = categoria;
-
-    //     cardapio.itens.Add(item);
-    //     _dbContext.Update(cardapio);
-    //     await _dbContext.SaveChangesAsync();
-    //     return Ok("Categoria alterada com sucesso.");
-    // }
 
     [HttpPut]
     [Route("alterar")]

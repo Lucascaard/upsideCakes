@@ -8,14 +8,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UpsideCakesDbContext>();
-builder.Services.AddCors(options =>
-{
-	options.AddPolicy("AllowAnyOrigin",
-	builder => builder
-	.AllowAnyOrigin()
-	.AllowAnyMethod()
-	.AllowAnyHeader());
-});
+builder.Services.AddCors();
+// builder.Services.AddCors(options =>
+// {
+// 	options.AddPolicy("AllowAnyOrigin",
+// 	builder => builder
+// 	.AllowAnyOrigin()
+// 	.AllowAnyMethod()
+// 	.AllowAnyHeader());
+// });
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -24,7 +25,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAnyOrigin");
+// app.UseCors("AllowAnyOrigin");
+app.UseCors(opcoes => opcoes.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 app.UseAuthorization();
 app.MapControllers();
 

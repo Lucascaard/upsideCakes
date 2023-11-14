@@ -22,7 +22,7 @@ export class ListarPagamentosComponent implements OnInit {
     this.tituloFormulario = 'Listar Pagamentos';
     this.pagamentoService.listar().subscribe(pagamentos => {
       this.pagamentos = pagamentos;
-      this.opcoesNomes = pagamentos.map(pagamento => pagamento.cliente?.nome || '');
+      //this.opcoesNomes = pagamentos.map(pagamento => pagamento.cliente?.nome || '');
     });
   }
 
@@ -30,7 +30,7 @@ export class ListarPagamentosComponent implements OnInit {
     this.mostrarListagemGeral = true;
     this.pagamentosPorCliente = [];
   }
-
+/*
   listarPorCliente() {
     if (this.nomeCliente.trim() === '') {
       this.listarGeral();
@@ -47,7 +47,7 @@ export class ListarPagamentosComponent implements OnInit {
       this.mostrarListagemGeral = false;
     }
   }
-
+*/
   voltarParaHome() {
     this.router.navigate(['/home']);
   }

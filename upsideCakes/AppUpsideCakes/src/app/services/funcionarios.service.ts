@@ -25,8 +25,8 @@ export class FuncionariosService {
     return this.http.get<Funcionario[]>(url);
   }
 
-  listarPorID(id: Number): Observable<Funcionario> {
-    const url = `${this.apiUrl}/listar/${id}`;
+  BuscarPorId(id: Number): Observable<Funcionario> {
+    const url = `${this.apiUrl}/buscar/${id}`;
     return this.http.get<Funcionario>(url);
   }
 
@@ -36,7 +36,7 @@ export class FuncionariosService {
   }
 
   excluir(id: Number): Observable<any> {
-    const url = `${this.apiUrl}/excluir`;
+    const url = `${this.apiUrl}/excluir/${id}`;
     return this.http.delete<string>(url, HttpOptions);
   }
 }

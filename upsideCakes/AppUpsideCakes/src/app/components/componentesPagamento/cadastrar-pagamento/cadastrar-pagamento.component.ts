@@ -7,7 +7,7 @@ import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { PagamentoService } from 'src/app/services/pagamento.service';
 import { ClientesService } from 'src/app/services/clientes.service';
-import { PedidosService } from 'src/app/services/pedidos.service';
+// import { PedidosService } from 'src/app/services/pedidos.service';
 
 @Component({
   selector: 'app-cadastrar-pagamento',
@@ -22,7 +22,7 @@ export class CadastrarPagamentoComponent implements OnInit {
 
   constructor(
     private clienteService: ClientesService,
-    private pedidoService: PedidosService,
+   // private pedidoService: PedidosService,
     private pagamentoService: PagamentoService,
     private router: Router
   ) { }
@@ -41,18 +41,18 @@ export class CadastrarPagamentoComponent implements OnInit {
       this.clientes = clientes;
     });
 
-    this.pedidoService.listar().subscribe(pedidos => {
+   /* this.pedidoService.listar().subscribe(pedidos => {
       this.pedidos = pedidos;
-    });
+    });*/
   }
 
   enviarFormulario() {
     const pagamento: Pagamento = {
       data: this.formulario.get('data')?.value,
-      clientes: this.formulario.get('clientes')?.value,
+      //clientes: this.formulario.get('clientes')?.value,
       valor: this.formulario.get('valor')?.value,
       formaDePagamento: this.formulario.get('formaDePagamento')?.value,
-      pedidos: this.formulario.get('pedidos')?.value
+     // pedidos: this.formulario.get('pedidos')?.value
     };
 
     console.log(pagamento);

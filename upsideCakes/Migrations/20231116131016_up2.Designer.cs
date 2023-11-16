@@ -11,8 +11,8 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231114221658_inicial")]
-    partial class inicial
+    [Migration("20231116131016_up2")]
+    partial class up2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -198,10 +198,20 @@ namespace upsideCakes.Migrations
                     b.Property<string>("formaDePagamento")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("idCliente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("idPedido")
+                        .HasColumnType("INTEGER");
+
                     b.Property<float>("valor")
                         .HasColumnType("REAL");
 
                     b.HasKey("id");
+
+                    b.HasIndex("idCliente");
+
+                    b.HasIndex("idPedido");
 
                     b.ToTable("Pagamento");
                 });
@@ -252,6 +262,25 @@ namespace upsideCakes.Migrations
                     b.HasIndex("Cardapioid");
 
                     b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
+                {
+                    b.HasOne("upsideCakes.Models.Cliente", "cliente")
+                        .WithMany()
+                        .HasForeignKey("idCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("upsideCakes.Models.Pedido", "pedido")
+                        .WithMany()
+                        .HasForeignKey("idPedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cliente");
+
+                    b.Navigation("pedido");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>

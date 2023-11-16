@@ -206,6 +206,10 @@ namespace upsideCakes.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("idCliente");
+
+                    b.HasIndex("idPedido");
+
                     b.ToTable("Pagamento");
                 });
 
@@ -255,6 +259,25 @@ namespace upsideCakes.Migrations
                     b.HasIndex("Cardapioid");
 
                     b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
+                {
+                    b.HasOne("upsideCakes.Models.Cliente", "cliente")
+                        .WithMany()
+                        .HasForeignKey("idCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("upsideCakes.Models.Pedido", "pedido")
+                        .WithMany()
+                        .HasForeignKey("idPedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cliente");
+
+                    b.Navigation("pedido");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>

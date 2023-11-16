@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace upsideCakes.Migrations
 {
     /// <inheritdoc />
-    public partial class Funcionaa : Migration
+    public partial class inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -99,23 +99,6 @@ namespace upsideCakes.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pagamento",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    data = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    idCliente = table.Column<int>(type: "INTEGER", nullable: false),
-                    valor = table.Column<float>(type: "REAL", nullable: false),
-                    formaDePagamento = table.Column<string>(type: "TEXT", nullable: true),
-                    idPedido = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pagamento", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Pedido",
                 columns: table => new
                 {
@@ -132,6 +115,35 @@ namespace upsideCakes.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pagamento",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    data = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    idCliente = table.Column<int>(type: "INTEGER", nullable: false),
+                    valor = table.Column<float>(type: "REAL", nullable: false),
+                    formaDePagamento = table.Column<string>(type: "TEXT", nullable: true),
+                    idPedido = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pagamento", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Pagamento_Cliente_idCliente",
+                        column: x => x.idCliente,
+                        principalTable: "Cliente",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pagamento_Pedido_idPedido",
+                        column: x => x.idPedido,
+                        principalTable: "Pedido",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Produto",
                 columns: table => new
                 {
@@ -140,7 +152,8 @@ namespace upsideCakes.Migrations
                     nome = table.Column<string>(type: "TEXT", nullable: true),
                     preco = table.Column<double>(type: "REAL", nullable: false),
                     categoria = table.Column<string>(type: "TEXT", nullable: true),
-                    Cardapioid = table.Column<int>(type: "INTEGER", nullable: true)
+                    Cardapioid = table.Column<int>(type: "INTEGER", nullable: true),
+                    Pedidoid = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -150,20 +163,37 @@ namespace upsideCakes.Migrations
                         column: x => x.Cardapioid,
                         principalTable: "Cardapio",
                         principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK_Produto_Pedido_Pedidoid",
+                        column: x => x.Pedidoid,
+                        principalTable: "Pedido",
+                        principalColumn: "id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pagamento_idCliente",
+                table: "Pagamento",
+                column: "idCliente");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pagamento_idPedido",
+                table: "Pagamento",
+                column: "idPedido");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produto_Cardapioid",
                 table: "Produto",
                 column: "Cardapioid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produto_Pedidoid",
+                table: "Produto",
+                column: "Pedidoid");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Cliente");
-
             migrationBuilder.DropTable(
                 name: "Filial");
 
@@ -177,13 +207,16 @@ namespace upsideCakes.Migrations
                 name: "Pagamento");
 
             migrationBuilder.DropTable(
-                name: "Pedido");
-
-            migrationBuilder.DropTable(
                 name: "Produto");
 
             migrationBuilder.DropTable(
+                name: "Cliente");
+
+            migrationBuilder.DropTable(
                 name: "Cardapio");
+
+            migrationBuilder.DropTable(
+                name: "Pedido");
         }
     }
 }

@@ -18,25 +18,32 @@ public class PagamentoController : ControllerBase
     }
 
 
-    [HttpPost]
-    [Route("novopagamento")]
-    public async Task<ActionResult> Cadastrar(Pagamento pagamento)
-    {
-        if (_dbContext is null) return NotFound();
+ [HttpPost]
+[Route("novopagamento")]
+public async Task<ActionResult> Cadastrar(Pagamento pagamento)
+{
+   if (_dbContext is null) return NotFound();
 
+   var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento.idCliente);
+   if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
 
-    var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento.idCliente);
-    if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
+   var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento.idPedido);
+   if (pedidoExiste is null) return BadRequest("Pedido especificado não existe");
 
-   
-    var pedidoExiste = await _dbContext.Pedido.FindAsync(pagamento.idPedido);
-    if (pedidoExiste is null) return BadRequest("Pedido especificado não existe");
+   // Carregar a entidade para atualização
+   var pagamentoExiste = await _dbContext.Pagamento.FindAsync(pagamento.id);
+   if (pagamentoExiste != null)
+   {
+       _dbContext.Entry(pagamentoExiste).CurrentValues.SetValues(pagamento);
+   }
+   else
+   {
+       await _dbContext.AddAsync(pagamento);
+   }
 
-
-        await _dbContext.AddAsync(pagamento);
-        await _dbContext.SaveChangesAsync();
-        return Created("Pagamento realizado!", pagamento);
-    }
+   await _dbContext.SaveChangesAsync();
+   return Created("Pagamento realizado!", pagamento);
+}
 
 
     [HttpGet()]
@@ -77,7 +84,7 @@ public class PagamentoController : ControllerBase
         await _dbContext.SaveChangesAsync();
         return Created("Alterado com sucesso", pagamento);
     }
-
+/*
     [HttpGet]
     [Route("listar")]
     public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
@@ -92,6 +99,21 @@ public class PagamentoController : ControllerBase
 
         return pagamentos;
     }
+*/
+ [HttpGet]
+        [Route("listar")]
+        public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
+        {
+            if (_dbContext is null || _dbContext.Pagamento is null)
+                return NotFound("Não foi possível acessar os dados de Pagamento.");
+
+            var pagamentos = await _dbContext.Pagamento
+                .Include(p => p.cliente) // Inclui a propriedade de navegação Cliente
+                .Include(p => p.pedido) // Inclui a propriedade de navegação Pedido
+                .ToListAsync();
+
+            return Ok(pagamentos);
+        }
 
 
     [HttpDelete()]

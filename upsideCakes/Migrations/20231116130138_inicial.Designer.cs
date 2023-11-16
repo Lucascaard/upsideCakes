@@ -11,8 +11,8 @@ using upsideCakes.Data;
 namespace upsideCakes.Migrations
 {
     [DbContext(typeof(UpsideCakesDbContext))]
-    [Migration("20231114230137_Funcionaa")]
-    partial class Funcionaa
+    [Migration("20231116130138_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -209,6 +209,10 @@ namespace upsideCakes.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("idCliente");
+
+                    b.HasIndex("idPedido");
+
                     b.ToTable("Pagamento");
                 });
 
@@ -244,6 +248,9 @@ namespace upsideCakes.Migrations
                     b.Property<int?>("Cardapioid")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("Pedidoid")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("categoria")
                         .HasColumnType("TEXT");
 
@@ -257,7 +264,28 @@ namespace upsideCakes.Migrations
 
                     b.HasIndex("Cardapioid");
 
+                    b.HasIndex("Pedidoid");
+
                     b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Pagamento", b =>
+                {
+                    b.HasOne("upsideCakes.Models.Cliente", "cliente")
+                        .WithMany()
+                        .HasForeignKey("idCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("upsideCakes.Models.Pedido", "pedido")
+                        .WithMany()
+                        .HasForeignKey("idPedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cliente");
+
+                    b.Navigation("pedido");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Produto", b =>
@@ -265,9 +293,18 @@ namespace upsideCakes.Migrations
                     b.HasOne("upsideCakes.Models.Cardapio", null)
                         .WithMany("itens")
                         .HasForeignKey("Cardapioid");
+
+                    b.HasOne("upsideCakes.Models.Pedido", null)
+                        .WithMany("itens")
+                        .HasForeignKey("Pedidoid");
                 });
 
             modelBuilder.Entity("upsideCakes.Models.Cardapio", b =>
+                {
+                    b.Navigation("itens");
+                });
+
+            modelBuilder.Entity("upsideCakes.Models.Pedido", b =>
                 {
                     b.Navigation("itens");
                 });

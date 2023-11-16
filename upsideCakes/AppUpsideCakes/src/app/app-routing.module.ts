@@ -7,6 +7,8 @@ import { CadastrarProdutoComponent } from './components/componentesProduto/cadas
 import { ListarProdutosComponent } from './components/componentesProduto/listar-produtos/listar-produtos.component';
 import { DeletarProdutoComponent } from './components/componentesProduto/deletar-produto/deletar-produto.component';
 import { AlterarProdutoComponent } from './components/componentesProduto/alterar-produto/alterar-produto.component';
+
+// Imports componentes de Funcionário
 import { CadastrarFuncionarioComponent } from './components/componentesFuncionario/cadastrar-funcionario/cadastrar-funcionario.component';
 import { ListarFuncionarioComponent } from './components/componentesFuncionario/listar-funcionario/listar-funcionario.component';
 import { AlterarFuncionarioComponent } from './components/componentesFuncionario/alterar-funcionario/alterar-funcionario.component';
@@ -23,6 +25,11 @@ import { CadastrarPagamentoComponent } from './components/componentesPagamento/c
 import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
 import { ListarPagamentosComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
+//Imports de componentes de Cliente
+import { CadastrarClienteComponent } from './components/componentesCliente/cadastrar-cliente/cadastrar-cliente.component';
+import { ListarClienteComponent } from './components/componentesCliente/listar-cliente/listar-cliente.component';
+import { AlterarClienteComponent } from './components/componentesCliente/alterar-cliente/alterar-cliente.component';
+import { DeletarClienteComponent } from './components/componentesCliente/deletar-cliente/deletar-cliente.component';
 
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
@@ -40,6 +47,12 @@ const routes: Routes = [
   { path: 'funcionario/listar', component: ListarFuncionarioComponent },
   { path: 'funcionario/alterar', component: AlterarFuncionarioComponent },
   { path: 'funcionario/deletar', component: DeletarFuncionarioComponent },
+
+  //Rotas de cliente
+  { path: 'cliente/cadastrar', component: CadastrarClienteComponent },
+  { path: 'cliente/listar', component: ListarClienteComponent },
+  { path: 'cliente/alterar', component: AlterarClienteComponent },
+  { path: 'cliente/deletar', component: DeletarClienteComponent },
 
   //Rotas de Gerente
   { path: 'gerente/cadastrar', component: CadastrarGerenteComponent },

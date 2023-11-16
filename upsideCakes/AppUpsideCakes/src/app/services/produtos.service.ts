@@ -27,8 +27,8 @@
       return this.http.get<Produto[]>(url);
     }
 
-    listarPorID(id: Number): Observable<Produto> {
-      const url = `${this.apiUrl}/listar/${id}`;
+    buscarPorId(id: Number): Observable<Produto> {
+      const url = `${this.apiUrl}/buscar/${id}`;
       return this.http.get<Produto>(url);
     }
 

@@ -18,7 +18,7 @@ public class PagamentoController : ControllerBase
     }
 
 
- [HttpPost]
+[HttpPost]
 [Route("novopagamento")]
 public async Task<ActionResult> Cadastrar(Pagamento pagamento)
 {

@@ -13,7 +13,6 @@ import { RouterModule } from '@angular/router';
 
 import { ProdutosService } from './services/produtos.service';
 import { GerentesService } from './services/gerente.service';
-import { ClientesService } from './services/clientes.service';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -38,36 +37,22 @@ import { CadastrarPagamentoComponent } from './components/componentesPagamento/c
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
 import { ListarPagamentoComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
 
-import { CadastrarClienteComponent } from './components/componentesCliente/cadastrar-cliente/cadastrar-cliente.component';
-import { ListarClienteComponent } from './components/componentesCliente/listar-cliente/listar-cliente.component';
-import { AlterarClienteComponent } from './components/componentesCliente/alterar-cliente/alterar-cliente.component';
-import { DeletarClienteComponent } from './components/componentesCliente/deletar-cliente/deletar-cliente.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-
     AlterarProdutoComponent,
     ListarProdutosComponent,
     CadastrarProdutoComponent,
     DeletarProdutoComponent,
-
     CadastrarFuncionarioComponent,
     ListarFuncionarioComponent,
     AlterarFuncionarioComponent,
     DeletarFuncionarioComponent,
-
-    CadastrarClienteComponent,
-    ListarClienteComponent,
-    AlterarClienteComponent,
-    DeletarClienteComponent,
-
     AlterarGerenteComponent,
     CadastrarGerenteComponent,
     DeletarGerenteComponent,
     ListarGerenteComponent,
-
     AlterarPagamentoComponent,
     CadastrarPagamentoComponent,
     DeletarPagamentoComponent,
@@ -87,8 +72,7 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     HttpClientModule,
     ProdutosService,
     GerentesService,
-    PagamentoService,
-    ClientesService
+    PagamentoService
   ],
   bootstrap: [AppComponent]
 })

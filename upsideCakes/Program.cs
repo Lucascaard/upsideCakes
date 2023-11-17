@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +28,7 @@ app.UseCors("AllowAnyOrigin");
 app.UseAuthorization();
 app.MapControllers();
 
-/*  DESCOMENTE PARA INSERIR DADOS FICTICIOS
+  //DESCOMENTE PARA INSERIR DADOS FICTICIOS
 
  using (var scope = app.Services.CreateScope())
  {
@@ -35,5 +36,5 @@ app.MapControllers();
      dbContext.Database.Migrate(); 
      dbContext.InserirDadosFicticios();
  }
-*/
+
 app.Run();

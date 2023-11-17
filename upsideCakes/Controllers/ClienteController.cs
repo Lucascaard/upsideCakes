@@ -35,7 +35,7 @@ namespace upsideCakes.Controllers
             if (existingCliente is null) return NotFound();
             _dbContext.Entry(existingCliente).CurrentValues.SetValues(cliente);
             await _dbContext.SaveChangesAsync();
-            return Ok("Cliente alterado com sucesso.");
+            return Ok();
         }
 
         [HttpGet]
@@ -71,7 +71,7 @@ namespace upsideCakes.Controllers
 
             _dbContext.Cliente.Remove(clienteDeletar);
             await _dbContext.SaveChangesAsync();
-            return Ok($"Cliente com id {id} excluido com sucesso. ");
+            return Ok();
         }
     }
 

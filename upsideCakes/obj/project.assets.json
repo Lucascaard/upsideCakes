@@ -6087,24 +6087,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\GABRIELLE\\.nuget\\packages\\": {}
+    "C:\\Users\\vitor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "T:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+      "projectUniqueName": "C:\\Users\\vitor\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
       "projectName": "upsideCakes",
-      "projectPath": "T:\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
-      "packagesPath": "C:\\Users\\GABRIELLE\\.nuget\\packages\\",
-      "outputPath": "T:\\GitHub\\upsideCakes\\upsideCakes\\obj\\",
+      "projectPath": "C:\\Users\\vitor\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+      "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vitor\\Documents\\GitHub\\upsideCakes\\upsideCakes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\GABRIELLE\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6187,7 +6189,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ProdutosService } from './services/produtos.service';
 import { GerentesService } from './services/gerente.service';
 import { ClientesService } from './services/clientes.service';
+import { PedidosService } from './services/pedidos.service';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -88,7 +89,8 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     ProdutosService,
     GerentesService,
     PagamentoService,
-    ClientesService
+    ClientesService,
+    PedidosService
   ],
   bootstrap: [AppComponent]
 })

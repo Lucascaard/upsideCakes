@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Cardapio } from 'src/app/models/Cardapio';
 
 const httpOptions = {
@@ -21,12 +21,41 @@ export class CardapiosService {
 
     cadastrar(): Observable<any> {
       const url = `${this.apiUrl}/cadastrarCardapio`;
-      return this.http.post<Cardapio>(url, httpOptions);
+      return this.http.post<Cardapio>(url, httpOptions).pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            console.error(`Erro ao cadastrar cardápio.`);
+            alert(`Erro ao cadastrar cardápio.`);
+            // Pode tratar o erro de NotFound de alguma maneira específica aqui, por exemplo, redirecionar para uma página de erro.
+          }
+          if ( error.status == 500 || error.status === 503){
+            console.error(`Erro interno do servidor ao cadastrar cardápio.`);
+            alert(`Erro interno do servidor ao cadastrar cardápio.`);
+          }
+            return throwError('Algo deu errado ao cadastrar a filial.'); // Retorna um Observable de erro para que o componente também possa tratá-lo.
+          
+        }));
     }
 
     addItem(id: Number, idCardapio: Number): Observable<any> {
       const url = `${this.apiUrl}/addItem`;
-      return this.http.put<Cardapio>(url, httpOptions);
+      return this.http.put<Cardapio>(url, httpOptions).pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            console.error(`Erro ao cadastrar cardápio.`);
+            alert(`Erro ao cadastrar cardápio.`);
+          }
+          if ( error.status == 500 || error.status === 503){
+            console.error(`Erro interno do servidor ao cadastrar item ao cardápio.`);
+            alert(`Erro interno do servidor ao cadastrar item ao cardápio.`);
+          }
+          if (id == null || idCardapio == null || error.status === 400){
+            console.error('Digite um ID válido inserir um item a um cardápio.');
+            alert('Digite um ID válido inserir um item a um cardápio.');
+          }
+            return throwError('Algo deu errado ao cadastrar a filial.');
+          
+        }));
     }
 
     listar(): Observable<Cardapio[]> {
@@ -36,16 +65,49 @@ export class CardapiosService {
 
     listarPorID(id: Number): Observable<Cardapio> {
       const url = `${this.apiUrl}/listar/${id}`;
-      return this.http.get<Cardapio>(url);
+      return this.http.get<Cardapio>(url).pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            console.error(`Cardápio com ID ${id} não encontrado.`);
+            alert(`Cardápio com ID ${id} não encontrado.`);
+          }
+          if ( error.status == 500 || error.status === 503){
+            console.error('Erro ao buscar cardápio!');
+            alert('Erro ao buscar cardápio!');
+          }
+          if (id == null || error.status === 400){
+            console.error('Digite um ID válido para buscar um cardápio.');
+            alert('Digite um ID válido para buscar um cardápio.');
+          }
+            return throwError('Algo deu errado ao buscar o cardápio.');
+          
+        })
+      );;
     }
 
-    alterar(cardapio: Cardapio): Observable<any> {
+    alterar(idProduto: number, idCardapio: number): Observable<any> {
       const url = `${this.apiUrl}/alterar`;
-      return this.http.put<Cardapio>(url, cardapio, { responseType: 'text' as 'json' });
+      return this.http.put<Cardapio>(url, { responseType: 'text' as 'json' });
     }
 
     excluir(id: Number): Observable<any> {
-      const url = `${this.apiUrl}/excluir`;
-      return this.http.delete<string>(url, { responseType: 'text' as 'json' });
+      const url = `${this.apiUrl}/excluir/${id}`;
+      return this.http.delete<string>(url, { responseType: 'text' as 'json' }).pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            console.error(`Erro ao excluir cardápio.`);
+            alert(`Erro ao excluir cardápio.`);
+          }
+          if ( error.status == 500 || error.status === 503){
+            console.error(`Erro interno do servidor ao deletar cardápio.`);
+            alert(`Erro interno do servidor ao deletar cardápio.`);
+          }
+          if (id == null || error.status === 400){
+            console.error('Digite um ID válido para deletar o cardápio.');
+            alert('Digite um ID válido para deletar o cardápio.');
+          }
+            return throwError('Algo deu errado ao cadastrar a filial.');
+          
+        }));
     }
 }

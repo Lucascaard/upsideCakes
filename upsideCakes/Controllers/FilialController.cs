@@ -58,7 +58,7 @@ public class FilialController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("excluir")]
+    [Route("excluir/{id}")]
     public async Task<ActionResult> Excluir(int id)
     {
         var filial = await _dbContext.Filial.FindAsync(id);

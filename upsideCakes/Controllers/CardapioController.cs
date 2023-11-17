@@ -44,10 +44,10 @@ public class CardapioController : ControllerBase
     }
 
     [HttpPut]
-    [Route("alterar")]
-    public async Task<ActionResult> alterar (int idCardapio, Produto produto)
+    [Route("alterar/{id}")]
+    public async Task<ActionResult> alterar (int id, Produto produto)
     {
-        var cardapio = await _dbContext.Cardapio.FindAsync(idCardapio);
+        var cardapio = await _dbContext.Cardapio.FindAsync(id);
         var item = _dbContext.Produto
             .FirstOrDefault(c => c.id == produto.id);
 
@@ -81,12 +81,20 @@ public class CardapioController : ControllerBase
 
     [HttpGet]
     [Route("listar/{id}")]
-    public async Task<ActionResult<IEnumerable<Cardapio>>> Buscar(int id)
+    public async Task<ActionResult<Cardapio>> Buscar(int id)
     {
-        var cardapio = _dbContext.Cardapio
-            .Include(c => c.itens)
-            .Where(c => c.id == id)
-            .ToList();
+        // var cardapio = _dbContext.Cardapio
+        //     .Include(c => c.itens)
+        //     .Where(c => c.id == id)
+        //     .ToList();
+
+        var cardapio = await _dbContext.Cardapio
+        .Include(c => c.itens)
+        .FirstOrDefaultAsync(c => c.id == id);
+
+        if(cardapio == null){
+            return NotFound();
+        }
 
         return cardapio;
     }
@@ -112,7 +120,7 @@ public class CardapioController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("excluir")]
+    [Route("excluir/{id}")]
     public async Task<ActionResult> ExcluirCardapio(int id)
     {
         var cardapio = await _dbContext.Cardapio.FindAsync(id);

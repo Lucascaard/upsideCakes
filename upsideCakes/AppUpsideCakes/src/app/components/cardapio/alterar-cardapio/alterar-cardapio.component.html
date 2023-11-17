@@ -1,1 +1,40 @@
-<p>alterar-cardapio works!</p>
+<div class="container p-5">
+    <div class="row">
+        <div class="col-6 border border-light rounded p-5 shadow" *ngIf="formulario">
+            <h6>{{ tituloFormulario }}</h6>
+            <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+                <div class="form-group">
+                    <label>ID do Cardápio</label>
+                    <input type="text" class="form-control" formControlName="idCardapio" />
+                  </div>
+                  <div class="form-group">
+                    <label>ID do Produto</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="idProduto" />
+                </div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="nome" />
+                </div>
+                <div class="form-group">
+                    <label>Preço</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="preco" />
+                </div>
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="categoria" />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">Alterar</button>
+                        </div>
+                        <div class="pl-1">
+                            <button type="button" class="btn btn-sm btn-light" (click)="voltarParaHome()">Voltar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

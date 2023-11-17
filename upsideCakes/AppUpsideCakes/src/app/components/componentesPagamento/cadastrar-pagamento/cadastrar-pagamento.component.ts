@@ -34,6 +34,7 @@ export class CadastrarPagamentoComponent implements OnInit {
       valor: new FormControl(null),
       formaDePagamento: new FormControl(null),
       pedidos: new FormControl(null)
+    
     });
 
     // Carregar lista de clientes e pedidos do serviço
@@ -52,7 +53,7 @@ export class CadastrarPagamentoComponent implements OnInit {
       //clientes: this.formulario.get('clientes')?.value,
       valor: this.formulario.get('valor')?.value,
       formaDePagamento: this.formulario.get('formaDePagamento')?.value,
-     // pedidos: this.formulario.get('pedidos')?.value
+      //pedidos: this.formulario.get('pedidos')?.value
     };
 
     console.log(pagamento);

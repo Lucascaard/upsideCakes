@@ -100,7 +100,7 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
         return pagamentos;
     }
 */
- [HttpGet]
+        [HttpGet]
         [Route("listar")]
         public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
         {
@@ -112,8 +112,39 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
                 .Include(p => p.pedido) // Inclui a propriedade de navegação Pedido
                 .ToListAsync();
 
-            return Ok(pagamentos);
-        }
+
+    var detalhesPagamentos = new List<object>();
+
+    foreach (var pagamento in pagamentos)
+    {
+        var detalhesPagamento = new
+        {
+            IDPagamento = pagamento.id,
+            MetodoPagamento = pagamento.formaDePagamento,
+            Valor = pagamento.valor,
+            Data = pagamento.data,
+            Cliente = new
+            {
+                Nome = pagamento.cliente.nome,
+                Cpf = pagamento.cliente.cpf,
+                Telefone = pagamento.cliente.telefone,
+                Email = pagamento.cliente.email,
+
+                // Adicione outros detalhes do cliente, se necessário
+            },
+            Pedido = new
+            {
+                Numero = pagamento.pedido.itens,
+                Total = pagamento.pedido.qtde,
+                // Adicione outros detalhes do pedido, se necessário
+            }
+        };
+
+        detalhesPagamentos.Add(detalhesPagamento);
+    }
+
+    return Ok(detalhesPagamentos);
+    }
 
 
     [HttpDelete()]

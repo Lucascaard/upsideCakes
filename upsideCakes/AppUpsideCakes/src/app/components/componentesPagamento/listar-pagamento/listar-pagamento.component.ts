@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './listar-pagamentos.component.html',
   styleUrls: ['./listar-pagamentos.component.css']
 })
+
 export class ListarPagamentosComponent implements OnInit {
   pagamentos: Array<Pagamento> = [];
   pagamentosPorCliente: Array<Pagamento> = [];

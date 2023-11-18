@@ -5,10 +5,10 @@
         <div class="card-body mt-4">
           <h5>{{ tituloFormulario }}</h5>
           <div class="form-group">
-            <label for="idCliente">Nome do Cliente:</label>
-            <select class="form-control" id="idCliente" [(ngModel)]="idCliente">
-              <option value="">Selecione um nome</option>
-              <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+            <label for="idPedido">Nome do Pedido:</label>
+            <select class="form-control" id="idPedido" [(ngModel)]="idPedido">
+              <option value="">Selecione um pedido</option>
+              <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.dataCriacao }}</option>
             </select>
           </div>
           <div class="d-flex justify-content-between mt-3">
@@ -16,16 +16,15 @@
             <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
           </div>
           <div *ngIf="!mostrarListagemGeral">
-            <div *ngFor="let cliente of clientesPorId" class="card mt-2">
+            <div *ngFor="let pedido of pedidosPorId" class="card mt-2">
               <div class="card-header">
-                {{ cliente.nome }}
+                {{ pedido.dataCriacao }}
               </div>
               <div class="card-body">
-                <p>CPF: {{ cliente.cpf }}</p>
-                <p>Data de Nascimento: {{ cliente.dataNasc }}</p>
-                <p>Endereço: {{ cliente.endereco }}</p>
-                <p>Telefone: {{ cliente.telefone }}</p>
-                <p>Email: {{ cliente.email }}</p>
+                <p>Funcionário: {{ pedido.funcionario }}</p>
+                <p>Gerente: {{ pedido.gerente }}</p>
+                <p>Produto: {{ pedido.produto }}</p>
+                <p>Quantidade: {{ pedido.qtde }}</p>
               </div>
             </div>
           </div>
@@ -42,16 +41,15 @@
             <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
           </div>
           <div *ngIf="mostrarListagemGeral">
-            <div *ngFor="let cliente of clientes" class="card mt-2">
+            <div *ngFor="let pedido of pedidos" class="card mt-2">
               <div class="card-header">
-                {{ cliente.nome }}
+                {{ pedido.dataCriacao }}
               </div>
               <div class="card-body">
-                <p>CPF: {{ cliente.cpf }}</p>
-                <p>Data de Nascimento: {{ cliente.dataNasc }}</p>
-                <p>Endereço: {{ cliente.endereco }}</p>
-                <p>Telefone: {{ cliente.telefone }}</p>
-                <p>Email: {{ cliente.email }}</p>
+                <p>Funcionário: {{ pedido.funcionario }}</p>
+                <p>Gerente: {{ pedido.gerente }}</p>
+                <p>Produto: {{ pedido.produto }}</p>
+                <p>Quantidade: {{ pedido.qtde }}</p>
               </div>
             </div>
           </div>

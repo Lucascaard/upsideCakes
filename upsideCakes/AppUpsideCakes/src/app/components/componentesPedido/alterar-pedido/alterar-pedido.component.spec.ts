@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlterarClienteComponent } from './alterar-cliente.component';
+import { AlterarPedidoComponent } from './alterar-pedido.component';
 
-describe('AlterarClienteComponent', () => {
-  let component: AlterarClienteComponent;
-  let fixture: ComponentFixture<AlterarClienteComponent>;
+describe('AlterarPedidoComponent', () => {
+  let component: AlterarPedidoComponent;
+  let fixture: ComponentFixture<AlterarPedidoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AlterarClienteComponent]
+      declarations: [AlterarPedidoComponent]
     });
-    fixture = TestBed.createComponent(AlterarClienteComponent);
+    fixture = TestBed.createComponent(AlterarPedidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

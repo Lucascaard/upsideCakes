@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeletarClienteComponent } from './deletar-cliente.component';
+import { DeletarPedidoComponent } from './deletar-pedido.component';
 
-describe('DeletarClienteComponent', () => {
-  let component: DeletarClienteComponent;
-  let fixture: ComponentFixture<DeletarClienteComponent>;
+describe('DeletarPedidoComponent', () => {
+  let component: DeletarPedidoComponent;
+  let fixture: ComponentFixture<DeletarPedidoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DeletarClienteComponent]
+      declarations: [DeletarPedidoComponent]
     });
-    fixture = TestBed.createComponent(DeletarClienteComponent);
+    fixture = TestBed.createComponent(DeletarPedidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

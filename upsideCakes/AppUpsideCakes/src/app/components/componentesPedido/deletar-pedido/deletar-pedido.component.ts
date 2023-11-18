@@ -1,65 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Cliente } from '../../../models/Cliente';
-import { ClientesService } from '../../../services/clientes.service';
+import { Pedido } from '../../../models/Pedido';
+import { PedidosService } from '../../../services/pedidos.service';
 import { Router } from '@angular/router';
 import { Observer } from 'rxjs';
 
 @Component({
-  selector: 'app-deletar-cliente',
-  templateUrl: './deletar-cliente.component.html',
-  styleUrls: ['./deletar-cliente.component.css']
+  selector: 'app-deletar-pedido',
+  templateUrl: './deletar-pedido.component.html',
+  styleUrls: ['./deletar-pedido.component.css']
 })
-export class DeletarClienteComponent implements OnInit {
+export class DeletarPedidoComponent implements OnInit {
   
 
-  clienteSelecionado: Number | undefined;
+  pedidoSelecionado: Number | undefined;
   formulario: FormGroup = new FormGroup({});
   tituloFormulario: string = '';
-  clientes: Array<Cliente> | undefined;
+  pedidos: Array<Pedido> | undefined;
 
-  constructor(private clienteService: ClientesService, private router: Router) { }
+  constructor(private pedidoService: PedidosService, private router: Router) { }
   ngOnInit(): void {
-    this.tituloFormulario = 'Excluir Cliente';
+    this.tituloFormulario = 'Excluir Pedido';
 
-    this.carregarClientes();
+    this.carregarPedidos();
 
     this.formulario = new FormGroup({
-      clienteSelecionado: new FormControl(null)
+      pedidoSelecionado: new FormControl(null)
     })
   }
 
-  carregarClientes() {
-    this.clienteService.listar().subscribe(clientes => {
-      this.clientes = clientes;
-      if (this.clientes && this.clientes.length > 0) {
-        this.clienteSelecionado = this.clientes[0].id;
-        this.formulario.get('clienteSelecionado')?.setValue(this.clientes[0].id);
+  carregarPedidos() {
+    this.pedidoService.listar().subscribe(pedidos => {
+      this.pedidos = pedidos;
+      if (this.pedidos && this.pedidos.length > 0) {
+        this.pedidoSelecionado = this.pedidos[0].id;
+        this.formulario.get('pedidoSelecionado')?.setValue(this.pedidos[0].id);
       }
     });
   }
 
-  selecionarCliente(event: any) {
+  selecionarPedido(event: any) {
     const selectedValue = event.target.value;
     if (selectedValue) {
-      this.clienteSelecionado = parseInt(selectedValue, 10);
-      console.log('Cliente selecionado:', this.clienteSelecionado);
+      this.pedidoSelecionado = parseInt(selectedValue, 10);
+      console.log('Pedido selecionado:', this.pedidoSelecionado);
     } else {
       console.log('Valor selecionado é inválido:', selectedValue);
     }
   }
 
   enviarFormulario() {
-    // Verifique se um cliente foi selecionado
-    if (this.clienteSelecionado === undefined || this.clienteSelecionado === null) {
-      alert('Nenhum cliente selecionado.');
+    // Verifique se um pedido foi selecionado
+    if (this.pedidoSelecionado === undefined || this.pedidoSelecionado === null) {
+      alert('Nenhum pedido selecionado.');
       return;
     }
 
-    const observer: Observer<Cliente> = {
+    const observer: Observer<Pedido> = {
       next: (_result): void => {
-        alert('Cliente excluído com sucesso.');
-        this.carregarClientes(); // Atualiza a lista de clientes após a exclusão
+        alert('Pedido excluído com sucesso.');
+        this.carregarPedidos(); // Atualiza a lista de pedidos após a exclusão
       },
       error: (error): void => {
         console.log(error);
@@ -69,8 +69,8 @@ export class DeletarClienteComponent implements OnInit {
       },
     };
 
-    console.log(this.clienteSelecionado);
-    this.clienteService.excluir(this.clienteSelecionado).subscribe(observer);
+    console.log(this.pedidoSelecionado);
+    this.pedidoService.excluir(this.pedidoSelecionado).subscribe(observer);
   }
 
   voltarParaHome() {

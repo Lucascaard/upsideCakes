@@ -6,9 +6,9 @@
           <h5>{{ tituloFormulario }}</h5>
           <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
             <div class="form-group">
-              <label>Selecione um cliente que deseja excluir:</label>
-              <select formControlName="clienteSelecionado" class="form-control" (change)="selecionarCliente($event)">
-                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+              <label>Selecione um pedido que deseja excluir:</label>
+              <select formControlName="pedidoSelecionado" class="form-control" (change)="selecionarPedido($event)">
+                <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.nome }}</option>
               </select>
               <div class="d-flex justify-content-between mt-3">
                 <button type="submit" class="btn btn-primary">Excluir</button>

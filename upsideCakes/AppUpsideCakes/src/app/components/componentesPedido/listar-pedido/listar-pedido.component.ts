@@ -1,46 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from '../../../models/Cliente';
-import { ClientesService } from '../../../services/clientes.service';
+import { Pedido } from '../../../models/Pedido';
+import { PedidosService } from '../../../services/pedidos.service';
 
 @Component({
-  selector: 'app-listar-cliente',
-  templateUrl: './listar-cliente.component.html',
-  styleUrls: ['./listar-cliente.component.css']
+  selector: 'app-listar-pedido',
+  templateUrl: './listar-pedido.component.html',
+  styleUrls: ['./listar-pedido.component.css']
 })
-export class ListarClienteComponent implements OnInit {
-  clientes: Array<Cliente> = [];
-  clientesPorId: Array<Cliente> = [];
+export class ListarPedidoComponent implements OnInit {
+  pedidos: Array<Pedido> = [];
+  pedidosPorId: Array<Pedido> = [];
   mostrarListagemGeral: boolean = false;
-  idCliente: string = '';
-  tituloFormulario = 'Listar Clientes';
+  idPedido: string = '';
+  tituloFormulario = 'Listar Pedidos';
 
-  constructor(private clienteService: ClientesService, private router: Router) { }
+  constructor(private pedidoService: PedidosService, private router: Router) { }
 
   ngOnInit(): void {
-    this.clienteService.listar().subscribe(clientes => {
-      this.clientes = clientes;
+    this.pedidoService.listar().subscribe(pedidos => {
+      this.pedidos = pedidos;
     });
   }
 
   listarGeral() {
     this.mostrarListagemGeral = true;
-    this.clientesPorId = [];
+    this.pedidosPorId = [];
   }
 
   listarPorId() {
-    if (this.idCliente.trim() === '') {
+    if (this.idPedido.trim() === '') {
       this.listarGeral();
       return;
     }
 
-    if (this.idCliente !== undefined) {
-      this.clienteService.listarPorID(parseInt(this.idCliente)).subscribe(cliente => {
-        this.clientesPorId = [cliente];
+    if (this.idPedido !== undefined) {
+      this.pedidoService.listarPorID(parseInt(this.idPedido)).subscribe(pedido => {
+        this.pedidosPorId = [pedido];
         this.mostrarListagemGeral = false;
       });
     } else {
-      this.clientesPorId = [];
+      this.pedidosPorId = [];
       this.mostrarListagemGeral = false;
     }
   }

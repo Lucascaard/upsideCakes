@@ -44,6 +44,11 @@ import { ListarClienteComponent } from './components/componentesCliente/listar-c
 import { AlterarClienteComponent } from './components/componentesCliente/alterar-cliente/alterar-cliente.component';
 import { DeletarClienteComponent } from './components/componentesCliente/deletar-cliente/deletar-cliente.component';
 
+import { CadastrarPedidoComponent } from './components/componentesPedido/cadastrar-pedido/cadastrar-pedido.component';
+import { ListarPedidoComponent } from './components/componentesPedido/listar-pedido/listar-pedido.component';
+import { AlterarPedidoComponent } from './components/componentesPedido/alterar-pedido/alterar-pedido.component';
+import { DeletarPedidoComponent } from './components/componentesPedido/deletar-pedido/deletar-pedido.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +77,12 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     AlterarPagamentoComponent,
     CadastrarPagamentoComponent,
     DeletarPagamentoComponent,
-    ListarPagamentoComponent
+    ListarPagamentoComponent,
+
+    AlterarPedidoComponent,
+    CadastrarPedidoComponent,
+    DeletarPedidoComponent,
+    ListarPedidoComponent
   ],
   imports: [
     BrowserModule,

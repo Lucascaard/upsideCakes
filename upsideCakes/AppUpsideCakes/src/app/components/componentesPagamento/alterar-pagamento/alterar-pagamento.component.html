@@ -5,39 +5,34 @@
           <div class="card-body">
             <h5>{{ tituloFormulario }}</h5>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+
               <div class="form-group">
-                <label>Data</label>
-                <input type="date" class="form-control" formControlName="data" />
-              </div>
-               <!--
-              <div class="form-group">
-                <label>Cliente</label>
-                <select formControlName="clienteSelecionado" class="form-control">
-                  <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+                <label>Selecione um ID de Pagamento:</label>
+                <select formControlName="idPagamento" class="form-control" (change)="selecionarPagamento($event)">
+                  <option *ngFor="let pagamento of pagamentos" [value]="pagamento.id">{{ pagamento.id }}</option>
                 </select>
               </div>
-              -->
+
               <div class="form-group">
                 <label>Valor</label>
                 <input type="number" class="form-control" formControlName="valor" />
               </div>
-              <div class="form-group">
-                <label>Forma de Pagamento</label>
-                <input type="text" class="form-control" formControlName="formaDePagamento" />
-              </div>
 
               <div class="form-group">
-                <label>Nome do Cliente</label>
-                <input type="text" class="form-control" formControlName="nomeCliente" />
-              </div>
-              <!--
-              <div class="form-group">
-                <label>Pedido</label>
-                <select formControlName="pedidoSelecionado" class="form-control">
-                  <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.descricao }}</option>
+                <label>Forma de Pagamento:</label>
+                <select formControlName="formaDePagamento" class="form-control">
+                  <option *ngFor="let opcao of opcoesPagamento" [value]="opcao">{{ opcao }}</option>
                 </select>
-              </div> 
-              -->
+              </div>
+
+
+              <div class="form-group">
+                <label>Cliente</label>
+                <select formControlName="nomeCliente" class="form-control">
+                  <option *ngFor="let cliente of clientes" [value]="cliente.nome">{{ cliente.nome }}</option>
+                </select>
+              </div>
+
               <div class="d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary">Alterar</button>
                 <button class="btn btn-primary" (click)="voltarParaHome()">Voltar</button>
@@ -48,4 +43,3 @@
       </div>
     </div>
   </div>
-  

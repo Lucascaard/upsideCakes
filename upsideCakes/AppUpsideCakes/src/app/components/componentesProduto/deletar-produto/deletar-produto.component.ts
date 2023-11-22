@@ -13,12 +13,11 @@ import { Router } from '@angular/router';
 export class DeletarProdutoComponent implements OnInit {
   produtoSelecionado: Number | undefined;
   formulario: FormGroup = new FormGroup({});
-  tituloFormulario: string = '';
+  tituloFormulario: string = 'Excluir Produto';
   produtos: Array<Produto> | undefined;
 
   constructor(private produtoService: ProdutosService, private router: Router) { }
   ngOnInit(): void {
-    this.tituloFormulario = 'Excluir Produto';
 
     this.carregarProdutos();
 

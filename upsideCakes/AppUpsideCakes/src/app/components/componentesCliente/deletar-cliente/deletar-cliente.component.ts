@@ -59,7 +59,7 @@ export class DeletarClienteComponent implements OnInit {
     const observer: Observer<Cliente> = {
       next: (_result): void => {
         alert('Cliente excluído com sucesso.');
-        this.carregarClientes(); // Atualiza a lista de clientes após a exclusão
+        this.carregarClientes(); // Atualiza a lista de listaDeClientes após a exclusão
       },
       error: (error): void => {
         console.log(error);

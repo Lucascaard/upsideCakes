@@ -12,11 +12,10 @@ import { Router } from '@angular/router';
 })
 export class CadastrarProdutoComponent implements OnInit {
   formulario: any;
-  tituloFormulario: string = '';
+  tituloFormulario: string = 'Novo Produto';
 
   constructor(private produtoService: ProdutosService, private router: Router) { }
   ngOnInit(): void {
-    this.tituloFormulario = 'Novo Produto';
 
     this.formulario = new FormGroup({
       nome: new FormControl(null),

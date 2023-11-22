@@ -15,6 +15,7 @@ import { ProdutosService } from './services/produtos.service';
 import { GerentesService } from './services/gerente.service';
 import { ClientesService } from './services/clientes.service';
 import { PagamentoService } from './services/pagamento.service';
+import { PedidosService } from './services/pedidos.service';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -42,6 +43,11 @@ import { CadastrarClienteComponent } from './components/componentesCliente/cadas
 import { ListarClienteComponent } from './components/componentesCliente/listar-cliente/listar-cliente.component';
 import { AlterarClienteComponent } from './components/componentesCliente/alterar-cliente/alterar-cliente.component';
 import { DeletarClienteComponent } from './components/componentesCliente/deletar-cliente/deletar-cliente.component';
+
+import { CadastrarPedidoComponent } from './components/componentesPedido/cadastrar-pedido/cadastrar-pedido.component';
+import { ListarPedidoComponent } from './components/componentesPedido/listar-pedido/listar-pedido.component';
+import { AlterarPedidoComponent } from './components/componentesPedido/alterar-pedido/alterar-pedido.component';
+import { DeletarPedidoComponent } from './components/componentesPedido/deletar-pedido/deletar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -71,9 +77,11 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     AlterarPagamentoComponent,
     CadastrarPagamentoComponent,
     ListarPagamentosComponent,
-    DeletarPagamentoComponent
-    
-    
+    DeletarPagamentoComponent,
+    AlterarPedidoComponent,
+    CadastrarPedidoComponent,
+    DeletarPedidoComponent,
+    ListarPedidoComponent
   ],
   imports: [
     BrowserModule,
@@ -90,8 +98,8 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     ProdutosService,
     GerentesService,
     ClientesService,
-    PagamentoService
-    
+    PagamentoService,
+    PedidosService
   ],
   bootstrap: [AppComponent]
 })

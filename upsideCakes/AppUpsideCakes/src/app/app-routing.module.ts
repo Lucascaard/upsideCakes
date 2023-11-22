@@ -31,6 +31,12 @@ import { ListarClienteComponent } from './components/componentesCliente/listar-c
 import { AlterarClienteComponent } from './components/componentesCliente/alterar-cliente/alterar-cliente.component';
 import { DeletarClienteComponent } from './components/componentesCliente/deletar-cliente/deletar-cliente.component';
 
+//Imports de componentes de Pedido
+import { CadastrarPedidoComponent } from './components/componentesPedido/cadastrar-pedido/cadastrar-pedido.component';
+import { ListarPedidoComponent } from './components/componentesPedido/listar-pedido/listar-pedido.component';
+import { AlterarPedidoComponent } from './components/componentesPedido/alterar-pedido/alterar-pedido.component';
+import { DeletarPedidoComponent } from './components/componentesPedido/deletar-pedido/deletar-pedido.component';
+
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -41,6 +47,12 @@ const routes: Routes = [
   { path: 'produtos/listar', component: ListarProdutosComponent },
   { path: 'produtos/alterar', component: AlterarProdutoComponent },
   { path: 'produtos/deletar', component: DeletarProdutoComponent },
+
+  //Rotas de pedido
+  { path: 'pedido/cadastrar', component: CadastrarPedidoComponent },
+  { path: 'pedido/listar', component: ListarPedidoComponent },
+  { path: 'pedido/alterar', component: AlterarPedidoComponent },
+  { path: 'pedido/deletar', component: DeletarPedidoComponent },
 
   //Rotas de funcionario
   { path: 'funcionario/cadastrar', component: CadastrarFuncionarioComponent },

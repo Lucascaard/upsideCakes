@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body mt-4">
+          <h5>{{ tituloFormulario }}</h5>
+          <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+            <div class="form-group">
+              <label>Selecione um pedido que deseja excluir:</label>
+              <select formControlName="pedidoSelecionado" class="form-control" (change)="selecionarPedido($event)">
+                <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.nome }}</option>
+              </select>
+              <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-primary">Excluir</button>
+                <button class="btn btn-primary" (click)="voltarParaHome()">Voltar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

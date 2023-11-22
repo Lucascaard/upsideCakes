@@ -8,6 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UpsideCakesDbContext>();
+// builder.Services.AddCors();
 builder.Services.AddCors(options =>
 {
 options.AddPolicy("AllowAnyOrigin",
@@ -25,6 +26,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAnyOrigin");
+// app.UseCors(opcoes => opcoes.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 app.UseAuthorization();
 app.MapControllers();
 

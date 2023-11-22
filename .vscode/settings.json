@@ -1,3 +1,6 @@
 {
-    "dotnet.defaultSolution": "upsideCakes/upsideCakes.sln"
+    "dotnet.defaultSolution": "upsideCakes/upsideCakes.sln",
+    "workbench.settings.useSplitJSON": false,
+    "terminal.integrated.shell.windows": "D:\\Programacao\\nodejs"
+
 }

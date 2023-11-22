@@ -36,6 +36,16 @@ import { CadastrarPedidoComponent } from './components/componentesPedido/cadastr
 import { ListarPedidoComponent } from './components/componentesPedido/listar-pedido/listar-pedido.component';
 import { AlterarPedidoComponent } from './components/componentesPedido/alterar-pedido/alterar-pedido.component';
 import { DeletarPedidoComponent } from './components/componentesPedido/deletar-pedido/deletar-pedido.component';
+// Imports componentes de Filial
+import {CadastrarFilialComponent } from './components/filiais/cadastrar-filial/cadastrar-filial.component';
+import { AlterarFilialComponent } from './components/filiais/alterar-filial/alterar-filial.component';
+import { ListarFilialComponent } from './components/filiais/listar-filial/listar-filial.component';
+import { DeletarFilialComponent } from './components/filiais/deletar-filial/deletar-filial.component';
+import { CadastrarCardapioComponent } from './components/cardapio/cadastrar-cardapio/cadastrar-cardapio.component';
+import { AlterarCardapioComponent } from './components/cardapio/alterar-cardapio/alterar-cardapio.component';
+import { ListarCardapioComponent } from './components/cardapio/listar-cardapio/listar-cardapio.component';
+import { DeletarCardapioComponent } from './components/cardapio/deletar-cardapio/deletar-cardapio.component';
+import { AddItemCardapioComponent } from './components/cardapio/add-item-cardapio/add-item-cardapio/add-item-cardapio.component';
 
 const routes: Routes = [
   //Redirenciona a rota vazia '' para rota /home
@@ -77,6 +87,18 @@ const routes: Routes = [
   { path: 'pagamento/listar', component: ListarPagamentosComponent },
   { path: 'pagamento/alterar', component: AlterarPagamentoComponent },
   { path: 'pagamento/deletar', component: DeletarPagamentoComponent } 
+  // Rota de filiais
+  { path: 'filial/cadastrar', component: CadastrarFilialComponent },
+  { path: 'filial/alterar', component: AlterarFilialComponent },
+  { path: 'filial/listar', component: ListarFilialComponent },
+  { path: 'filial/excluir', component: DeletarFilialComponent },
+
+  // Rota de cardapio
+  { path: 'cardapio/cadastrar', component: CadastrarCardapioComponent },
+  { path: 'cardapio/alterar', component: AlterarCardapioComponent },
+  { path: 'cardapio/listar', component: ListarCardapioComponent },
+  { path: 'cardapio/excluir', component: DeletarCardapioComponent },
+  { path: 'cardapio/addItem', component: AddItemCardapioComponent }
 ];
 
 @NgModule({

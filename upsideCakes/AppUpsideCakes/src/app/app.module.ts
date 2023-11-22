@@ -48,6 +48,20 @@ import { CadastrarPedidoComponent } from './components/componentesPedido/cadastr
 import { ListarPedidoComponent } from './components/componentesPedido/listar-pedido/listar-pedido.component';
 import { AlterarPedidoComponent } from './components/componentesPedido/alterar-pedido/alterar-pedido.component';
 import { DeletarPedidoComponent } from './components/componentesPedido/deletar-pedido/deletar-pedido.component';
+// Filial
+import { FiliaisService } from './services/Filial/filiais.service';
+import { CadastrarFilialComponent } from './components/filiais/cadastrar-filial/cadastrar-filial.component';
+import { AlterarFilialComponent } from './components/filiais/alterar-filial/alterar-filial.component';
+import { ListarFilialComponent } from './components/filiais/listar-filial/listar-filial.component';
+import { DeletarFilialComponent } from './components/filiais/deletar-filial/deletar-filial.component';
+
+//Cardapio
+import { CardapiosService } from './services/Cardapio/cardapios.service';
+import { AlterarCardapioComponent } from './components/cardapio/alterar-cardapio/alterar-cardapio.component';
+import { CadastrarCardapioComponent } from './components/cardapio/cadastrar-cardapio/cadastrar-cardapio.component';
+import { ListarCardapioComponent } from './components/cardapio/listar-cardapio/listar-cardapio.component';
+import { DeletarCardapioComponent } from './components/cardapio/deletar-cardapio/deletar-cardapio.component';
+import { AddItemCardapioComponent } from './components/cardapio/add-item-cardapio/add-item-cardapio/add-item-cardapio.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +95,16 @@ import { DeletarPedidoComponent } from './components/componentesPedido/deletar-p
     AlterarPedidoComponent,
     CadastrarPedidoComponent,
     DeletarPedidoComponent,
-    ListarPedidoComponent
+    ListarPedidoComponent,
+    CadastrarFilialComponent,
+    AlterarFilialComponent,
+    ListarFilialComponent,
+    DeletarFilialComponent,
+    AlterarCardapioComponent,
+    CadastrarCardapioComponent,
+    ListarCardapioComponent,
+    DeletarCardapioComponent,
+    AddItemCardapioComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +122,9 @@ import { DeletarPedidoComponent } from './components/componentesPedido/deletar-p
     GerentesService,
     ClientesService,
     PagamentoService,
-    PedidosService
+    PedidosService,
+    FiliaisService,
+    CardapiosService
   ],
   bootstrap: [AppComponent]
 })

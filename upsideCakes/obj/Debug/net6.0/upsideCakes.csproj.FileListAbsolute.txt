@@ -549,3 +549,9 @@ C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\package.json
 C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.app.json
 C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.json
 C:\GitHub\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.spec.json
+D:\Estudos\CSharp\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\angular.json
+D:\Estudos\CSharp\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\package-lock.json
+D:\Estudos\CSharp\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\package.json
+D:\Estudos\CSharp\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.app.json
+D:\Estudos\CSharp\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.json
+D:\Estudos\CSharp\upsideCakes\upsideCakes\bin\Debug\net6.0\AppUpsideCakes\tsconfig.spec.json

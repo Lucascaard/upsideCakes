@@ -4,9 +4,11 @@
             <h6>{{ tituloFormulario }}</h6>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
                 <div class="form-group">
-                    <label>ID</label>
-                    <input type="text" class="form-control" formControlName="id" />
-                  </div>
+                    <label>Selecione uma filial:</label>
+                    <select formControlName="filialSelecionada" class="form-control" (change)="selecionarFilial($event)">
+                      <option *ngFor="let filial of filiais" [value]="filial.id">{{ filial.id }} - {{ filial.cidade }}</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label>CEP</label>
                     <input type="text" class="form-control form-control-sm" formControlName="cep" />

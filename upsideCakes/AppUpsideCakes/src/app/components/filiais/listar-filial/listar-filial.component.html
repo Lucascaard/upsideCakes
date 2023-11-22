@@ -8,7 +8,7 @@
           <div class="form-group">
             <label for="idFilial">Nome da Filial:</label>
             <select class="form-control" id="idFilial" [(ngModel)]="idFilial">
-              <option value="">Selecione um Cardápio</option>
+              <option value="">Selecione uma Filial</option>
               <option *ngFor="let filial of filiais" [value]="filial.id">{{ filial.cidade }}</option>
             </select>
           </div>
@@ -22,8 +22,8 @@
                 <b>{{ filial.cidade }}</b>
               </div>
               <div class="card-body">
-                <p>{{ filial.rua }}</p>
-                <p>{{ filial.cep }}</p>
+                <p>Endereço: {{ filial.rua }}</p>
+                <p>CEP: {{ filial.cep }}</p>
               </div>
             </div>
           </div>
@@ -45,8 +45,8 @@
                 <b>{{ filial.cidade }}</b>
               </div>
               <div class="card-body">
-                <p>{{ filial.rua }}</p>
-                <p>{{ filial.cep }}</p>
+                <p>Endereço: {{ filial.rua }}</p>
+                <p>CEP: {{ filial.cep }}</p>
               </div>
             </div>
           </div>

@@ -6087,19 +6087,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vitor\\.nuget\\packages\\": {}
+    "C:\\Users\\lucas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vitor\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
       "projectName": "upsideCakes",
-      "projectPath": "C:\\Users\\vitor\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
-      "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vitor\\Documents\\GitHub\\upsideCakes\\upsideCakes\\obj\\",
+      "projectPath": "C:\\Users\\lucas\\Documents\\GitHub\\upsideCakes\\upsideCakes\\upsideCakes.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas\\Documents\\GitHub\\upsideCakes\\upsideCakes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6189,7 +6189,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

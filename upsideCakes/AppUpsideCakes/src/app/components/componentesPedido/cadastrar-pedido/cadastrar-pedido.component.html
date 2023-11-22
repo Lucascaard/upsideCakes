@@ -7,15 +7,15 @@
           <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
             <div class="form-group">
               <label>Data de Criação</label>
-              <input type="text" class="form-control w-80" formControlName="dataCriacao" />
+              <input type="date" class="form-control w-80" formControlName="dataCriacao" />
             </div>
             <div class="form-group">
-              <label>Funcionário</label>
+              <label>Nome do Funcionário</label>
               <input type="text" class="form-control w-80" formControlName="funcionario" />
             </div>
             <div class="form-group">
               <label>Gerente</label>
-              <input type="date" class="form-control w-80" formControlName="gerente" />
+              <input type="text" class="form-control w-80" formControlName="gerente" />
             </div>
             <div class="form-group">
               <label>Produto</label>

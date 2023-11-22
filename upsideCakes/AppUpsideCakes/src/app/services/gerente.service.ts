@@ -34,11 +34,11 @@ export class GerentesService {
 
   alterar(gerente: Gerente): Observable<any> {
     const url = `${this.apiUrl}/alterar`;
-    return this.http.put<Gerente>(url, gerente, HttpOptions);
+    return this.http.put<Gerente>(url, gerente, { responseType: 'text' as 'json' });
   }
 
   excluir(id: Number): Observable<any> {
     const url = `${this.apiUrl}/excluir/${id}`;
-    return this.http.delete<string>(url, HttpOptions);
+    return this.http.delete<string>(url, { responseType: 'text' as 'json' });
   }
 }

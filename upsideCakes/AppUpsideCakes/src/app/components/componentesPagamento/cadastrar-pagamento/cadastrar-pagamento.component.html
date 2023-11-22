@@ -9,12 +9,14 @@
                 <label>Data</label>
                 <input type="date" class="form-control" formControlName="data" />
               </div>
+             <!--
               <div class="form-group">
                 <label>Cliente</label>
                 <select formControlName="clientes" class="form-control">
                   <option *ngFor="let cliente of clientes" [value]="cliente">{{ cliente.nome }}</option>
                 </select>
-              </div>
+              </div>-->
+
               <div class="form-group">
                 <label>Valor</label>
                 <input type="number" class="form-control" formControlName="valor" />
@@ -23,12 +25,19 @@
                 <label>Forma de Pagamento</label>
                 <input type="text" class="form-control" formControlName="formaDePagamento" />
               </div>
+
+              <div class="form-group">
+                <label>Nome do Cliente</label>
+                <input type="text" class="form-control" formControlName="nomeCliente" />
+              </div>
+              <!--
               <div class="form-group">
                 <label>Pedido</label>
                 <select formControlName="pedidos" class="form-control">
                   <option *ngFor="let pedido of pedidos" [value]="pedido">{{ pedido.descricao }}</option>
                 </select>
               </div>
+              -->
               <div class="d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                 <button class="btn btn-primary" (click)="voltarParaHome()">Voltar</button>

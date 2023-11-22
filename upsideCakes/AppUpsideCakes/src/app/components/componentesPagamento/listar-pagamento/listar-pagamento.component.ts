@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class ListarPagamentosComponent implements OnInit {
   pagamentos: Array<Pagamento> = [];
-  pagamentosPorCliente: Array<Pagamento> = [];
+  //pagamentosPorCliente: Array<Pagamento> = [];
   mostrarListagemGeral: boolean = false;
   nomeCliente: string = '';
   tituloFormulario = '';
@@ -29,7 +29,6 @@ export class ListarPagamentosComponent implements OnInit {
 
   listarGeral() {
     this.mostrarListagemGeral = true;
-    this.pagamentosPorCliente = [];
   }
 /*
   listarPorCliente() {

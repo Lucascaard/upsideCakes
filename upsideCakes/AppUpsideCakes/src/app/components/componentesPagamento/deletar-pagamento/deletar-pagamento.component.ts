@@ -49,7 +49,7 @@ export class DeletarPagamentoComponent implements OnInit {
   }
 
   enviarFormulario() {
-    // Verifique se um pagamento foi selecionado
+    
     if (this.pagamentoSelecionado === undefined || this.pagamentoSelecionado === null) {
       alert('Nenhum pagamento selecionado.');
       return;
@@ -58,7 +58,7 @@ export class DeletarPagamentoComponent implements OnInit {
     const observer: Observer<Pagamento> = {
       next: (_result): void => {
         alert('Pagamento excluído com sucesso.');
-        this.carregarPagamentos(); // Atualiza a lista de pagamentos após a exclusão
+        this.carregarPagamentos(); 
       },
       error: (error): void => {
         console.log(error);
@@ -68,7 +68,6 @@ export class DeletarPagamentoComponent implements OnInit {
       },
     };
 
-    // Excluir o pagamento no seu serviço
     this.pagamentoService.excluir(this.pagamentoSelecionado).subscribe(observer);
   }
 

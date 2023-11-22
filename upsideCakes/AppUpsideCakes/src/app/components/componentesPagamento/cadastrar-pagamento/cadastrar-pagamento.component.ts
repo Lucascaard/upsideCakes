@@ -16,12 +16,27 @@ import { ClientesService } from 'src/app/services/clientes.service';
 })
 export class CadastrarPagamentoComponent implements OnInit {
   formulario: any;
-  clientes: Array<Cliente> | undefined;
-  pedidos: Array<Pedido> | undefined;
+  //clientes: Array<Cliente> | undefined;
+  //pedidos: Array<Pedido> | undefined;
   tituloFormulario: string = '';
 
-  constructor(
-    private clienteService: ClientesService,
+
+  constructor(private pagamentoService: PagamentoService, private router: Router) { }
+  ngOnInit(): void {
+    this.tituloFormulario = 'Novo Pagamento';
+
+    this.formulario = new FormGroup({
+      data: new FormControl(null),
+      //clientes: new FormControl(null),
+      valor: new FormControl(null),
+      formaDePagamento: new FormControl(null),
+      nomeCliente: new FormControl(null)
+      //pedidos: new FormControl(null)
+    })
+  }
+
+  /*constructor(
+    //private clienteService: ClientesService,
    // private pedidoService: PedidosService,
     private pagamentoService: PagamentoService,
     private router: Router
@@ -45,9 +60,21 @@ export class CadastrarPagamentoComponent implements OnInit {
    /* this.pedidoService.listar().subscribe(pedidos => {
       this.pedidos = pedidos;
     });*/
-  }
-
-  enviarFormulario() {
+  
+  enviarFormulario(): void {
+    const pagamento: Pagamento = this.formulario.value;
+    const observer: Observer<Pagamento> = {
+      next(_result): void {
+        alert('Pagamento salvo com sucesso.');
+      },
+      error(_error): void {
+        alert('Erro ao salvar!');
+      },
+      complete(): void {
+      },
+    };
+    this.pagamentoService.cadastrar(pagamento).subscribe(observer);
+  }/*{
     const pagamento: Pagamento = {
       data: this.formulario.get('data')?.value,
       //clientes: this.formulario.get('clientes')?.value,
@@ -72,7 +99,7 @@ export class CadastrarPagamentoComponent implements OnInit {
 
     // Chamar o serviço para cadastrar o pagamento
     this.pagamentoService.cadastrar(pagamento).subscribe(observer);
-  }
+  }*/
 
   voltarParaHome() {
     this.router.navigate(['/home']);

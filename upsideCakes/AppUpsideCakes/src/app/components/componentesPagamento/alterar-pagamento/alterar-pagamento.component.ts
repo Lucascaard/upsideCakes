@@ -17,8 +17,8 @@ export class AlterarPagamentoComponent implements OnInit {
   formulario: any;
   tituloFormulario: string = '';
   pagamentos: Array<Pagamento> | undefined;
-  clientes: Array<Cliente> | undefined;
-  pedidos: Array<Pedido> | undefined;
+ // clientes: Array<Cliente> | undefined;
+ // pedidos: Array<Pedido> | undefined;
 
   constructor(private pagamentoService: PagamentoService, private router: Router) { }
 
@@ -31,7 +31,7 @@ export class AlterarPagamentoComponent implements OnInit {
         this.pagamentoSelecionado = this.pagamentos[0].id;
         this.formulario.get('pagamentoSelecionado')?.setValue(this.pagamentos[0].id);
       }
-    });
+    })/*;
 
     // Recupere a lista de clientes do seu serviço
     this.clienteService.listar().subscribe(clientes => {
@@ -41,15 +41,17 @@ export class AlterarPagamentoComponent implements OnInit {
     // Recupere a lista de pedidos do seu serviço
     this.pedidoService.listar().subscribe(pedidos => {
       this.pedidos = pedidos;
-    });
+    });*/
 
     this.formulario = new FormGroup({
+      data: new FormControl(null),
       valor: new FormControl(null),
       formaDePagamento: new FormControl(null),
-      clienteSelecionado: new FormControl(null),
-      pedidoSelecionado: new FormControl(null),
+      nomeCliente: new FormControl(null),
+      //clienteSelecionado: new FormControl(null),
+      //pedidoSelecionado: new FormControl(null),
       pagamentoSelecionado: new FormControl(null)
-    });
+    })
   }
 
   selecionarPagamento(event: any) {
@@ -63,13 +65,13 @@ export class AlterarPagamentoComponent implements OnInit {
   }
 
   enviarFormulario() {
-    // Verifique se um pagamento foi selecionado
+    // ver se algum pagamento foi selecionado
     if (this.pagamentoSelecionado === undefined || this.pagamentoSelecionado === null) {
       alert('Nenhum pagamento selecionado.');
       return;
     }
 
-    // Recupere os detalhes do pagamento selecionado do seu serviço
+    // detalhes do pagamento do seu service
     const pagamentoSelecionado = this.pagamentos?.find(pagamento => pagamento.id === this.pagamentoSelecionado);
 
     if (!pagamentoSelecionado) {
@@ -77,10 +79,13 @@ export class AlterarPagamentoComponent implements OnInit {
       return;
     }
 
-    // Atualize os campos de valor e forma de pagamento do pagamento selecionado
+    // Atualizar o pagamento selecionado
+    pagamentoSelecionado.data = this.formulario.get('data')?.value;
     pagamentoSelecionado.valor = this.formulario.get('valor')?.value;
     pagamentoSelecionado.formaDePagamento = this.formulario.get('formaDePagamento')?.value;
+    pagamentoSelecionado.nomeCliente = this.formulario.get('nomeCliente')?.value;
 
+    /*
     // Recupere o cliente selecionado do seu serviço
     const clienteSelecionado = this.clientes?.find(cliente => cliente.id === this.formulario.get('clienteSelecionado')?.value);
 
@@ -102,7 +107,7 @@ export class AlterarPagamentoComponent implements OnInit {
 
     // Atualize o pedido do pagamento selecionado
     pagamentoSelecionado.pedido = pedidoSelecionado;
-
+*/
     console.log(pagamentoSelecionado);
 
     const observer: Observer<Pagamento> = {
@@ -117,7 +122,7 @@ export class AlterarPagamentoComponent implements OnInit {
       },
     };
 
-    // Atualize o pagamento no seu serviço
+    // Atualize o pagamento no service
     this.pagamentoService.alterar(pagamentoSelecionado).subscribe(observer);
   }
 

@@ -23,7 +23,7 @@ public class PagamentoController : ControllerBase
 public async Task<ActionResult> Cadastrar(Pagamento pagamento)
 {
    if (_dbContext is null) return NotFound();
-
+/*
    var clienteExiste = await _dbContext.Cliente.FindAsync(pagamento.idCliente);
    if (clienteExiste is null) return BadRequest("Cliente especificado não existe");
 
@@ -39,13 +39,13 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
    else
    {
        await _dbContext.AddAsync(pagamento);
-   }
-
+   }*/
+   await _dbContext.AddAsync(pagamento);
    await _dbContext.SaveChangesAsync();
    return Created("Pagamento realizado!", pagamento);
 }
 
-
+/*
     [HttpGet()]
     [Route("buscarCliente/{id}")]
     public async Task<ActionResult<Cliente>> BuscarCliente(int id)
@@ -57,8 +57,8 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
         if (clienteLista is null) return NotFound();
 
         return clienteLista;
-    }
-
+    }*/
+/*
     [HttpGet()]
     [Route("buscarPedido/{id}")]
     public async Task<ActionResult<Pedido>> BuscarPedido(int id)
@@ -70,7 +70,7 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
         if (pedidoLista is null) return NotFound();
 
         return pedidoLista;
-    }
+    }*/
 
     [HttpPut()]
     [Route("alterar")]
@@ -83,7 +83,18 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
         _dbContext.Entry(pagamentoAlterar).CurrentValues.SetValues(pagamento);
         await _dbContext.SaveChangesAsync();
         return Created("Alterado com sucesso", pagamento);
+    } 
+
+    [HttpGet]
+    [Route("listar")]
+    public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
+    {
+        if (_dbContext is null) return NotFound();
+        if (_dbContext.Pagamento is null) return NotFound();
+
+        return await _dbContext.Pagamento.ToListAsync();
     }
+
 /*
     [HttpGet]
     [Route("listar")]
@@ -99,7 +110,7 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
 
         return pagamentos;
     }
-*/
+
         [HttpGet]
         [Route("listar")]
         public async Task<ActionResult<IEnumerable<Pagamento>>> Listar()
@@ -146,7 +157,7 @@ public async Task<ActionResult> Cadastrar(Pagamento pagamento)
     return Ok(detalhesPagamentos);
     }
 
-
+*/
     [HttpDelete()]
     [Route("excluir/{id}")]
     public async Task<ActionResult> Excluir(int id)

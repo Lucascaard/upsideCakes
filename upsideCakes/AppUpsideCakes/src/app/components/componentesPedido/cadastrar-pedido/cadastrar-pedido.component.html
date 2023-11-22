@@ -10,12 +10,27 @@
               <input type="date" class="form-control w-80" formControlName="dataCriacao" />
             </div>
             <div class="form-group">
+<<<<<<< Updated upstream
               <label>Nome do Funcionário</label>
               <input type="text" class="form-control w-80" formControlName="funcionario" />
             </div>
             <div class="form-group">
               <label>Gerente</label>
               <input type="text" class="form-control w-80" formControlName="gerente" />
+=======
+              <label>Funcionário</label>
+              <select class="form-control" id="idProduto" [(ngModel)]="idProduto">
+                <option value="">Selecione um nome</option>
+                <option *ngFor="let cliente of funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Gerente</label>
+              <select class="form-control" id="idGerente" [(ngModel)]="idGerente">
+                <option value="">Selecione um nome</option>
+                <option *ngFor="let cliente of gerentes" [value]="gerente.id">{{ gerente.nome }}</option>
+              </select>
+>>>>>>> Stashed changes
             </div>
             <div class="form-group">
               <label>Produto</label>

@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 
 import { ProdutosService } from './services/produtos.service';
 import { GerentesService } from './services/gerente.service';
+import { ClientesService } from './services/clientes.service';
+import { PagamentoService } from './services/pagamento.service';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -31,32 +33,47 @@ import { CadastrarGerenteComponent } from './components/componentesGerente/cadas
 import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
 import { ListarGerenteComponent } from './components/componentesGerente/listar-gerente/listar-gerente.component';
 
-import { PagamentoService } from './services/pagamento.service';
 import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
 import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
-import { ListarPagamentoComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
+import { ListarPagamentosComponent } from './components/componentesPagamento/listar-pagamento/listar-pagamento.component';
+
+import { CadastrarClienteComponent } from './components/componentesCliente/cadastrar-cliente/cadastrar-cliente.component';
+import { ListarClienteComponent } from './components/componentesCliente/listar-cliente/listar-cliente.component';
+import { AlterarClienteComponent } from './components/componentesCliente/alterar-cliente/alterar-cliente.component';
+import { DeletarClienteComponent } from './components/componentesCliente/deletar-cliente/deletar-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+
     AlterarProdutoComponent,
     ListarProdutosComponent,
     CadastrarProdutoComponent,
     DeletarProdutoComponent,
+
     CadastrarFuncionarioComponent,
     ListarFuncionarioComponent,
     AlterarFuncionarioComponent,
     DeletarFuncionarioComponent,
+
+    CadastrarClienteComponent,
+    ListarClienteComponent,
+    AlterarClienteComponent,
+    DeletarClienteComponent,
+
     AlterarGerenteComponent,
     CadastrarGerenteComponent,
     DeletarGerenteComponent,
     ListarGerenteComponent,
+
     AlterarPagamentoComponent,
     CadastrarPagamentoComponent,
-    DeletarPagamentoComponent,
-    ListarPagamentoComponent
+    ListarPagamentosComponent,
+    DeletarPagamentoComponent
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -72,7 +89,9 @@ import { ListarPagamentoComponent } from './components/componentesPagamento/list
     HttpClientModule,
     ProdutosService,
     GerentesService,
+    ClientesService,
     PagamentoService
+    
   ],
   bootstrap: [AppComponent]
 })

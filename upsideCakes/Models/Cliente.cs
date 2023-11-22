@@ -13,5 +13,10 @@ namespace upsideCakes.Models
         public Cliente(string? nome, string? cpf, DateOnly dataNasc, string? endereco, string? email, string? telefone) : base(nome, cpf, dataNasc, endereco, email, telefone)
         {
         }
+
+        internal object FirstOrDefault()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

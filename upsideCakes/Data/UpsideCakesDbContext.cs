@@ -16,7 +16,9 @@ public class UpsideCakesDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite(connectionString: "DataSource=upsideCakes.db;Cache=Shared;");
+        optionsBuilder
+        .EnableSensitiveDataLogging()
+        .UseSqlite(connectionString: "DataSource=upsideCakes.db;Cache=Shared;");
     }
 
     public void InserirDadosFicticios()

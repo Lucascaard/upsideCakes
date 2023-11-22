@@ -18,7 +18,7 @@ export class PagamentoService {
   constructor(private http: HttpClient) { }
 
   cadastrar(pagamento: Pagamento): Observable<any> {
-    const url = `${this.apiUrl}/cadastrar`;
+    const url = `${this.apiUrl}/novopagamento`;
     return this.http.post<Pagamento>(url, pagamento, HttpOptions);
   }
 
@@ -27,18 +27,13 @@ export class PagamentoService {
     return this.http.get<Pagamento[]>(url);
   }
 
-  listarPorID(id: Number): Observable<Pagamento> {
-    const url = `${this.apiUrl}/listar/${id}`;
-    return this.http.get<Pagamento>(url);
-  }
-
   alterar(pagamento: Pagamento): Observable<any> {
     const url = `${this.apiUrl}/alterar`;
-    return this.http.put<Pagamento>(url, pagamento, HttpOptions);
+    return this.http.put<Pagamento>(url, pagamento, { responseType: 'text' as 'json' });
   }
 
   excluir(id: Number): Observable<any> {
-    const url = `${this.apiUrl}/excluir`;
-    return this.http.delete<string>(url, HttpOptions);
+    const url = `${this.apiUrl}/excluir/${id}`;
+    return this.http.delete<string>(url, { responseType: 'text' as 'json' });
   }
 }

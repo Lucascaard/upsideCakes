@@ -6,7 +6,7 @@
             <h5>{{ tituloFormulario }}</h5>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
               <div class="form-group">
-                <label>Selecione um pagamento que deseja excluir:</label>
+                <label>Selecione um ID de pagamento que deseja excluir:</label>
                 <select formControlName="pagamentoSelecionado" class="form-control" (change)="selecionarPagamento($event)">
                   <option *ngFor="let pagamento of pagamentos" [value]="pagamento.id">{{ pagamento.id }}</option>
                 </select>
@@ -21,4 +21,3 @@
       </div>
     </div>
   </div>
-  

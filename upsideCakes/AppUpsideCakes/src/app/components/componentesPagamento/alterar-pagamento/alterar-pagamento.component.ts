@@ -6,6 +6,7 @@ import { Cliente } from 'src/app/models/Cliente';
 import { Pedido } from 'src/app/models/Pedido';
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
+import { ClientesService } from '../../../services/clientes.service';
 
 @Component({
   selector: 'app-alterar-pagamento',
@@ -13,44 +14,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./alterar-pagamento.component.css']
 })
 export class AlterarPagamentoComponent implements OnInit {
+  opcoesPagamento: string[] = ['Dinheiro', 'Cartão de Débito', 'Cartão de Crédito', 'PIX'];
   pagamentoSelecionado: Number | undefined;
   formulario: any;
-  tituloFormulario: string = '';
-  pagamentos: Array<Pagamento> | undefined;
- // clientes: Array<Cliente> | undefined;
- // pedidos: Array<Pedido> | undefined;
+  tituloFormulario: string = 'Alterar Pagamento';
+  pagamentos: Array<Pagamento> = [];
+  clientes: Array<Cliente> = [];
 
-  constructor(private pagamentoService: PagamentoService, private router: Router) { }
+  constructor(
+    private pagamentoService: PagamentoService,
+    private clienteService: ClientesService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.tituloFormulario = 'Alterar Pagamento';
 
+    // Obtem a lista de pagamentos para poder iterar sobre ela no html
     this.pagamentoService.listar().subscribe(pagamentos => {
       this.pagamentos = pagamentos;
-      if (this.pagamentos && this.pagamentos.length > 0) {
-        this.pagamentoSelecionado = this.pagamentos[0].id;
-        this.formulario.get('pagamentoSelecionado')?.setValue(this.pagamentos[0].id);
-      }
-    })/*;
+    })
 
-    // Recupere a lista de clientes do seu serviço
+    // Obtem a lista de clientes para poder iterar sobre ela no html
     this.clienteService.listar().subscribe(clientes => {
       this.clientes = clientes;
-    });
-
-    // Recupere a lista de pedidos do seu serviço
-    this.pedidoService.listar().subscribe(pedidos => {
-      this.pedidos = pedidos;
-    });*/
+    })
 
     this.formulario = new FormGroup({
-      data: new FormControl(null),
+      idPagamento: new FormControl(null),
       valor: new FormControl(null),
       formaDePagamento: new FormControl(null),
-      nomeCliente: new FormControl(null),
-      //clienteSelecionado: new FormControl(null),
-      //pedidoSelecionado: new FormControl(null),
-      pagamentoSelecionado: new FormControl(null)
+      nomeCliente: new FormControl(null)
     })
   }
 
@@ -80,7 +72,6 @@ export class AlterarPagamentoComponent implements OnInit {
     }
 
     // Atualizar o pagamento selecionado
-    pagamentoSelecionado.data = this.formulario.get('data')?.value;
     pagamentoSelecionado.valor = this.formulario.get('valor')?.value;
     pagamentoSelecionado.formaDePagamento = this.formulario.get('formaDePagamento')?.value;
     pagamentoSelecionado.nomeCliente = this.formulario.get('nomeCliente')?.value;

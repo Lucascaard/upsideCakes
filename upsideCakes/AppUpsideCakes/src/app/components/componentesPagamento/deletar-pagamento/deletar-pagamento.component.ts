@@ -13,13 +13,12 @@ import { Router } from '@angular/router';
 export class DeletarPagamentoComponent implements OnInit {
   pagamentoSelecionado: Number | undefined;
   formulario: FormGroup = new FormGroup({});
-  tituloFormulario: string = '';
+  tituloFormulario: string = 'Excluir Pagamento';
   pagamentos: Array<Pagamento> | undefined;
 
   constructor(private pagamentoService: PagamentoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.tituloFormulario = 'Excluir Pagamento';
 
     this.carregarPagamentos();
 

@@ -34,6 +34,7 @@ export class AlterarCardapioComponent {
     // Agora, você pode criar o objeto Cardapio com os valores do formulário
     const cardapio: Cardapio = {
       id: idCardapio,
+      nome: 'a',
       // Outros campos do cardápio, se houver
       itens: [
         // Adicione o objeto Produto ao array de itens

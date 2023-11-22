@@ -1,75 +1,61 @@
-  <div class="container mt-5">
-    <div class="column justify-content-center">
-      <h6>{{ tituloFormulario }}</h6>
-      <div class="col-md-10">
-        <!-- Listagem por ID -->
-        <div class="card">
-          <div class="card-header">
-            Listagem por ID
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+
+      <div class="card">
+        <div class="card-body mt-4">
+          <h5>{{ tituloFormulario }}</h5>
+          <div class="form-group">
+            <label for="idCardapio">Nome do Cardápio:</label>
+            <select class="form-control" id="idCardapio" [(ngModel)]="idCardapio">
+              <option value="">Selecione um Cardápio</option>
+              <option *ngFor="let cardapio of cardapios" [value]="cardapio.id">{{ cardapio.nome }}</option>
+            </select>
           </div>
-          <div class="card-body">
-            <div class="d-flex justify-content-between mt-3">
-              <form [formGroup]="formulario" (ngSubmit)="listarPorID()">
-                <div class="form-group">
-                  <label>ID do Cardápio</label>
-                  <input type="number" class="form-control form-control-sm" formControlName="id" />
-                </div>
-                <div class="container">
-                  <div class="row">
-                      <div>
-                          <button type="submit" class="btn btn-sm btn-outline-secondary">Listar por ID</button>
-                      </div>
-                      <div class="pl-1">
-                          <button type="button" class="btn btn-sm btn-light" (click)="voltarParaHome()">Voltar</button>
-                      </div>
-                  </div>
-                </div>
-              </form>
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-primary margin-right" (click)="listarPorId()">Buscar</button>
+            <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
+          </div>
+          <div *ngIf="!showList">
+            <div *ngFor="let cardapio of cardapioByID" class="card mt-2">
+              <div class="card-header">
+                <b>{{ cardapio.nome }}</b>
               </div>
-              <div *ngIf="showListByID">
-                <div class="card mt-2">
-                  <div class="card-body" *ngIf="cardapioByID">  
-                    <p>Cardapio: {{ cardapioByID.id }}</p>
-                      <p>Itens:</p>
-                          <ul *ngIf="cardapioByID.itens">
-                              <li *ngFor="let item of cardapioByID.itens">
-                                  <p>Produto: {{ item.nome }}</p>
-                                  <p>Preço: R$ {{ item.preco }}</p>
-                                  <p>Categoria: {{ item.categoria }}</p>
-                              </li>
-                          </ul>
-                  </div>
-                </div>
-              </div>
-            
-          </div>
-        </div>
-  
-        <!-- Listagem Geral -->
-        <div class="card mt-4">
-          <div class="card-header">
-            Listagem Geral
-          </div>
-          <div class="card-body">
-            <div class="d-flex justify-content-between mt-3">
-              <div class="btn-group">
-                <button class="btn btn-primary" (click)="listarGeral()">Listar</button>
-                <button class="btn btn-primary" (click)="voltarParaHome()">Voltar</button>
+              <div *ngFor="let item of cardapio.itens" class="card-body">
+                <p>Itens:</p>
+                <ul>
+                  <p>Produto: {{ item.nome }}</p>
+                  <p>Preço: {{ item.preco }}</p>
+                  <p>Categoria: {{ item.categoria }}</p>
+                </ul>
               </div>
             </div>
-            <div *ngIf="showList">
-              <div *ngFor="let cardapio of cardapios" class="card mt-2">
-                <div class="card-body">
-                    <p>Cardapio: {{ cardapio.id }}</p>
-                    <p>Itens:</p>
-                        <ul>
-                            <li *ngFor="let item of cardapio.itens">
-                                <p>Produto: {{ item.nome }}</p>
-                                <p>Preço: R$ {{ item.preco }}</p>
-                                <p>Categoria: {{ item.categoria }}</p>
-                            </li>
-                        </ul>
-                </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Listagem Geral
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-primary margin-right" (click)="listarGeral()">Listar Todos</button>
+            <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
+          </div>
+          <div *ngIf="showList">
+            <div *ngFor="let cardapio of cardapios" class="card mt-2">
+              <div class="card-header">
+                <b>{{ cardapio.nome }}</b>
+              </div>
+              <p>Itens:</p>
+              <div *ngFor="let item of cardapio.itens" class="card-body">
+                <ul>
+                  <p>Produto: {{ item.nome }}</p>
+                  <p>Preço: {{ item.preco }}</p>
+                  <p>Categoria: {{ item.categoria }}</p>
+                  <hr>
+                </ul>
               </div>
             </div>
           </div>
@@ -77,3 +63,4 @@
       </div>
     </div>
   </div>
+</div>

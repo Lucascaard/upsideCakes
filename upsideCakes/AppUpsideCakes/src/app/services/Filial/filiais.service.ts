@@ -43,7 +43,7 @@ export class FiliaisService {
       return this.http.get<Filial[]>(url);
     }
 
-    listarPorID(id: Number): Observable<Filial> {
+    buscarPorID(id: Number): Observable<Filial> {
       const url = `${this.apiUrl}/listar/${id}`;
       return this.http.get<Filial>(url).pipe(
         catchError((error: HttpErrorResponse) => {

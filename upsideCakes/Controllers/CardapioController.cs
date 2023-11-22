@@ -18,10 +18,10 @@ public class CardapioController : ControllerBase
     }
 
     [HttpPost]
-    [Route("cadastrarCardapio")]
-    public async Task<ActionResult> CadastrarCardapio()
+    [Route("cadastrar")]
+    public async Task<ActionResult> CadastrarCardapio(string nome)
     {
-        var cardapio = new Cardapio();
+        var cardapio = new Cardapio(nome);
         await _dbContext.AddAsync(cardapio);
         await _dbContext.SaveChangesAsync();
         return Created("", cardapio);

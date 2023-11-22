@@ -1,67 +1,57 @@
 <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <div class="card">
-          <div class="card">
-            <div class="card-header">
-              Listagem Por ID
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between mt-3">
-                <form [formGroup]="formulario" (ngSubmit)="listarPorID()">
-                  <div class="form-group">
-                    <label>ID da Filial</label>
-                    <input type="number" class="form-control form-control-sm" formControlName="id" />
-                  </div>
-                  <div class="container">
-                    <div class="row">
-                        <div>
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">Listar por ID</button>
-                        </div>
-                        <div class="pl-1">
-                            <button type="button" class="btn btn-sm btn-light" (click)="voltarParaHome()">Voltar</button>
-                        </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div *ngIf="showListByID">
-                <div class="card mt-2">
-                  <div class="card-body" *ngIf="filialById">  
-                    <p>Filial: {{ filialById.id }}</p>
-                          <ul>
-                              <li>
-                                  <p>Rua: {{ filialById.rua }}</p>
-                                  <p>CEP: R$ {{ filialById.cep }}</p>
-                                  <p>Cidade: {{ filialById.cidade }}</p>
-                              </li>
-                          </ul>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
 
-          <div class="card-header">
-            Listagem Geral
+      <div class="card">
+        <div class="card-body mt-4">
+          <h5>{{ tituloFormulario }}</h5>
+          <div class="form-group">
+            <label for="idFilial">Nome da Filial:</label>
+            <select class="form-control" id="idFilial" [(ngModel)]="idFilial">
+              <option value="">Selecione um Cardápio</option>
+              <option *ngFor="let filial of filiais" [value]="filial.id">{{ filial.cidade }}</option>
+            </select>
           </div>
-          <div class="card-body">
-            <div class="d-flex justify-content-between mt-3">
-              <button class="btn btn-primary margin-right" (click)="listarGeral()">Listar</button>
-              <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
-            </div>
-              <div *ngIf="showList">
-                <div *ngFor="let filial of filiais" class="card mt-2">
-                  <div class="card-body">
-                    <p>Cidade: {{ filial.cidade }}</p>
-                    <p>CEP: {{ filial.cep }}</p>
-                    <p>Rua: {{ filial.rua }}</p>
-                  </div>
-                </div>
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-primary margin-right" (click)="listarPorId()">Buscar</button>
+            <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
+          </div>
+          <div *ngIf="!showList">
+            <div *ngFor="let filial of filialByID" class="card mt-2">
+              <div class="card-header">
+                <b>{{ filial.cidade }}</b>
+              </div>
+              <div class="card-body">
+                <p>{{ filial.rua }}</p>
+                <p>{{ filial.cep }}</p>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Listagem Geral
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-primary margin-right" (click)="listarGeral()">Listar Todos</button>
+            <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
+          </div>
+          <div *ngIf="showList">
+            <div *ngFor="let filial of filiais" class="card mt-2">
+              <div class="card-header">
+                <b>{{ filial.cidade }}</b>
+              </div>
+              <div class="card-body">
+                <p>{{ filial.rua }}</p>
+                <p>{{ filial.cep }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  
+  </div>
+</div>

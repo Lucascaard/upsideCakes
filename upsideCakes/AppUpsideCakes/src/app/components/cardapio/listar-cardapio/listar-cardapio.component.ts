@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cardapio } from 'src/app/models/Cardapio';
 import { CardapiosService } from 'src/app/services/Cardapio/cardapios.service';
@@ -13,47 +12,42 @@ export class ListarCardapioComponent {
 
   constructor(private cardapioService: CardapiosService, private router: Router) { }
 
-  formulario!: FormGroup;
-
   cardapios: Array<Cardapio> = [];
-
-  cardapioByID: Cardapio | undefined;
-  id: number = 0;
-
+  cardapioByID: Array<Cardapio> = [];
   showList: boolean = false;
-  showListByID: boolean = false;
-  tituloFormulario = '';
+  idCardapio: string = '';
+  tituloFormulario = 'Listar Cardápios';
 
   ngOnInit(): void {
-    this.tituloFormulario = 'Listar Filiais';
-    this.cardapioService.listar().subscribe( cardapio =>{
-      this.cardapios = cardapio;
+    this.cardapioService.listar().subscribe(cardapios => {
+      this.cardapios = cardapios;
     });
-
-    this.formulario = new FormGroup({
-      id: new FormControl()
-      });
-
   }
 
   listarGeral() {
     this.showList = true;
-    this.showListByID = false;
+    this.cardapioByID = [];
   }
 
-  listarPorID(): void {
-    this.cardapioService.listarPorID(this.formulario.value.id).subscribe(cardapio => {
-      this.cardapioByID = cardapio;
-    this.showListByID = true;
-    this.showList = false;
-    console.log(this.formulario.value.id);
-    console.log(this.cardapioByID);
-  })
-};
+  listarPorId() {
+    if (this.idCardapio.trim() === '') {
+      this.listarGeral();
+      return;
+    }
+
+    if (this.idCardapio !== undefined) {
+      this.cardapioService.buscarPorID(parseInt(this.idCardapio)).subscribe(cardapio => {
+        this.cardapioByID = [cardapio];
+        this.showList = false;
+      });
+    } else {
+      this.cardapioByID = [];
+      this.showList = false;
+    }
+  }
 
   voltarParaHome() {
     this.router.navigate(['/home']); 
     this.showList = false;
-    this.showListByID = false;
   }
 }

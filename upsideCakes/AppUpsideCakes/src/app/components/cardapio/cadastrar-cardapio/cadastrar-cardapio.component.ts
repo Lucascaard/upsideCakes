@@ -18,12 +18,14 @@ export class CadastrarCardapioComponent {
 
     ngOnInit(): void {
       this.tituloFormulario = "Cadastrar Cardapio";
-      this.formulario = new FormGroup({});
+      this.formulario = new FormGroup({
+        nome: new FormControl()
+      });
     }
 
     enviarFormulario(): void {
-      // const cardapio : Cardapio = this.formulario.value;
-      this.cardapiosService.cadastrar().subscribe(result => {
+      const nome: string = this.formulario.get('nome').value;
+      this.cardapiosService.cadastrar(nome).subscribe(result => {
       alert('Cardápio criado com sucesso.');
       })
       }

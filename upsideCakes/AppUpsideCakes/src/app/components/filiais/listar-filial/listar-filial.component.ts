@@ -13,41 +13,39 @@ export class ListarFilialComponent {
 
   constructor(private filialService: FiliaisService, private router: Router) { }
 
-  formulario!: FormGroup;
-
   filiais: Array<Filial> = [];
-
-  filialById: Filial | undefined;
-
-  id: number = 0;
-
+  filialByID: Array<Filial> = [];
   showList: boolean = false;
-  showListByID: boolean = false;
-  tituloFormulario = '';
+  idFilial: string = '';
+  tituloFormulario = 'Listar Filiais';
 
   ngOnInit(): void {
-    this.tituloFormulario = 'Listar Filiais';
-    this.filialService.listar().subscribe( filial =>{
-      this.filiais = filial;
+    this.filialService.listar().subscribe(filiais => {
+      this.filiais = filiais;
     });
-
-    this.formulario = new FormGroup({
-      id: new FormControl()
-      });
   }
 
   listarGeral() {
     this.showList = true;
-    this.showListByID = false;
+    this.filialByID = [];
   }
 
-  listarPorID(): void {
-    this.filialService.listarPorID(this.formulario.value.id).subscribe(filial => {
-      this.filialById = filial;
-    this.showListByID = true;
-    this.showList = false;
-    })
-  };
+  listarPorId() {
+    if (this.idFilial.trim() === '') {
+      this.listarGeral();
+      return;
+    }
+
+    if (this.idFilial !== undefined) {
+      this.filialService.buscarPorID(parseInt(this.idFilial)).subscribe(filial => {
+        this.filialByID = [filial];
+        this.showList = false;
+      });
+    } else {
+      this.filialByID = [];
+      this.showList = false;
+    }
+  }
 
   voltarParaHome() {
     this.router.navigate(['/home']); 

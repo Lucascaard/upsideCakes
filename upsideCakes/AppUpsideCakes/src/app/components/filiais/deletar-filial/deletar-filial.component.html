@@ -1,23 +1,24 @@
-<div class="container p-5">
-    <div class="row">
-        <div class="col-6 border border-light rounded p-5 shadow" *ngIf="formulario">
-            <h6>{{ tituloFormulario }}</h6>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body mt-4">
+            <!-- Adicione a classe "mt-4" para adicionar uma margem superior -->
+            <h5>{{ tituloFormulario }}</h5>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
-                <div class="form-group">
-                    <label>ID da Filial</label>
-                    <input type="number" class="form-control form-control-sm" formControlName="id" />
+              <div class="form-group">
+                <label>Selecione uma filial que deseja excluir:</label>
+                <select formControlName="filialSelecionada" class="form-control" (change)="selecionarFilial($event)">
+                  <option *ngFor="let filial of filiais" [value]="filial.id">{{ filial.id  }} - {{ filial.cidade }}</option>
+                </select>
+                <div class="d-flex justify-content-between mt-3" >
+                  <button type="submit" class="btn btn-primary">Excluir</button>
+                  <button class="btn btn-primary" (click)="voltarParaHome()">Voltar</button>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div>
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">Deletar</button>
-                        </div>
-                        <div class="pl-1">
-                            <button type="button" class="btn btn-sm btn-light" (click)="voltarParaHome()">Voltar</button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>

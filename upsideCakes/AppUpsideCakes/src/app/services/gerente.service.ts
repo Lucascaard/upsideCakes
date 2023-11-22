@@ -27,8 +27,8 @@ export class GerentesService {
     return this.http.get<Gerente[]>(url);
   }
 
-  listarPorID(id: Number): Observable<Gerente> {
-    const url = `${this.apiUrl}/listar/${id}`;
+  buscarPorId(id: Number): Observable<Gerente> {
+    const url = `${this.apiUrl}/buscar/${id}`;
     return this.http.get<Gerente>(url);
   }
 
@@ -38,7 +38,7 @@ export class GerentesService {
   }
 
   excluir(id: Number): Observable<any> {
-    const url = `${this.apiUrl}/excluir`;
+    const url = `${this.apiUrl}/excluir/${id}`;
     return this.http.delete<string>(url, HttpOptions);
   }
 }

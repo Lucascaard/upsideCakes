@@ -86,7 +86,8 @@ const routes: Routes = [
   { path: 'pagamento/cadastrar', component: CadastrarPagamentoComponent },
   { path: 'pagamento/listar', component: ListarPagamentosComponent },
   { path: 'pagamento/alterar', component: AlterarPagamentoComponent },
-  { path: 'pagamento/deletar', component: DeletarPagamentoComponent } 
+  { path: 'pagamento/deletar', component: DeletarPagamentoComponent },
+
   // Rota de filiais
   { path: 'filial/cadastrar', component: CadastrarFilialComponent },
   { path: 'filial/alterar', component: AlterarFilialComponent },

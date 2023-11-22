@@ -4,8 +4,8 @@ import { PagamentoService } from '../../../services/pagamento.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-listar-pagamentos',
-  templateUrl: './listar-pagamentos.component.html',
+  selector: 'app-listar-pagamento',
+  templateUrl: './listar-pagamento.component.html',
   styleUrls: ['./listar-pagamento.component.css']
 })
 

@@ -8,7 +8,7 @@
             <div class="form-group">
               <label>Selecione um pedido que deseja excluir:</label>
               <select formControlName="pedidoSelecionado" class="form-control" (change)="selecionarPedido($event)">
-                <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.nome }}</option>
+                <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.id }}</option>
               </select>
               <div class="d-flex justify-content-between mt-3">
                 <button type="submit" class="btn btn-primary">Excluir</button>

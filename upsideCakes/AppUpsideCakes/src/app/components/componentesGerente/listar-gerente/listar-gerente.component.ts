@@ -11,47 +11,41 @@ import { GerentesService } from 'src/app/services/gerente.service';
 export class ListarGerenteComponent implements OnInit {
 
   gerentes: Array<Gerente> = [];
-  gerentesPorNome: Array<Gerente> = [];
+  gerentesPorId: Array<Gerente> = [];
   mostrarListagemGeral: boolean = false;
-  nomeGerente: string = '';
-  tituloFormulario = '';
-  opcoesNomes: Array<String> = [];
+  idGerente: string = '';
+  tituloFormulario = 'Listar Gerentes';
 
   constructor(private gerenteService: GerentesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.tituloFormulario = 'Listar Gerentes';
     this.gerenteService.listar().subscribe(gerentes => {
       this.gerentes = gerentes;
-      this.opcoesNomes = gerentes.map(gerente => gerente.nome);
     });
   }
 
   listarGeral() {
     this.mostrarListagemGeral = true;
-    this.gerentesPorNome = [];
+    this.gerentesPorId = [];
   }
-/*
-  listarPorNome() {
-    if (this.nomeGerente.trim() === '') {
+
+  listarPorId() {
+    if (this.idGerente.trim() === '') {
       this.listarGeral();
       return;
     }
 
-    const nomeSelecionado = this.nomeGerente;
-    const gerenteSelecionado = this.gerentes.find(gerente => gerente.nome === nomeSelecionado);
-    console.log(gerenteSelecionado); // log 
-    if (gerenteSelecionado !== undefined) {
-      this.gerenteService.listarPorID(gerenteSelecionado.id).subscribe(gerente => {
-        this.gerentesPorNome = [gerente];
+    if (this.idGerente !== undefined) {
+      this.gerenteService.buscarPorId(parseInt(this.idGerente)).subscribe(gerente => {
+        this.gerentesPorId = [gerente];
         this.mostrarListagemGeral = false;
       });
     } else {
-      this.gerentesPorNome = [];
+      this.gerentesPorId = [];
       this.mostrarListagemGeral = false;
     }
   }
-*/
+
   voltarParaHome() {
     this.router.navigate(['/home']);
   }

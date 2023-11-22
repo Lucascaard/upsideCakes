@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ProdutosService } from './services/produtos.service';
 import { GerentesService } from './services/gerente.service';
 import { ClientesService } from './services/clientes.service';
+import { PagamentoService } from './services/pagamento.service';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -32,7 +33,6 @@ import { CadastrarGerenteComponent } from './components/componentesGerente/cadas
 import { DeletarGerenteComponent } from './components/componentesGerente/deletar-gerente/deletar-gerente.component';
 import { ListarGerenteComponent } from './components/componentesGerente/listar-gerente/listar-gerente.component';
 
-import { PagamentoService } from './services/pagamento.service';
 import { AlterarPagamentoComponent } from './components/componentesPagamento/alterar-pagamento/alterar-pagamento.component';
 import { CadastrarPagamentoComponent } from './components/componentesPagamento/cadastrar-pagamento/cadastrar-pagamento.component';
 import { DeletarPagamentoComponent } from './components/componentesPagamento/deletar-pagamento/deletar-pagamento.component';
@@ -73,6 +73,7 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     ListarPagamentosComponent,
     DeletarPagamentoComponent
     
+    
   ],
   imports: [
     BrowserModule,
@@ -88,8 +89,9 @@ import { DeletarClienteComponent } from './components/componentesCliente/deletar
     HttpClientModule,
     ProdutosService,
     GerentesService,
-    PagamentoService,
-    ClientesService
+    ClientesService,
+    PagamentoService
+    
   ],
   bootstrap: [AppComponent]
 })

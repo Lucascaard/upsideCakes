@@ -33,8 +33,8 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpGet]
-    [Route("listar/{id}")]
-    public async Task<ActionResult<Produto>> ListarPorID (int id)
+    [Route("buscar/{id}")]
+    public async Task<ActionResult<Produto>> BuscarPorId (int id)
     {
         var produtoTemp = await _dbContext.Produto.FindAsync(id);
         if (produtoTemp == null) return NotFound();

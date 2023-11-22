@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using upsideCakes.Data;
 
 var builder = WebApplication.CreateBuilder(args);

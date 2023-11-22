@@ -5,18 +5,22 @@
         <div class="card-body mt-4">
           <h5>{{ tituloFormulario }}</h5>
           <div class="form-group">
-            <label for="nomeProduto">Nome do Funcionario:</label>
-            <select class="form-control" id="nomeFuncionario" [(ngModel)]="nomeFuncionario">
+            <label for="idFuncionario">Nome do Funcionario:</label>
+            <select class="form-control" id="idFuncionario" [(ngModel)]="idFuncionario">
               <option value="">Selecione um nome</option>
-              <option *ngFor="let nome of opcoesNomes" [value]="nome">{{ nome }}</option>
+
+              <!--  Gera uma combo com os nomes dos funcionarios e atribuindo o id ao value -->
+              <option *ngFor="let funcionario of funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</option>
             </select>
           </div>
           <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-primary margin-right" (click)="listarPorNome()">Listar por Nome</button>
+            <button class="btn btn-primary margin-right" (click)="listarPorId()">Buscar</button>
             <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
           </div>
           <div *ngIf="!mostrarListagemGeral">
-            <div *ngFor="let funcionario of funcionariosPorNome" class="card mt-2">
+
+            <!-- Percorre o funcionario selecionado -->
+            <div *ngFor="let funcionario of funcSelecionado" class="card mt-2">
               <div class="card-header">
                 {{ funcionario.nome }}
               </div>

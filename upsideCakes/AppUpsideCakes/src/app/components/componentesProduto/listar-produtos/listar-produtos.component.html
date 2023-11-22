@@ -5,18 +5,18 @@
         <div class="card-body mt-4">
           <h5>{{ tituloFormulario }}</h5>
           <div class="form-group">
-            <label for="nomeProduto">Nome do Produto:</label>
-            <select class="form-control" id="nomeProduto" [(ngModel)]="nomeProduto">
-              <option value="">Selecione um nome</option>
-              <option *ngFor="let nome of opcoesNomes" [value]="nome">{{ nome }}</option>
+            <label for="idProduto">Nome do Produto:</label>
+            <select class="form-control" id="idProduto" [(ngModel)]="idProduto">
+              <option value="">Selecione um Produto</option>
+              <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.nome }}</option>
             </select>
           </div>
           <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-primary margin-right" (click)="listarPorNome()">Listar por Nome</button>
+            <button class="btn btn-primary margin-right" (click)="listarPorId()">Buscar</button>
             <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
           </div>
           <div *ngIf="!mostrarListagemGeral">
-            <div *ngFor="let produto of produtosPorNome" class="card mt-2">
+            <div *ngFor="let produto of produtosPorId" class="card mt-2">
               <div class="card-header">
                 {{ produto.nome }}
               </div>
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        </div>
+      </div>
 
       <div class="card">
         <div class="card-header">
@@ -38,19 +38,19 @@
             <button class="btn btn-primary margin-right" (click)="listarGeral()">Listar Todos</button>
             <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
           </div>
-            <div *ngIf="mostrarListagemGeral">
-              <div *ngFor="let produto of produtos" class="card mt-2">
-                <div class="card-header">
-                  {{ produto.nome }}
-                </div>
-                <div class="card-body">
-                  <p>Preço: {{ produto.preco }}</p>
-                  <p>Categoria: {{ produto.categoria }}</p>
-                </div>
+          <div *ngIf="mostrarListagemGeral">
+            <div *ngFor="let produto of produtos" class="card mt-2">
+              <div class="card-header">
+                {{ produto.nome }}
+              </div>
+              <div class="card-body">
+                <p>Preço: {{ produto.preco }}</p>
+                <p>Categoria: {{ produto.categoria }}</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

@@ -36,12 +36,12 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpGet]
-    [Route("listar/{id}")]
-    public async Task<ActionResult<Funcionario>> ListarPorID(int id)
+    [Route("buscar/{id}")]
+    public async Task<ActionResult<Funcionario>> BuscarPorId(int id)
     {
         var funcionarioTemp = await _dbContext.Funcionario.FindAsync(id);
         if (funcionarioTemp == null) return NotFound();
-        return Ok();
+        return Ok(funcionarioTemp);
     }
 
     [HttpPut]
@@ -56,7 +56,7 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("excluir")]
+    [Route("excluir/{id}")]
     public async Task<ActionResult> Excluir(int id)
     {
         if (_dbContext.Funcionario is null) return NotFound();

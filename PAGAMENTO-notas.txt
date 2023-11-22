@@ -1,0 +1,14 @@
+Fazer o front uma combo box, que puxa o listar de pedido para selecionar qual desses pedidos quer e de cliente, de maneira separada 
+
+O pagamento não vai puxar as listas inteiras e enormes, ele vai pegar só o listar de cada um para selecionar na combo box, não precisa printar todos os dados na tela, apenas o nome ou ate o cpf de quem foi selecionado na combo.
+
+Pedido ter um listar pedido por id do cliente e esse listar id que vai estar na combo.
+
+Não precisa cadastrar o cliente/pedido inteiros no cadastrar pagamento (back), no front vai só selecionar a combo de qual deles vai querer
+Front de cadastrar pagamento vai puxar a combo com os clientes existentes, e o mesmo para o pedido.
+
+
+
+
+
+

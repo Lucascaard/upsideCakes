@@ -110,4 +110,7 @@ $RECYCLE.BIN/
 *.suo
 *.user
 
+
+# Angular
+
 /.angular*/

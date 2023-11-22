@@ -22,7 +22,7 @@ public class GerenteController : ControllerBase
     {
         await _dbContext.AddAsync(gerente);
         await _dbContext.SaveChangesAsync();
-        return Created("Cadastrado com sucesso", gerente);
+        return Created("", gerente);
     }
 
 
@@ -63,7 +63,7 @@ public class GerenteController : ControllerBase
 
         _dbContext.Entry(gerenteAlterar).CurrentValues.SetValues(gerente);
         await _dbContext.SaveChangesAsync();
-        return Ok("Gerente alterado com sucesso.");
+        return Ok();
     }
 
     [HttpDelete()]
@@ -78,6 +78,6 @@ public class GerenteController : ControllerBase
 
         _dbContext.Gerente.Remove(gerenteDeletar);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Gerente com id {id} excluido com sucesso. ");
+        return Ok();
     }
 }

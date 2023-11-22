@@ -18,5 +18,10 @@ namespace upsideCakes.Models
 
         [NotMapped]
         public List<Produto>? itens { get; set; }
+
+        internal object FirstOrDefault()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -79,7 +79,7 @@ public class PedidoController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("excluir")]
+    [Route("excluir/${id}")]
     public async Task<ActionResult> Excluir(int id)
     {
         if (_dbContext.Pedido is null) return NotFound();

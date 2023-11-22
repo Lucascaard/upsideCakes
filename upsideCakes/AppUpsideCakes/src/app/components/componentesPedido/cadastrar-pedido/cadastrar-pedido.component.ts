@@ -4,6 +4,12 @@ import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { PedidosService } from '../../../services/pedidos.service';
 import { Pedido } from '../../../models/Pedido';
+import { Funcionario } from '../../../models/Funcionario';
+import { FuncionariosService } from '../../../services/funcionarios.service';
+import { GerentesService } from '../../../services/gerente.service';
+import { Gerente } from '../../../models/Gerente';
+import { ProdutosService } from '../../../services/produtos.service';
+import { Produto } from '../../../models/Produto';
 
 @Component({
   selector: 'app-cadastrar-pedido',
@@ -11,12 +17,37 @@ import { Pedido } from '../../../models/Pedido';
   styleUrls: ['./cadastrar-pedido.component.css']
 })
 export class CadastrarPedidoComponent implements OnInit {
+  funcionarios: Array<Funcionario> = [];
+  gerentes: Array<Gerente> = [];
+  produtos: Array<Produto> = [];
   formulario: any;
-  tituloFormulario: string = '';
+  formTratado: any;
+  tituloFormulario: string = 'Novo Pedido';
 
-  constructor(private pedidoService: PedidosService, private router: Router) { }
+  constructor(
+    private pedidoService: PedidosService,
+    private funcionarioService: FuncionariosService,
+    private gerenteService: GerentesService,
+    private produtoService: ProdutosService,
+    private router: Router) { }
+
   ngOnInit(): void {
-    this.tituloFormulario = 'Novo Pedido';
+
+    //Obtem a lista de funcionarios
+    this.funcionarioService.listar().subscribe(funcionarios => {
+      this.funcionarios = funcionarios;
+    });
+
+    //Obtem a lista de funcionarios
+    this.gerenteService.listar().subscribe(gerentes => {
+      this.gerentes = gerentes;
+    })
+
+    //Obtem a lista de produtos
+    this.produtoService.listar().subscribe(produtos => {
+      this.produtos = produtos;
+    })
+
 
     this.formulario = new FormGroup({
       dataCriacao: new FormControl(null),
@@ -25,6 +56,9 @@ export class CadastrarPedidoComponent implements OnInit {
       produto: new FormControl(null),
       qtde: new FormControl(null),
     })
+
+    this.formulario.funcionario = parseInt(this.formulario.funcionario);
+    this.formulario.gerente = parseInt(this.formulario.gerente);
   }
 
   enviarFormulario(): void {

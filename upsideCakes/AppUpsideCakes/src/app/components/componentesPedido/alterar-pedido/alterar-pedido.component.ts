@@ -61,8 +61,8 @@ export class AlterarPedidoComponent implements OnInit {
     }
 
     pedidoSelecionado.dataCriacao = this.formulario.get('dataCriacao')?.value;
-    pedidoSelecionado.funcionario = this.formulario.get('funcionario')?.value;
-    pedidoSelecionado.gerente = this.formulario.get('gerente')?.value;
+    pedidoSelecionado.funcionarioID = this.formulario.get('funcionario')?.value;
+    pedidoSelecionado.gerenteID = this.formulario.get('gerente')?.value;
     pedidoSelecionado.produto = this.formulario.get('produto')?.value;
     pedidoSelecionado.qtde = this.formulario.get('qtde')?.value;
 

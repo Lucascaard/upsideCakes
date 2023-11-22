@@ -35,7 +35,7 @@ public class CardapioController : ControllerBase
         var item = _dbContext.Produto
             .FirstOrDefault(c => c.id == id);
 
-        if(cardapio.itens is null || item is null) return BadRequest("Dado não encontrado.");
+        if(cardapio?.itens is null || item is null) return BadRequest("Dado não encontrado.");
 
         cardapio.itens.Add(item);
         _dbContext.Update(cardapio);
@@ -61,7 +61,7 @@ public class CardapioController : ControllerBase
         item.nome = produto.nome;
         item.preco = produto.preco;
 
-        cardapio.itens.Add(item);
+        cardapio?.itens?.Add(item);
         _dbContext.Update(cardapio);
         await _dbContext.SaveChangesAsync();
         return Ok("Item alterado com sucesso.");
@@ -72,7 +72,7 @@ public class CardapioController : ControllerBase
     public async Task<ActionResult<IEnumerable<Cardapio>>> Listar()
     {
         
-        var cardapio = _dbContext.Cardapio
+        var cardapio =  _dbContext.Cardapio
             .Include(c => c.itens)
             .ToList();
 
@@ -107,7 +107,7 @@ public class CardapioController : ControllerBase
         var item = _dbContext.Produto
             .FirstOrDefault(c => c.id == id);
 
-        if(cardapio.itens is null || item is null)
+        if(cardapio?.itens is null || item is null)
         {
             return NotFound();
         }

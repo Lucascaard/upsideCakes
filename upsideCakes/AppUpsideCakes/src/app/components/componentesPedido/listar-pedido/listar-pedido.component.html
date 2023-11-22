@@ -21,8 +21,8 @@
                 {{ pedido.dataCriacao }}
               </div>
               <div class="card-body">
-                <p>Funcionário: {{ pedido.funcionario }}</p>
-                <p>Gerente: {{ pedido.gerente }}</p>
+                <p>Funcionário: {{ pedido.funcionarioID }}</p>
+                <p>Gerente: {{ pedido.gerenteID }}</p>
                 <p>Produto: {{ pedido.produto }}</p>
                 <p>Quantidade: {{ pedido.qtde }}</p>
               </div>
@@ -43,11 +43,11 @@
           <div *ngIf="mostrarListagemGeral">
             <div *ngFor="let pedido of pedidos" class="card mt-2">
               <div class="card-header">
-                {{ pedido.dataCriacao }}
+                {{ pedido.id }}
               </div>
               <div class="card-body">
-                <p>Funcionário: {{ pedido.funcionario }}</p>
-                <p>Gerente: {{ pedido.gerente }}</p>
+                <p>Funcionário: {{ pedido.funcionarioID }}</p>
+                <p>Gerente: {{ pedido.gerenteID }}</p>
                 <p>Produto: {{ pedido.produto }}</p>
                 <p>Quantidade: {{ pedido.qtde }}</p>
               </div>

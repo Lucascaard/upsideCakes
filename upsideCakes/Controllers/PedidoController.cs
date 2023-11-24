@@ -20,13 +20,13 @@ public class PedidoController : ControllerBase
     public async Task<ActionResult> NovoPedido(Pedido pedido)
     {
         var erros = new List<string>();
-
+/*
         var funcExiste = await _dbContext.Funcionario.FindAsync(pedido.funcionarioID);
         if (funcExiste is null) return BadRequest("Funcionário especificado não existe");
 
         var genExiste = await _dbContext.Gerente.FindAsync(pedido.gerenteID);
         if (genExiste is null) return BadRequest("Gerente especificado não existe");
-
+*/
         if(pedido.itens != null)
         {
             foreach (var item in pedido.itens)
@@ -59,7 +59,7 @@ public class PedidoController : ControllerBase
     }
 
     [HttpGet]
-    [Route("listar/{id}")]
+    [Route("buscar/{id}")]
     public async Task<ActionResult<Pedido>> ListarPorID(int id)
     {
         var pedidoTemp = await _dbContext.Pedido.FindAsync(id);

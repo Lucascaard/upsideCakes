@@ -16,7 +16,7 @@ export class PedidosService {
   constructor(private http: HttpClient) { }
 
   cadastrar(pedido: Pedido): Observable<any> {
-    const url = `${this.apiUrl}/cadastrar`;
+    const url = `${this.apiUrl}/novopedido`;
     return this.http.post<Pedido>(url, pedido, HttpOptions);
   }
 
@@ -32,11 +32,11 @@ export class PedidosService {
 
   alterar(produto: Pedido): Observable<any> {
     const url = `${this.apiUrl}/alterar`;
-    return this.http.put<Pedido>(url, produto, HttpOptions);
+    return this.http.put<Pedido>(url, produto, { responseType: 'text' as 'json' });
   }
 
   excluir(id: Number): Observable<any> {
     const url = `${this.apiUrl}/excluir/${id}`;
-    return this.http.delete<string>(url, HttpOptions);
+    return this.http.delete<string>(url, { responseType: 'text' as 'json' });
   }
 }

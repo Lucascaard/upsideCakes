@@ -7,20 +7,33 @@
           <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
             <div class="form-group">
               <label>Data de Criação</label>
-              <input type="text" class="form-control w-80" formControlName="dataCriacao" />
+              <input type="date" class="form-control w-80" formControlName="dataCriacao" />
             </div>
+
             <div class="form-group">
-              <label>Funcionário</label>
-              <input type="text" class="form-control w-80" formControlName="funcionario" />
+              <label>Nome do Funcionario:</label>
+              <select class="form-control w-80" id="funcionario">
+                <option value="">Selecione um nome</option>
+                <option *ngFor="let funcionario of funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</option>
+              </select>
             </div>
+
             <div class="form-group">
-              <label>Gerente</label>
-              <input type="date" class="form-control w-80" formControlName="gerente" />
+              <label>Nome do Gerente:</label>
+              <select class="form-control w-80" id="gerente">
+                <option value="">Selecione um nome</option>
+                <option *ngFor="let gerente of gerentes" [value]="gerente.id">{{ gerente.nome }}</option>
+              </select>
             </div>
+
             <div class="form-group">
-              <label>Produto</label>
-              <input type="text" class="form-control w-80" formControlName="produto" />
+              <label>Nome do Produto:</label>
+              <select class="form-control w-80" id="produto">
+                <option value="">Selecione um nome</option>
+                <option *ngFor="let produto of produtos" [value]="produto">{{ produto.nome }}</option>
+              </select>
             </div>
+
             <div class="form-group">
               <label>Quantidade</label>
               <input type="text" class="form-control w-80" formControlName="qtde" />

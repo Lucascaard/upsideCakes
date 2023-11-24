@@ -16,8 +16,7 @@ namespace upsideCakes.Models
 
         public int qtde {  get; set; }
 
-        [NotMapped]
-        public List<Produto>? itens { get; set; }
+	    public List<Produto>? itens { get; set; }
 
         internal object FirstOrDefault()
         {

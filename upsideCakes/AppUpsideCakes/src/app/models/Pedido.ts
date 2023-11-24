@@ -1,12 +1,10 @@
-import { Funcionario } from "./Funcionario";
-import { Gerente } from "./Gerente";
 import { Produto } from "./Produto"
  
 export class Pedido {
     id: Number = 0;
     dataCriacao: Date = new Date('2023-11-11');
-    funcionario: Funcionario = new Funcionario();
-    gerente: Gerente = new Gerente();
-    produto: Produto[] = [];
+    funcionarioID: Number = 0;
+    gerenteID: Number = 0;
+    produto: Produto = new Produto();
     qtde: Number = 0;
 }

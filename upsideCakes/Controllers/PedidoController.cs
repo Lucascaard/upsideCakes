@@ -79,7 +79,7 @@ public class PedidoController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("excluir/${id}")]
+    [Route("excluir/{id}")]
     public async Task<ActionResult> Excluir(int id)
     {
         if (_dbContext.Pedido is null) return NotFound();
@@ -87,7 +87,7 @@ public class PedidoController : ControllerBase
         if (pedidoTemp is null) return NotFound();
         _dbContext.Pedido.Remove(pedidoTemp);
         await _dbContext.SaveChangesAsync();
-        return Ok($"Pedido com {id} excluido com sucesso!");
+        return Ok();
     }
 }
 

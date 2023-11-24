@@ -50,18 +50,22 @@ export class CadastrarPedidoComponent implements OnInit {
 
 
     this.formulario = new FormGroup({
-      dataCriacao: new FormControl(null),
-      funcionario: new FormControl(null),
-      gerente: new FormControl(null),
-      produto: new FormControl(null),
-      qtde: new FormControl(null),
+      dataCriacao: new FormControl(),
+      funcionario: new FormControl(),
+      gerente: new FormControl(),
+      produto: new FormControl(),
+      qtde: new FormControl()
     })
-
-    this.formulario.funcionario = parseInt(this.formulario.funcionario);
-    this.formulario.gerente = parseInt(this.formulario.gerente);
   }
 
   enviarFormulario(): void {
+
+    //this.formulario.set('funcionario').value = parseInt(this.formulario.get('funcionario').value);
+    //this.formulario.set('gerente').value = parseInt(this.formulario.get('gerente').value);
+
+    console.log(this.formulario.funcionario);
+    console.log(this.formulario.gerente);
+
     const pedido: Pedido = this.formulario.value;
     console.log(pedido);
     const observer: Observer<Pedido> = {

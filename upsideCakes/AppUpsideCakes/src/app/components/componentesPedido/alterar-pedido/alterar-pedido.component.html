@@ -16,7 +16,7 @@
 
             <div class="form-group">
               <label>Nome do Funcionario:</label>
-              <select class="form-control w-80" id="funcionario">
+              <select class="form-control w-80" id="funcionario" formControlName="funcionario">
                 <option value="">Selecione um funcionario ...</option>
                 <option *ngFor="let funcionario of funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</option>
               </select>
@@ -24,7 +24,7 @@
 
             <div class="form-group">
               <label>Nome do Gerente:</label>
-              <select class="form-control w-80" id="gerente">
+              <select class="form-control w-80" id="gerente" formControlName="gerente">
                 <option value="">Selecione um gerente ...</option>
                 <option *ngFor="let gerente of gerentes" [value]="gerente.id">{{ gerente.nome }}</option>
               </select>
@@ -32,7 +32,7 @@
 
             <div class="form-group">
               <label>Nome do Produto:</label>
-              <select class="form-control w-80" id="produto">
+              <select class="form-control w-80" id="produto" formControlName="produto">
                 <option value="">Selecione um produto ...</option>
                 <option *ngFor="let produto of produtos" [value]="produto">{{ produto.nome }}</option>
               </select>

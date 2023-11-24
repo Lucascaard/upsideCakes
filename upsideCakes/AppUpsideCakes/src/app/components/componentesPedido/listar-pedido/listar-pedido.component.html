@@ -5,20 +5,21 @@
         <div class="card-body mt-4">
           <h5>{{ tituloFormulario }}</h5>
           <div class="form-group">
-            <label for="idPedido">Nome do Pedido:</label>
+            <label for="idPedido">ID's do Pedido:</label>
             <select class="form-control" id="idPedido" [(ngModel)]="idPedido">
-              <option value="">Selecione um pedido</option>
-              <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.dataCriacao }}</option>
+              <option value="">Selecione um id ...</option>
+              <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.id }}</option>
             </select>
           </div>
           <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-primary margin-right" (click)="listarPorId()">Buscar por Nome</button>
+            <button class="btn btn-primary margin-right" (click)="listarPorId()">Buscar</button>
             <button class="btn btn-primary margin-right" (click)="voltarParaHome()">Voltar</button>
           </div>
           <div *ngIf="!mostrarListagemGeral">
             <div *ngFor="let pedido of pedidosPorId" class="card mt-2">
               <div class="card-header">
-                {{ pedido.dataCriacao }}
+                Data: {{ pedido.dataCriacao }} <br>
+                ID: {{ pedido.id }}
               </div>
               <div class="card-body">
                 <p>Funcionário: {{ pedido.funcionarioID }}</p>
@@ -43,7 +44,8 @@
           <div *ngIf="mostrarListagemGeral">
             <div *ngFor="let pedido of pedidos" class="card mt-2">
               <div class="card-header">
-                {{ pedido.id }}
+                Data: {{ pedido.dataCriacao }} <br>
+                ID: {{ pedido.id }}
               </div>
               <div class="card-body">
                 <p>Funcionário: {{ pedido.funcionarioID }}</p>

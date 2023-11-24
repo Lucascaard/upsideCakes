@@ -15,12 +15,11 @@ export class DeletarPedidoComponent implements OnInit {
 
   pedidoSelecionado: Number | undefined;
   formulario: FormGroup = new FormGroup({});
-  tituloFormulario: string = '';
+  tituloFormulario: string = 'Excluir Pedido';
   pedidos: Array<Pedido> | undefined;
 
   constructor(private pedidoService: PedidosService, private router: Router) { }
   ngOnInit(): void {
-    this.tituloFormulario = 'Excluir Pedido';
 
     this.carregarPedidos();
 
@@ -56,6 +55,8 @@ export class DeletarPedidoComponent implements OnInit {
       return;
     }
 
+    console.log(this.pedidoSelecionado);
+
     const observer: Observer<Pedido> = {
       next: (_result): void => {
         alert('Pedido excluído com sucesso.');
@@ -69,7 +70,6 @@ export class DeletarPedidoComponent implements OnInit {
       },
     };
 
-    console.log(this.pedidoSelecionado);
     this.pedidoService.excluir(this.pedidoSelecionado).subscribe(observer);
   }
 

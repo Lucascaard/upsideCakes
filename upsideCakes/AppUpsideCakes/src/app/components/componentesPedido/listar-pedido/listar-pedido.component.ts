@@ -13,7 +13,7 @@ export class ListarPedidoComponent implements OnInit {
   pedidosPorId: Array<Pedido> = [];
   mostrarListagemGeral: boolean = false;
   idPedido: string = '';
-  tituloFormulario = 'Listar Pedidos';
+  tituloFormulario = 'Lista de Pedidos';
 
   constructor(private pedidoService: PedidosService, private router: Router) { }
 
